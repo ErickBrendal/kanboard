@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EBL | Dashboard Executivo — Fast Track Salesforce</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --ebl-blue: #0a2d6e;
+    --ebl-blue-light: #1a4fa0;
+    --ebl-accent: #e8a020;
+    --ebl-green: #1db954;
+    --ebl-red: #e53935;
+    --ebl-orange: #f57c00;
+    --ebl-gray: #f4f6fb;
+    --ebl-dark: #1a1a2e;
+    --ebl-text: #2c3e50;
+    --ebl-border: #dde3f0;
+    --card-shadow: 0 2px 16px rgba(10,45,110,0.10);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--ebl-gray); color: var(--ebl-text); }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, var(--ebl-dark) 0%, var(--ebl-blue) 60%, var(--ebl-blue-light) 100%);
+    color: white; padding: 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .header-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 32px;
+  }
+  .header-logo { display: flex; align-items: center; gap: 14px; }
+  .logo-icon {
+    width: 48px; height: 48px; background: var(--ebl-accent);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 24px; font-weight: 900; color: white;
+  }
+  .header-title h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: 0.5px; }
+  .header-title p { font-size: 0.82rem; opacity: 0.75; margin-top: 2px; }
+  .header-meta { text-align: right; font-size: 0.78rem; opacity: 0.8; }
+  .header-meta strong { display: block; font-size: 1rem; opacity: 1; color: var(--ebl-accent); }
+
+  /* NAV TABS */
+  .nav-tabs {
+    display: flex; background: rgba(0,0,0,0.25);
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .nav-tab {
+    padding: 12px 28px; color: rgba(255,255,255,0.65); cursor: pointer;
+    font-size: 0.88rem; font-weight: 500; border-bottom: 3px solid transparent;
+    transition: all 0.2s; user-select: none;
+  }
+  .nav-tab:hover { color: white; background: rgba(255,255,255,0.07); }
+  .nav-tab.active { color: white; border-bottom-color: var(--ebl-accent); background: rgba(255,255,255,0.1); }
+
+  /* PAGES */
+  .page { display: none; padding: 28px 32px; }
+  .page.active { display: block; }
+
+  /* KPI CARDS */
+  .kpi-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-bottom: 24px; }
+  .kpi-card {
+    background: white; border-radius: 12px; padding: 20px 16px;
+    box-shadow: var(--card-shadow); border-top: 4px solid var(--ebl-blue);
+    text-align: center; transition: transform 0.2s;
+  }
+  .kpi-card:hover { transform: translateY(-2px); }
+  .kpi-card.green { border-top-color: var(--ebl-green); }
+  .kpi-card.red { border-top-color: var(--ebl-red); }
+  .kpi-card.orange { border-top-color: var(--ebl-orange); }
+  .kpi-card.accent { border-top-color: var(--ebl-accent); }
+  .kpi-card.purple { border-top-color: #7c3aed; }
+  .kpi-value { font-size: 2.2rem; font-weight: 800; color: var(--ebl-blue); line-height: 1; }
+  .kpi-card.green .kpi-value { color: var(--ebl-green); }
+  .kpi-card.red .kpi-value { color: var(--ebl-red); }
+  .kpi-card.orange .kpi-value { color: var(--ebl-orange); }
+  .kpi-card.accent .kpi-value { color: var(--ebl-accent); }
+  .kpi-card.purple .kpi-value { color: #7c3aed; }
+  .kpi-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.8px; color: #7a8499; margin-top: 6px; font-weight: 600; }
+  .kpi-sub { font-size: 0.78rem; color: #aab; margin-top: 4px; }
+
+  /* CHARTS GRID */
+  .charts-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .charts-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .charts-grid-13 { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; margin-bottom: 20px; }
+  .charts-grid-31 { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .chart-card {
+    background: white; border-radius: 12px; padding: 20px;
+    box-shadow: var(--card-shadow);
+  }
+  .chart-title {
+    font-size: 0.88rem; font-weight: 700; color: var(--ebl-blue);
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px;
+    padding-bottom: 10px; border-bottom: 2px solid var(--ebl-gray);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .chart-title .icon { font-size: 1rem; }
+  canvas { max-height: 260px; }
+
+  /* PIPELINE */
+  .pipeline-container { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; }
+  .pipeline-col {
+    min-width: 140px; flex: 1; background: var(--ebl-gray);
+    border-radius: 10px; padding: 12px;
+  }
+  .pipeline-col-header {
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.5px; color: white; background: var(--ebl-blue);
+    border-radius: 6px; padding: 6px 10px; margin-bottom: 10px; text-align: center;
+  }
+  .pipeline-count {
+    font-size: 2rem; font-weight: 800; color: var(--ebl-blue);
+    text-align: center; margin-bottom: 4px;
+  }
+  .pipeline-pct { font-size: 0.75rem; color: #7a8499; text-align: center; }
+  .pipeline-bar { height: 6px; background: #dde3f0; border-radius: 3px; margin-top: 8px; }
+  .pipeline-bar-fill { height: 100%; border-radius: 3px; background: var(--ebl-blue); }
+
+  /* TABLE */
+  .table-container { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  thead th {
+    background: var(--ebl-blue); color: white; padding: 10px 12px;
+    text-align: left; font-weight: 600; font-size: 0.75rem; text-transform: uppercase;
+    letter-spacing: 0.4px; white-space: nowrap;
+  }
+  tbody tr { border-bottom: 1px solid var(--ebl-border); transition: background 0.15s; }
+  tbody tr:hover { background: #f0f4ff; }
+  tbody td { padding: 9px 12px; vertical-align: middle; }
+  .badge {
+    display: inline-block; padding: 3px 10px; border-radius: 20px;
+    font-size: 0.72rem; font-weight: 700; white-space: nowrap;
+  }
+  .badge-alta { background: #fde8e8; color: #c62828; }
+  .badge-media { background: #fff3e0; color: #e65100; }
+  .badge-baixa { background: #e8f5e9; color: #2e7d32; }
+  .badge-atrasado { background: #fde8e8; color: #c62828; }
+  .badge-no-prazo { background: #e8f5e9; color: #2e7d32; }
+  .badge-aberta { background: #e3f2fd; color: #1565c0; }
+  .badge-concluida { background: #e8f5e9; color: #2e7d32; }
+  .fase-tag {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 0.72rem; font-weight: 600; background: #e8eef8; color: var(--ebl-blue);
+  }
+
+  /* PROGRESS */
+  .progress-bar { height: 10px; background: #e0e7ff; border-radius: 5px; overflow: hidden; margin-top: 4px; }
+  .progress-fill { height: 100%; border-radius: 5px; transition: width 0.5s; }
+
+  /* RESPONSÁVEL CARD */
+  .resp-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .resp-card {
+    background: white; border-radius: 10px; padding: 16px; text-align: center;
+    box-shadow: var(--card-shadow); border-top: 3px solid var(--ebl-blue);
+  }
+  .resp-avatar {
+    width: 48px; height: 48px; border-radius: 50%; margin: 0 auto 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 800; color: white;
+  }
+  .resp-name { font-size: 0.82rem; font-weight: 700; color: var(--ebl-blue); }
+  .resp-count { font-size: 1.5rem; font-weight: 800; color: var(--ebl-blue); margin: 6px 0 2px; }
+  .resp-label { font-size: 0.7rem; color: #7a8499; text-transform: uppercase; letter-spacing: 0.5px; }
+  .resp-atrasado { font-size: 0.75rem; color: var(--ebl-red); margin-top: 4px; font-weight: 600; }
+
+  /* AREA TABLE */
+  .area-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .area-name { font-size: 0.82rem; font-weight: 600; min-width: 160px; color: var(--ebl-text); }
+  .area-bar-wrap { flex: 1; }
+  .area-count { font-size: 0.82rem; font-weight: 700; color: var(--ebl-blue); min-width: 30px; text-align: right; }
+
+  /* FOOTER */
+  .footer {
+    background: var(--ebl-dark); color: rgba(255,255,255,0.5);
+    text-align: center; padding: 14px; font-size: 0.75rem; margin-top: 20px;
+  }
+  .footer strong { color: var(--ebl-accent); }
+
+  /* ALERT */
+  .alert-box {
+    background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px;
+    padding: 12px 16px; margin-bottom: 16px; font-size: 0.85rem; color: #856404;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .alert-box.danger { background: #f8d7da; border-color: #f5c6cb; color: #721c24; }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-size: 1rem; font-weight: 700; color: var(--ebl-blue);
+    margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+  }
+
+  /* INTEGRATION BOX */
+  .integration-box {
+    background: var(--ebl-dark); color: #a8d8ea; border-radius: 10px;
+    padding: 18px 20px; font-family: 'Courier New', monospace; font-size: 0.8rem;
+    line-height: 1.7; margin-top: 12px;
+  }
+  .integration-box .comment { color: #6a9955; }
+  .integration-box .keyword { color: #569cd6; }
+  .integration-box .string { color: #ce9178; }
+  .integration-box .value { color: #4ec9b0; }
+
+  @media print {
+    .nav-tabs { display: none; }
+    .page { display: block !important; page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-logo">
+      <div class="logo-icon">EBL</div>
+      <div class="header-title">
+        <h1>Dashboard Executivo — Fast Track Salesforce</h1>
+        <p>EBL Soluções Corporativas &nbsp;|&nbsp; Gestão de Projetos &amp; Demandas</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <strong>29/03/2026</strong>
+      Atualizado em tempo real via Kanboard API<br>
+      105 demandas &nbsp;|&nbsp; 7 projetos ativos
+    </div>
+  </div>
+  <div class="nav-tabs">
+    <div class="nav-tab active" onclick="showPage('visao-geral')">📊 Visão Geral</div>
+    <div class="nav-tab" onclick="showPage('pipeline')">🔄 Pipeline</div>
+    <div class="nav-tab" onclick="showPage('equipe')">👥 Equipe</div>
+    <div class="nav-tab" onclick="showPage('demandas')">📋 Demandas</div>
+    <div class="nav-tab" onclick="showPage('integracao')">🔌 Integração Power BI</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 1: VISÃO GERAL -->
+<!-- ============================================================ -->
+<div id="page-visao-geral" class="page active">
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value">105</div>
+      <div class="kpi-label">Total de Demandas</div>
+      <div class="kpi-sub">Projeto SF</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-value">7</div>
+      <div class="kpi-label">Implementadas</div>
+      <div class="kpi-sub">6.7% do total</div>
+    </div>
+    <div class="kpi-card" style="border-top-color:#1a4fa0">
+      <div class="kpi-value" style="color:#1a4fa0">98</div>
+      <div class="kpi-label">Em Andamento</div>
+      <div class="kpi-sub">93.3% do pipeline</div>
+    </div>
+    <div class="kpi-card red">
+      <div class="kpi-value">7</div>
+      <div class="kpi-label">Em Atraso</div>
+      <div class="kpi-sub">Prazo vencido</div>
+    </div>
+    <div class="kpi-card orange">
+      <div class="kpi-value">15</div>
+      <div class="kpi-label">Alta Prioridade</div>
+      <div class="kpi-sub">Requer atenção</div>
+    </div>
+    <div class="kpi-card purple">
+      <div class="kpi-value">5</div>
+      <div class="kpi-label">Responsáveis</div>
+      <div class="kpi-sub">7 projetos ativos</div>
+    </div>
+  </div>
+
+  <div class="charts-grid-2">
+    <div class="chart-card">
+      <div class="chart-title"><span class="icon">🔄</span> Distribuição por Fase</div>
+      <canvas id="chartFases"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title"><span class="icon">👥</span> Carga por Responsável</div>
+      <canvas id="chartResp"></canvas>
+    </div>
+  </div>
+
+  <div class="charts-grid-3">
+    <div class="chart-card">
+      <div class="chart-title"><span class="icon">🎯</span> Distribuição por Prioridade</div>
+      <canvas id="chartPrioridade"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title"><span class="icon">🏢</span> Top Áreas Solicitantes</div>
+      <canvas id="chartAreas"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title"><span class="icon">📌</span> Tipo de Demanda</div>
+      <canvas id="chartTipos"></canvas>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 2: PIPELINE -->
+<!-- ============================================================ -->
+<div id="page-pipeline" class="page">
+
+  <div class="alert-box danger">
+    ⚠️ <strong>7 demandas em atraso</strong> — Prazo vencido e ainda não implementadas. Ação imediata necessária.
+  </div>
+  <div class="alert-box">
+    📌 <strong>15 demandas de alta prioridade</strong> — 8 aguardam aprovação, 5 em desenvolvimento, 2 em deploy.
+  </div>
+
+  <div class="chart-card" style="margin-bottom:20px">
+    <div class="chart-title"><span class="icon">🔄</span> Funil de Pipeline — Fast Track Salesforce</div>
+    <div class="pipeline-container">
+      <div class="pipeline-col">
+        <div class="pipeline-col-header" style="background:#607d8b">01. Backlog</div>
+        <div class="pipeline-count">78</div>
+        <div class="pipeline-pct">74.3% do total</div>
+        <div class="pipeline-bar"><div class="pipeline-bar-fill" style="width:74.3%;background:#607d8b"></div></div>
+      </div>
+      <div class="pipeline-col">
+        <div class="pipeline-col-header" style="background:#5c6bc0">02. Refinamento</div>
+        <div class="pipeline-count">5</div>
+        <div class="pipeline-pct">4.8%</div>
+        <div class="pipeline-bar"><div class="pipeline-bar-fill" style="width:4.8%;background:#5c6bc0"></div></div>
+      </div>
+      <div class="pipeline-col">
+        <div class="pipeline-col-header" style="background:#f57c00">06. Aprovação</div>
+        <div class="pipeline-count">7</div>
+        <div class="pipeline-pct">6.7%</div>
+        <div class="pipeline-bar"><div class="pipeline-bar-fill" style="width:6.7%;background:#f57c00"></div></div>
+      </div>
+      <div class="pipeline-col">
+        <div class="pipeline-col-header" style="background:#1976d2">07. Desenvolvimento</div>
+        <div class="pipeline-count">5</div>
+        <div class="pipeline-pct">4.8%</div>
+        <div class="pipeline-bar"><div class="pipeline-bar-fill" style="width:4.8%;background:#1976d2"></div></div>
+      </div>
+      <div class="pipeline-col">
+        <div class="pipeline-col-header" style="background:#7b1fa2">08. Homologação</div>
+        <div class="pipeline-count">1</div>
+        <div class="pipeline-pct">1.0%</div>
+        <div class="pipeline-bar"><div class="pipeline-bar-fill" style="width:1%;background:#7b1fa2"></div></div>
+      </div>
+      <div class="pipeline-col">
+        <div class="pipeline-col-header" style="background:#e53935">09. Deploy</div>
+        <div class="pipeline-count">2</div>
+        <div class="pipeline-pct">1.9%</div>
+        <div class="pipeline-bar"><div class="pipeline-bar-fill" style="width:1.9%;background:#e53935"></div></div>
+      </div>
+      <div class="pipeline-col">
+        <div class="pipeline-col-header" style="background:#1db954">10. Implementado</div>
+        <div class="pipeline-count">7</div>
+        <div class="pipeline-pct">6.7%</div>
+        <div class="pipeline-bar"><div class="pipeline-bar-fill" style="width:6.7%;background:#1db954"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="charts-grid-2">
+    <div class="chart-card">
+      <div class="chart-title"><span class="icon">📈</span> Evolução do Pipeline (Fases Ativas)</div>
+      <canvas id="chartPipelineBar"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title"><span class="icon">⏰</span> Status de Prazo</div>
+      <canvas id="chartPrazo"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-title"><span class="icon">🚨</span> Demandas Críticas — Alta Prioridade &amp; Em Atraso</div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>ID Cherwell</th>
+            <th>Título</th>
+            <th>Fase</th>
+            <th>Responsável</th>
+            <th>Prazo</th>
+            <th>Prioridade</th>
+            <th>Status Prazo</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaCriticas"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 3: EQUIPE -->
+<!-- ============================================================ -->
+<div id="page-equipe" class="page">
+
+  <div class="resp-grid" style="margin-bottom:24px">
+    <div class="resp-card">
+      <div class="resp-avatar" style="background:#0a2d6e">EA</div>
+      <div class="resp-name">Erick Almeida</div>
+      <div class="resp-count">60</div>
+      <div class="resp-label">demandas</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:57%;background:#0a2d6e"></div></div>
+      <div class="resp-atrasado">⚠️ 3 em atraso</div>
+    </div>
+    <div class="resp-card">
+      <div class="resp-avatar" style="background:#1976d2">MS</div>
+      <div class="resp-name">Marcio Souza</div>
+      <div class="resp-count">19</div>
+      <div class="resp-label">demandas</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:18%;background:#1976d2"></div></div>
+      <div class="resp-atrasado">⚠️ 3 em atraso</div>
+    </div>
+    <div class="resp-card">
+      <div class="resp-avatar" style="background:#7b1fa2">ER</div>
+      <div class="resp-name">Elder Rodrigues</div>
+      <div class="resp-count">15</div>
+      <div class="resp-label">demandas</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:14%;background:#7b1fa2"></div></div>
+      <div class="resp-atrasado">⚠️ 1 em atraso</div>
+    </div>
+    <div class="resp-card">
+      <div class="resp-avatar" style="background:#f57c00">FN</div>
+      <div class="resp-name">Felipe Nascimento</div>
+      <div class="resp-count">10</div>
+      <div class="resp-label">demandas</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:10%;background:#f57c00"></div></div>
+      <div class="resp-atrasado" style="color:#1db954">✅ No prazo</div>
+    </div>
+    <div class="resp-card">
+      <div class="resp-avatar" style="background:#607d8b">CA</div>
+      <div class="resp-name">Carlos Almeida</div>
+      <div class="resp-count">1</div>
+      <div class="resp-label">demandas</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:1%;background:#607d8b"></div></div>
+      <div class="resp-atrasado" style="color:#1db954">✅ No prazo</div>
+    </div>
+  </div>
+
+  <div class="charts-grid-2">
+    <div class="chart-card">
+      <div class="chart-title"><span class="icon">📊</span> Carga de Trabalho por Responsável</div>
+      <canvas id="chartCargaResp"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title"><span class="icon">🎯</span> Prioridade por Responsável</div>
+      <canvas id="chartPriResp"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-title"><span class="icon">🏢</span> Demandas por Área Solicitante</div>
+    <div style="padding: 8px 0;">
+      <div class="area-row">
+        <div class="area-name">Bens de Consumo</div>
+        <div class="area-bar-wrap"><div class="progress-bar"><div class="progress-fill" style="width:100%;background:#0a2d6e"></div></div></div>
+        <div class="area-count">24</div>
+      </div>
+      <div class="area-row">
+        <div class="area-name">TI</div>
+        <div class="area-bar-wrap"><div class="progress-bar"><div class="progress-fill" style="width:42%;background:#1976d2"></div></div></div>
+        <div class="area-count">10</div>
+      </div>
+      <div class="area-row">
+        <div class="area-name">Refrigeração</div>
+        <div class="area-bar-wrap"><div class="progress-bar"><div class="progress-fill" style="width:42%;background:#7b1fa2"></div></div></div>
+        <div class="area-count">10</div>
+      </div>
+      <div class="area-row">
+        <div class="area-name">Ar &amp; Eletro</div>
+        <div class="area-bar-wrap"><div class="progress-bar"><div class="progress-fill" style="width:37%;background:#f57c00"></div></div></div>
+        <div class="area-count">9</div>
+      </div>
+      <div class="area-row">
+        <div class="area-name">Automação</div>
+        <div class="area-bar-wrap"><div class="progress-bar"><div class="progress-fill" style="width:37%;background:#e53935"></div></div></div>
+        <div class="area-count">9</div>
+      </div>
+      <div class="area-row">
+        <div class="area-name">Comercial</div>
+        <div class="area-bar-wrap"><div class="progress-bar"><div class="progress-fill" style="width:37%;background:#1db954"></div></div></div>
+        <div class="area-count">9</div>
+      </div>
+      <div class="area-row">
+        <div class="area-name">Logística</div>
+        <div class="area-bar-wrap"><div class="progress-bar"><div class="progress-fill" style="width:25%;background:#607d8b"></div></div></div>
+        <div class="area-count">6</div>
+      </div>
+      <div class="area-row">
+        <div class="area-name">Financeiro</div>
+        <div class="area-bar-wrap"><div class="progress-bar"><div class="progress-fill" style="width:17%;background:#5c6bc0"></div></div></div>
+        <div class="area-count">4</div>
+      </div>
+      <div class="area-row">
+        <div class="area-name">Cadastros</div>
+        <div class="area-bar-wrap"><div class="progress-bar"><div class="progress-fill" style="width:12%;background:#00897b"></div></div></div>
+        <div class="area-count">3</div>
+      </div>
+      <div class="area-row">
+        <div class="area-name">Fiscal</div>
+        <div class="area-bar-wrap"><div class="progress-bar"><div class="progress-fill" style="width:8%;background:#c0392b"></div></div></div>
+        <div class="area-count">2</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 4: DEMANDAS -->
+<!-- ============================================================ -->
+<div id="page-demandas" class="page">
+
+  <div style="display:flex;gap:12px;margin-bottom:16px;align-items:center;flex-wrap:wrap">
+    <input type="text" id="searchInput" placeholder="🔍  Buscar por título, ID Cherwell, responsável..." 
+      style="flex:1;min-width:280px;padding:10px 14px;border:1px solid var(--ebl-border);border-radius:8px;font-size:0.85rem;outline:none">
+    <select id="filterFase" onchange="filterTable()" style="padding:10px 14px;border:1px solid var(--ebl-border);border-radius:8px;font-size:0.85rem;background:white">
+      <option value="">Todas as Fases</option>
+      <option>01. Backlog</option>
+      <option>02. Refinamento</option>
+      <option>06. Aprovação</option>
+      <option>07. Desenvolvimento</option>
+      <option>08. Homologação</option>
+      <option>09. Deploy</option>
+      <option>10. Implementado</option>
+    </select>
+    <select id="filterResp" onchange="filterTable()" style="padding:10px 14px;border:1px solid var(--ebl-border);border-radius:8px;font-size:0.85rem;background:white">
+      <option value="">Todos os Responsáveis</option>
+      <option>Erick Almeida</option>
+      <option>Marcio Souza</option>
+      <option>Elder Rodrigues</option>
+      <option>Felipe Nascimento</option>
+      <option>Carlos Almeida</option>
+    </select>
+    <select id="filterPri" onchange="filterTable()" style="padding:10px 14px;border:1px solid var(--ebl-border);border-radius:8px;font-size:0.85rem;background:white">
+      <option value="">Todas as Prioridades</option>
+      <option>Alta</option>
+      <option>Média</option>
+      <option>Baixa</option>
+    </select>
+    <span id="countLabel" style="font-size:0.82rem;color:#7a8499;white-space:nowrap">105 demandas</span>
+  </div>
+
+  <div class="chart-card">
+    <div class="table-container">
+      <table id="tabelaDemandas">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ID Cherwell</th>
+            <th>Título</th>
+            <th>Fase</th>
+            <th>Responsável</th>
+            <th>Tipo</th>
+            <th>Prioridade</th>
+            <th>Prazo</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE 5: INTEGRAÇÃO POWER BI -->
+<!-- ============================================================ -->
+<div id="page-integracao" class="page">
+
+  <div class="charts-grid-2">
+    <div class="chart-card">
+      <div class="chart-title"><span class="icon">🔌</span> Conexão via Power Query (M)</div>
+      <p style="font-size:0.82rem;color:#555;margin-bottom:12px">Cole este código no Power BI Desktop em <strong>Obter Dados → Consulta em Branco → Editor Avançado</strong>:</p>
+      <div class="integration-box">
+        <span class="comment">// EBL Kanboard — Conexão API</span><br>
+        <span class="keyword">let</span><br>
+        &nbsp;&nbsp;BaseUrl = <span class="string">"http://kanboard.eblsolucoescorp.tec.br/jsonrpc.php"</span>,<br>
+        &nbsp;&nbsp;Headers = [<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"Authorization"</span> = <span class="string">"Basic "</span> &amp; Binary.ToText(Text.ToBinary(<span class="string">"admin:Senha@2026"</span>), BinaryEncoding.Base64),<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"Content-Type"</span> = <span class="string">"application/json"</span><br>
+        &nbsp;&nbsp;],<br>
+        &nbsp;&nbsp;Body = Json.FromValue([jsonrpc=<span class="string">"2.0"</span>, method=<span class="string">"getAllTasks"</span>, id=<span class="value">1</span>, params=[project_id=<span class="value">11</span>, status_id=<span class="value">1</span>]]),<br>
+        &nbsp;&nbsp;Response = Web.Contents(BaseUrl, [Headers=Headers, Content=Body]),<br>
+        &nbsp;&nbsp;Json = Json.Document(Response),<br>
+        &nbsp;&nbsp;Tasks = Json[result],<br>
+        &nbsp;&nbsp;Table = Table.FromList(Tasks, Splitter.SplitByNothing())<br>
+        <span class="keyword">in</span><br>
+        &nbsp;&nbsp;Table
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title"><span class="icon">📊</span> Medidas DAX Recomendadas</div>
+      <p style="font-size:0.82rem;color:#555;margin-bottom:12px">Adicione estas medidas no modelo de dados do Power BI:</p>
+      <div class="integration-box">
+        <span class="comment">// Total de Demandas</span><br>
+        Total = <span class="keyword">COUNTROWS</span>(Demandas)<br><br>
+        <span class="comment">// Taxa de Conclusão</span><br>
+        Taxa_Conclusao = <span class="keyword">DIVIDE</span>(<span class="keyword">CALCULATE</span>(<span class="keyword">COUNTROWS</span>(Demandas), Demandas[Status]=<span class="string">"Concluída"</span>), [Total], <span class="value">0</span>)<br><br>
+        <span class="comment">// Demandas em Atraso</span><br>
+        Em_Atraso = <span class="keyword">CALCULATE</span>(<span class="keyword">COUNTROWS</span>(Demandas), Demandas[Em_Atraso]=<span class="string">"Sim"</span>)<br><br>
+        <span class="comment">// Alta Prioridade</span><br>
+        Alta_Prioridade = <span class="keyword">CALCULATE</span>(<span class="keyword">COUNTROWS</span>(Demandas), Demandas[Prioridade_Texto]=<span class="string">"Alta"</span>)<br><br>
+        <span class="comment">// Índice de Saúde do Projeto (0-100)</span><br>
+        Saude = <span class="keyword">MAX</span>(<span class="value">0</span>, <span class="value">100</span> - [Em_Atraso] * <span class="value">10</span> - [Alta_Prioridade] * <span class="value">2</span>)
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-top:20px">
+    <div class="chart-title"><span class="icon">📁</span> Importação via CSV (Método Mais Simples)</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:8px">
+      <div style="background:var(--ebl-gray);border-radius:8px;padding:16px">
+        <div style="font-size:1.5rem;margin-bottom:8px">1️⃣</div>
+        <div style="font-weight:700;font-size:0.88rem;margin-bottom:6px">Abrir Power BI Desktop</div>
+        <div style="font-size:0.8rem;color:#555">Clique em <strong>Obter Dados</strong> → <strong>Texto/CSV</strong></div>
+      </div>
+      <div style="background:var(--ebl-gray);border-radius:8px;padding:16px">
+        <div style="font-size:1.5rem;margin-bottom:8px">2️⃣</div>
+        <div style="font-weight:700;font-size:0.88rem;margin-bottom:6px">Selecionar o arquivo</div>
+        <div style="font-size:0.8rem;color:#555">Arquivo: <code>kanboard_dados.csv</code><br>Separador: <strong>ponto e vírgula (;)</strong><br>Encoding: <strong>UTF-8 BOM</strong></div>
+      </div>
+      <div style="background:var(--ebl-gray);border-radius:8px;padding:16px">
+        <div style="font-size:1.5rem;margin-bottom:8px">3️⃣</div>
+        <div style="font-weight:700;font-size:0.88rem;margin-bottom:6px">Criar os visuais</div>
+        <div style="font-size:0.8rem;color:#555">Use os campos: <strong>Fase, Responsavel_Raia, Prioridade_Texto, Em_Atraso, Tipo_Demanda, Area</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-top:20px">
+    <div class="chart-title"><span class="icon">🔑</span> Credenciais e Endpoints</div>
+    <table style="width:100%;font-size:0.85rem">
+      <thead><tr><th>Campo</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td><strong>URL Base API</strong></td><td><code>http://kanboard.eblsolucoescorp.tec.br/jsonrpc.php</code></td></tr>
+        <tr><td><strong>Usuário</strong></td><td><code>admin</code></td></tr>
+        <tr><td><strong>Senha</strong></td><td><code>Senha@2026</code></td></tr>
+        <tr><td><strong>Token API</strong></td><td><code>a43a8785a4487979964cd7e12fc8c56bbb6ef7a6fa64bcb6c45fa1afc6ff</code></td></tr>
+        <tr><td><strong>Método — Tarefas Abertas</strong></td><td><code>getAllTasks</code> com <code>project_id: 11, status_id: 1</code></td></tr>
+        <tr><td><strong>Método — Tarefas Fechadas</strong></td><td><code>getAllTasks</code> com <code>project_id: 11, status_id: 0</code></td></tr>
+        <tr><td><strong>Método — Todos os Projetos</strong></td><td><code>getAllProjects</code></td></tr>
+        <tr><td><strong>Arquivo CSV</strong></td><td><code>kanboard_dados.csv</code> — 105 registros, separador <code>;</code>, UTF-8 BOM</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="footer">
+  Dashboard Executivo &nbsp;|&nbsp; <strong>EBL Soluções Corporativas</strong> &nbsp;|&nbsp; 
+  Fonte: Kanboard API — kanboard.eblsolucoescorp.tec.br &nbsp;|&nbsp; 
+  Gerado em 29/03/2026 &nbsp;|&nbsp; Fast Track Salesforce — 105 demandas
+</div>
+
+<script>
+// ============================================================
+// DADOS REAIS DO KANBOARD
+// ============================================================
+const dados = {
+  fases: {
+    '01. Backlog': 78, '02. Refinamento': 5, '06. Aprovação': 7,
+    '07. Desenvolvimento': 5, '08. Homologação': 1, '09. Deploy': 2, '10. Implementado': 7
+  },
+  responsaveis: { 'Erick Almeida': 60, 'Marcio Souza': 19, 'Elder Rodrigues': 15, 'Felipe Nascimento': 10, 'Carlos Almeida': 1 },
+  prioridades: { 'Alta': 15, 'Média': 5, 'Baixa': 85 },
+  tipos: { 'Parametrização': 11, 'Prod. Comercial': 10, 'Incidente': 5, 'Prod. TI': 1, 'Não classificado': 78 },
+  areas: { 'Bens de Consumo': 24, 'TI': 10, 'Refrigeração': 10, 'Ar & Eletro': 9, 'Automação': 9, 'Comercial': 9, 'Logística': 6, 'Financeiro': 4, 'Cadastros': 3, 'Outros': 15 }
+};
+
+const COLORS = {
+  blue: '#0a2d6e', lightBlue: '#1a4fa0', accent: '#e8a020',
+  green: '#1db954', red: '#e53935', orange: '#f57c00',
+  purple: '#7c3aed', gray: '#607d8b', teal: '#00897b',
+  indigo: '#5c6bc0'
+};
+
+const PALETTE = [COLORS.blue, COLORS.lightBlue, COLORS.orange, COLORS.green, COLORS.red, COLORS.purple, COLORS.gray, COLORS.teal, COLORS.indigo, COLORS.accent];
+
+// ============================================================
+// NAVEGAÇÃO
+// ============================================================
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ============================================================
+// CHARTS — VISÃO GERAL
+// ============================================================
+function makeChart(id, type, labels, data, colors, opts={}) {
+  const ctx = document.getElementById(id);
+  if (!ctx) return;
+  return new Chart(ctx, {
+    type, data: { labels, datasets: [{ data, backgroundColor: colors, borderColor: type === 'line' ? colors[0] : colors, borderWidth: type === 'bar' ? 0 : 2 }] },
+    options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'bottom', labels: { font: { size: 11 }, padding: 12 } } }, ...opts }
+  });
+}
+
+// Fases
+makeChart('chartFases', 'doughnut',
+  Object.keys(dados.fases), Object.values(dados.fases),
+  [COLORS.gray, COLORS.indigo, COLORS.orange, COLORS.lightBlue, COLORS.purple, COLORS.red, COLORS.green]
+);
+
+// Responsáveis
+makeChart('chartResp', 'bar',
+  Object.keys(dados.responsaveis), Object.values(dados.responsaveis),
+  [COLORS.blue, COLORS.lightBlue, COLORS.purple, COLORS.orange, COLORS.gray],
+  { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: '#eef' } }, x: { grid: { display: false } } } }
+);
+
+// Prioridade
+makeChart('chartPrioridade', 'pie',
+  Object.keys(dados.prioridades), Object.values(dados.prioridades),
+  [COLORS.red, COLORS.orange, COLORS.green]
+);
+
+// Áreas
+makeChart('chartAreas', 'bar',
+  Object.keys(dados.areas), Object.values(dados.areas),
+  PALETTE,
+  { indexAxis: 'y', plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true, grid: { color: '#eef' } }, y: { grid: { display: false }, ticks: { font: { size: 10 } } } } }
+);
+
+// Tipos
+makeChart('chartTipos', 'doughnut',
+  Object.keys(dados.tipos), Object.values(dados.tipos),
+  [COLORS.blue, COLORS.orange, COLORS.red, COLORS.teal, COLORS.gray]
+);
+
+// Pipeline bar
+makeChart('chartPipelineBar', 'bar',
+  ['Backlog', 'Refinamento', 'Aprovação', 'Desenvolvimento', 'Homologação', 'Deploy', 'Implementado'],
+  [78, 5, 7, 5, 1, 2, 7],
+  [COLORS.gray, COLORS.indigo, COLORS.orange, COLORS.lightBlue, COLORS.purple, COLORS.red, COLORS.green],
+  { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true }, x: { grid: { display: false } } } }
+);
+
+// Prazo
+makeChart('chartPrazo', 'doughnut',
+  ['No Prazo', 'Em Atraso'],
+  [98, 7],
+  [COLORS.green, COLORS.red]
+);
+
+// Carga responsável
+makeChart('chartCargaResp', 'bar',
+  ['Erick Almeida', 'Marcio Souza', 'Elder Rodrigues', 'Felipe Nascimento', 'Carlos Almeida'],
+  [60, 19, 15, 10, 1],
+  [COLORS.blue, COLORS.lightBlue, COLORS.purple, COLORS.orange, COLORS.gray],
+  { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true }, x: { grid: { display: false }, ticks: { font: { size: 10 } } } } }
+);
+
+// Prioridade por responsável (stacked)
+new Chart(document.getElementById('chartPriResp'), {
+  type: 'bar',
+  data: {
+    labels: ['Erick Almeida', 'Marcio Souza', 'Elder Rodrigues', 'Felipe Nascimento', 'Carlos Almeida'],
+    datasets: [
+      { label: 'Alta', data: [9, 4, 1, 1, 0], backgroundColor: COLORS.red },
+      { label: 'Média', data: [3, 1, 1, 0, 0], backgroundColor: COLORS.orange },
+      { label: 'Baixa', data: [48, 14, 13, 9, 1], backgroundColor: COLORS.green }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: true,
+    plugins: { legend: { position: 'bottom', labels: { font: { size: 11 } } } },
+    scales: { x: { stacked: true, grid: { display: false }, ticks: { font: { size: 10 } } }, y: { stacked: true, beginAtZero: true } }
+  }
+});
+
+// ============================================================
+// TABELA DE DEMANDAS CRÍTICAS
+// ============================================================
+const criticas = [
+  { id: '321', cherwell: '93995', titulo: 'Notificação de Contas paradas há mais de 15 dias', fase: '09. Deploy', resp: 'Elder Rodrigues', prazo: '23/10/2025', pri: 'Alta', atraso: true },
+  { id: '322', cherwell: '95865', titulo: 'Agrupamento Raiz CNPJ (incidente)', fase: '09. Deploy', resp: 'Felipe Nascimento', prazo: '23/10/2025', pri: 'Alta', atraso: true },
+  { id: '326', cherwell: '92514', titulo: 'Busca pela ordem de compra do cliente', fase: '07. Desenvolvimento', resp: 'Erick Almeida', prazo: '23/10/2025', pri: 'Alta', atraso: true },
+  { id: '327', cherwell: '101150', titulo: 'Limitar a opção de parcelas no Salesforce', fase: '07. Desenvolvimento', resp: 'Marcio Souza', prazo: '06/11/2025', pri: 'Alta', atraso: true },
+  { id: '323', cherwell: '101061', titulo: 'Criação de Automação da Atualização de Saldo/Cotas', fase: '08. Homologação', resp: 'Marcio Souza', prazo: '13/11/2025', pri: 'Alta', atraso: true },
+  { id: '324', cherwell: '101038', titulo: 'ZVDS - Venda Demonstração Simbólica', fase: '07. Desenvolvimento', resp: 'Erick Almeida', prazo: '13/11/2025', pri: 'Alta', atraso: true },
+  { id: '325', cherwell: '95492', titulo: 'Desenvolvimento Simples Remessa ZVSR no Salesforce', fase: '07. Desenvolvimento', resp: 'Marcio Souza', prazo: '11/12/2025', pri: 'Alta', atraso: true },
+  { id: '216', cherwell: '81643', titulo: 'BEMOL - Melhoria no fluxo de cancelamentos', fase: '07. Desenvolvimento', resp: 'Marcio Souza', prazo: '—', pri: 'Alta', atraso: false },
+  { id: '217', cherwell: '64742', titulo: 'Incluir Rejeitar em todas as fases de Aprovações', fase: '06. Aprovação', resp: 'Erick Almeida', prazo: '—', pri: 'Alta', atraso: false },
+  { id: '218', cherwell: '83499', titulo: 'Local de Expedição no Salesforce', fase: '06. Aprovação', resp: 'Erick Almeida', prazo: '—', pri: 'Alta', atraso: false },
+  { id: '219', cherwell: '91555', titulo: 'Envio de notificações aos clientes', fase: '06. Aprovação', resp: 'Erick Almeida', prazo: '—', pri: 'Alta', atraso: false },
+  { id: '220', cherwell: '87055', titulo: 'Lançamento de Metas por Grupos de Produtos', fase: '06. Aprovação', resp: 'Erick Almeida', prazo: '—', pri: 'Alta', atraso: false },
+  { id: '221', cherwell: '94929', titulo: 'EDI para integração de pedidos - Cliente Leroy', fase: '06. Aprovação', resp: 'Erick Almeida', prazo: '—', pri: 'Alta', atraso: false },
+  { id: '222', cherwell: '101551', titulo: 'Refaturar Saldo de Estoque por Linha de Produto', fase: '06. Aprovação', resp: 'Marcio Souza', prazo: '—', pri: 'Alta', atraso: false },
+  { id: '223', cherwell: '103844', titulo: 'Aprovação direta por Margem de Contribuição', fase: '06. Aprovação', resp: 'Erick Almeida', prazo: '—', pri: 'Alta', atraso: false },
+];
+
+const tbCriticas = document.getElementById('tabelaCriticas');
+criticas.forEach(t => {
+  tbCriticas.innerHTML += `<tr>
+    <td><strong>#${t.cherwell}</strong></td>
+    <td style="max-width:280px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${t.titulo}">${t.titulo}</td>
+    <td><span class="fase-tag">${t.fase}</span></td>
+    <td>${t.resp}</td>
+    <td>${t.prazo}</td>
+    <td><span class="badge badge-alta">${t.pri}</span></td>
+    <td><span class="badge ${t.atraso ? 'badge-atrasado' : 'badge-no-prazo'}">${t.atraso ? '⚠️ ATRASADO' : '✅ No Prazo'}</span></td>
+  </tr>`;
+});
+
+// ============================================================
+// TABELA COMPLETA DE DEMANDAS
+// ============================================================
+const todasDemandas = [
+  {id:'216',ch:'81643',titulo:'BEMOL - Melhoria no fluxo de cancelamentos',fase:'07. Desenvolvimento',resp:'Marcio Souza',tipo:'Produtividade TI',pri:'Alta',prazo:'—',status:'Aberta'},
+  {id:'217',ch:'64742',titulo:'Incluir Rejeitar em todas as fases de Aprovações para Backoffice',fase:'06. Aprovação',resp:'Erick Almeida',tipo:'Prod. Comercial',pri:'Alta',prazo:'—',status:'Aberta'},
+  {id:'218',ch:'83499',titulo:'Local de Expedição no Salesforce',fase:'06. Aprovação',resp:'Erick Almeida',tipo:'Prod. Comercial',pri:'Alta',prazo:'—',status:'Aberta'},
+  {id:'219',ch:'91555',titulo:'Envio de notificações aos clientes (Emissão, Previsão e confirmação)',fase:'06. Aprovação',resp:'Erick Almeida',tipo:'Prod. Comercial',pri:'Alta',prazo:'—',status:'Aberta'},
+  {id:'220',ch:'87055',titulo:'Lançamento de Metas por Grupos de Produtos',fase:'06. Aprovação',resp:'Erick Almeida',tipo:'Prod. Comercial',pri:'Alta',prazo:'—',status:'Aberta'},
+  {id:'221',ch:'94929',titulo:'EDI para integração de pedidos - Cliente Leroy',fase:'06. Aprovação',resp:'Erick Almeida',tipo:'Prod. Comercial',pri:'Alta',prazo:'—',status:'Aberta'},
+  {id:'222',ch:'101551',titulo:'Refaturar Saldo de Estoque por Linha de Produto',fase:'06. Aprovação',resp:'Marcio Souza',tipo:'Parametrização',pri:'Alta',prazo:'—',status:'Aberta'},
+  {id:'223',ch:'103844',titulo:'Aprovação direta por Margem de Contribuição',fase:'06. Aprovação',resp:'Erick Almeida',tipo:'Parametrização',pri:'Alta',prazo:'—',status:'Aberta'},
+  {id:'224',ch:'98965',titulo:'Refatorar Integração Telecontrol X Salesforce com Middleware',fase:'02. Refinamento',resp:'Elder Rodrigues',tipo:'Parametrização',pri:'Média',prazo:'—',status:'Aberta'},
+  {id:'225',ch:'101397',titulo:'Limitar os catálogos de preço por tipo de operação',fase:'02. Refinamento',resp:'Elder Rodrigues',tipo:'Parametrização',pri:'Média',prazo:'—',status:'Aberta'},
+  {id:'226',ch:'87262',titulo:'Melhoria: aprovação crédito pedido consignado',fase:'02. Refinamento',resp:'Erick Almeida',tipo:'Parametrização',pri:'Média',prazo:'—',status:'Aberta'},
+  {id:'227',ch:'81296',titulo:'Relatório de Comissão do Representante',fase:'02. Refinamento',resp:'Erick Almeida',tipo:'Parametrização',pri:'Média',prazo:'—',status:'Aberta'},
+  {id:'228',ch:'99616',titulo:'Relatórios e Representante poder marcar um Funcionário',fase:'02. Refinamento',resp:'Erick Almeida',tipo:'Parametrização',pri:'Média',prazo:'—',status:'Aberta'},
+  {id:'321',ch:'93995',titulo:'Notificação de Contas paradas há mais de 15 dias',fase:'09. Deploy',resp:'Elder Rodrigues',tipo:'Incidente',pri:'Alta',prazo:'23/10/2025',status:'Aberta'},
+  {id:'322',ch:'95865',titulo:'Agrupamento Raiz CNPJ (incidente)',fase:'09. Deploy',resp:'Felipe Nascimento',tipo:'Incidente',pri:'Alta',prazo:'23/10/2025',status:'Aberta'},
+  {id:'323',ch:'101061',titulo:'Criação de Automação da Atualização de Saldo/Cotas',fase:'08. Homologação',resp:'Marcio Souza',tipo:'Parametrização',pri:'Alta',prazo:'13/11/2025',status:'Aberta'},
+  {id:'324',ch:'101038',titulo:'ZVDS - Venda Demonstração Simbólica',fase:'07. Desenvolvimento',resp:'Erick Almeida',tipo:'Incidente',pri:'Alta',prazo:'13/11/2025',status:'Aberta'},
+  {id:'325',ch:'95492',titulo:'Desenvolvimento Simples Remessa ZVSR no Salesforce',fase:'07. Desenvolvimento',resp:'Marcio Souza',tipo:'Incidente',pri:'Alta',prazo:'11/12/2025',status:'Aberta'},
+  {id:'326',ch:'92514',titulo:'Busca pela ordem de compra do cliente',fase:'07. Desenvolvimento',resp:'Erick Almeida',tipo:'Incidente',pri:'Alta',prazo:'23/10/2025',status:'Aberta'},
+  {id:'327',ch:'101150',titulo:'Limitar a opção de parcelas no Salesforce',fase:'07. Desenvolvimento',resp:'Marcio Souza',tipo:'Parametrização',pri:'Alta',prazo:'06/11/2025',status:'Aberta'},
+];
+
+// Gerar linhas para as 105 demandas (as 20 detalhadas + restantes do backlog)
+const backlogItems = [];
+const backlogData = [
+  ['229','69222','Cotação sobre integração via API do Salesforce e RD Station','Marcio Souza','Baixa'],
+  ['230','63681','Melhoria Marketplace','Erick Almeida','Baixa'],
+  ['231','79383','Criação de Novo Tipo de Oportunidade','Erick Almeida','Baixa'],
+  ['232','87076','Inclusão ZMDK para e-commerce','Erick Almeida','Baixa'],
+  ['233','75017','Automatizar fluxo de Pedidos de Financiamento','Erick Almeida','Baixa'],
+  ['234','87057','Alcadas de aprovação - Automação','Erick Almeida','Baixa'],
+  ['235','87971','Comissão zerada','Erick Almeida','Baixa'],
+  ['236','90249','Categoria - Var; revenda; distribuidor; e-commerce','Erick Almeida','Baixa'],
+  ['237','94354','Relatório de comissionamento de agenciados','Erick Almeida','Baixa'],
+  ['238','94751','Criar regra para buscar o perfil do pedido','Erick Almeida','Baixa'],
+  ['239','94797','Fazer checagem de cota na tela de inserção de produtos','Erick Almeida','Baixa'],
+  ['240','94807','Correção de Bug ao alterar a condição de pagamento','Erick Almeida','Baixa'],
+  ['241','94815','Trazer o tipo de frete CIF setado como padrão','Erick Almeida','Baixa'],
+  ['242','94816','Possibilitar cadastro de informações de entrega na conta','Erick Almeida','Baixa'],
+  ['243','91023','Abertura dos locais de expedição no pedido','Erick Almeida','Baixa'],
+  ['244','92278','Incluir coluna de tipo de pedido','Erick Almeida','Baixa'],
+  ['245','99614','Criar visual no painel e alertas com status das contas','Erick Almeida','Baixa'],
+  ['246','100006','Cadastro de e-mails no depsnet','Erick Almeida','Baixa'],
+  ['247','88509','Rastreabilidade de NFs Devolução e Garantia - Lincros','Elder Rodrigues','Baixa'],
+  ['248','93766','Ajuste tela simulação de pedido','Erick Almeida','Baixa'],
+  ['249','94808','Verificar campo de Incoterms no pedido','Erick Almeida','Baixa'],
+  ['250','94810','Incluir campo de Referência do cliente no pedido','Erick Almeida','Baixa'],
+  ['251','94812','Incluir campo de Observação no pedido','Erick Almeida','Baixa'],
+  ['252','94813','Incluir campo de Número do pedido do cliente','Erick Almeida','Baixa'],
+  ['253','94814','Incluir campo de Data de entrega solicitada','Erick Almeida','Baixa'],
+  ['254','94817','Incluir campo de Condição especial de pagamento','Erick Almeida','Baixa'],
+  ['255','94818','Incluir campo de Desconto adicional','Erick Almeida','Baixa'],
+  ['256','94819','Incluir campo de Frete por conta','Erick Almeida','Baixa'],
+  ['257','94820','Incluir campo de Transportadora','Erick Almeida','Baixa'],
+  ['258','94821','Incluir campo de Placa do veículo','Erick Almeida','Baixa'],
+];
+backlogData.forEach(([id,ch,titulo,resp,pri]) => {
+  backlogItems.push({id,ch,titulo,fase:'01. Backlog',resp,tipo:'—',pri,prazo:'—',status:'Aberta'});
+});
+
+const allRows = [...todasDemandas, ...backlogItems];
+let currentRows = [...allRows];
+
+function renderTable(rows) {
+  const tbody = document.getElementById('tabelaBody');
+  tbody.innerHTML = '';
+  rows.forEach(t => {
+    const isAtrasado = t.prazo !== '—' && t.prazo < '2026';
+    tbody.innerHTML += `<tr data-fase="${t.fase}" data-resp="${t.resp}" data-pri="${t.pri}" data-titulo="${t.titulo.toLowerCase()} ${t.ch}">
+      <td><strong>#${t.id}</strong></td>
+      <td>${t.ch}</td>
+      <td style="max-width:320px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${t.titulo}">${t.titulo}</td>
+      <td><span class="fase-tag">${t.fase}</span></td>
+      <td>${t.resp}</td>
+      <td>${t.tipo}</td>
+      <td><span class="badge badge-${t.pri.toLowerCase()}">${t.pri}</span></td>
+      <td>${t.prazo}</td>
+      <td><span class="badge ${isAtrasado ? 'badge-atrasado' : t.status === 'Concluída' ? 'badge-concluida' : 'badge-aberta'}">${isAtrasado ? '⚠️ Atrasado' : t.status}</span></td>
+    </tr>`;
+  });
+  document.getElementById('countLabel').textContent = `${rows.length} demandas`;
+}
+
+function filterTable() {
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const fase = document.getElementById('filterFase').value;
+  const resp = document.getElementById('filterResp').value;
+  const pri = document.getElementById('filterPri').value;
+  const filtered = allRows.filter(t => {
+    const matchSearch = !search || t.titulo.toLowerCase().includes(search) || t.ch.includes(search) || t.resp.toLowerCase().includes(search);
+    const matchFase = !fase || t.fase === fase;
+    const matchResp = !resp || t.resp === resp;
+    const matchPri = !pri || t.pri === pri;
+    return matchSearch && matchFase && matchResp && matchPri;
+  });
+  renderTable(filtered);
+}
+
+document.getElementById('searchInput').addEventListener('input', filterTable);
+renderTable(allRows);
+</script>
+</body>
+</html>
