@@ -1,0 +1,109 @@
+﻿id;cherwell;rdm;titulo;fase;resp;area;tipo;pri;status;prazo;projeto;obs
+314;84402;1609;[84402] [RDM-1609] Melhoria de Serviços Refrigeração(UP);10. Implementado;Marcio Souza;Refrigeração;Parametrização;Média;Implementado;02/10/2025;[SF] Fast Track — Salesforce;Implementado em 02/10
+315;94743;1610;[94743] [RDM-1610] [Bens de Consumo]Melhorias no Portal do Representante (Partner Community) - Elgin;10. Implementado;Erick Almeida;Bens de consumo;Parametrização;Baixa;Implementado;03/10/2025;[SF] Fast Track — Salesforce;Implementado em 03/10
+316;84400;1611;[84400] [RDM-1611] Melhoria de Serviços Automação (UP);10. Implementado;Marcio Souza;Automação;Produtividade TI;Média;Implementado;02/10/2025;[SF] Fast Track — Salesforce;Implementado em 02/10
+317;95878;1613;[95878] [RDM-1613] Demanda de Pedidos de Serviços UP - Refrigeração - Maquina de Sorvete;10. Implementado;Marcio Souza;TI;Produtividade TI;Média;Implementado;02/10/2025;[SF] Fast Track — Salesforce;Implementado em 02/10
+318;99256;;[99256] Habilitação de Campos SALESFORCE - Garantia;10. Implementado;Elder Rodrigues;Comercial;Produtividade Comercial;Média;Implementado;02/10/2025;[SF] Fast Track — Salesforce;Implementado em 02/10
+319;94785;1624;[94785] [RDM-1624] Criar exclusão de item da oportunidade (modificação produto);10. Implementado;Erick Almeida;Bens de consumo;Parametrização;Média;Implementado;09/10/2025;[SF] Fast Track — Salesforce;Implementado em  09/10
+320;100379;1614;[100379] [RDM-1614] Bemol - Venda de Produtos de Automação;10. Implementado;Marcio Souza;TI;Produtividade TI;Média;Implementado;14/10/2025;[SF] Fast Track — Salesforce;Implementada em 14/10
+321;93995;;[93995] Notificação de Contas paradas há mais de 15 dias - Gerente;09. Deploy;Elder Rodrigues;TI;Produtividade TI;Alta;Aberta;23/10/2025;[SF] Fast Track — Salesforce;Aguardando implementação 23/10
+322;95865;;[95865] agrupamento Raiz CNPJ (incidente);09. Deploy;Felipe Nascimento;Ar & Eletro;Parametrização;Média;Aberta;23/10/2025;[SF] Fast Track — Salesforce;Aguardando implementação 16/10
+323;101061;;[101061] Criação de Automação da Atualização de Saldo/Cotas Salesforce / SAP;01. Backlog;Marcio Souza;Bens de consumo;Produtividade TI;Alta;Aberta;13/11/2025;[SF] Fast Track — Salesforce;Em Homologação previsão de entrega em 13/11 em produção
+324;101038;;[101038] ZVDS - VENDA DEMONSTRAÇÃO SIMBOLICA;07. Desenvolvimento;Erick Almeida;Automação;Parametrização;Média;Aberta;13/11/2025;[SF] Fast Track — Salesforce;Priorizada pela Diretoria Automação
+216;81643;;[81643] BEMOL - Melhoria no fluxo de cancelamentos;07. Desenvolvimento;Marcio Souza;Ar & Eletro;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Previsão inicio etapa 17/10 (fila de desenvolvimento)
+325;95492;;[95492] Desenvolvimento Simples Remessa ZVSR no Salesforce;07. Desenvolvimento;Marcio Souza;Fiscal;Parametrização;Média;Aberta;11/12/2025;[SF] Fast Track — Salesforce;Aguardando aprovação Diretoria
+326;92514;;[92514] Busca pela ordem de compra do cliente;07. Desenvolvimento;Erick Almeida;Ar & Eletro;Parametrização;Média;Aberta;23/10/2025;[SF] Fast Track — Salesforce;Estimativa
+327;101150;;[101150] Limitar a opção de parcelas no Salesforce conforme a BU;07. Desenvolvimento;Marcio Souza;Financeiro;Parametrização;Média;Aberta;06/11/2025;[SF] Fast Track — Salesforce;Marcio Analisar
+217;64742;;[64742] INCLUIR REJEITAR NAS EM TODAS FASES DE APROVAÇÕES PARA BACKOFFICE;01. Backlog;Erick Almeida;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Aguardando aprovação Bens de Consumo em 02/09 (Natacha informou que solicitaria)
+218;83499;;[83499] Local de Expedição no Salesforce - Verificar possibilidade de implementação de melhoria no SF;01. Backlog;Erick Almeida;TI;Produtividade TI;Média;Aberta;;[SF] Fast Track — Salesforce;Aguardando aprovação Diretoria
+219;91555;;[91555] Envio de notificações aos clientes (Emissão, Previsão e confirmação de Entrega);01. Backlog;Erick Almeida;Logística;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Aguardando aprovação Diretoria
+220;87055;;[87055] LANÇAMENTO DE METAS (POR GRUPOS DE PRODUTOS);01. Backlog;Erick Almeida;Refrigeração;Parametrização;Alta;Aberta;;[SF] Fast Track — Salesforce;Aguardando aprovação Diretoria
+221;94929;;[94929] EDI para integração de pedidos - Cliente Leroy;01. Backlog;Erick Almeida;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Aguardando aprovação Diretoria
+222;101551;;"[101551] Refaturar Saldo de Estoque por 
+Linha de Produto";01. Backlog;Marcio Souza;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Aguardando aprovação Diretoria
+223;103844;;[103844] Aprovação direta por Margem de contribuição;01. Backlog;Erick Almeida;TI;Produtividade TI;Média;Aberta;;[SF] Fast Track — Salesforce;Aguardando aprovação Diretoria
+224;98965;;[98965] Refatorar Integração Telecontrol X Salesforce com Middleware;02. Refinamento;Elder Rodrigues;Ar & Eletro;Produtividade TI;Alta;Aberta;;[SF] Fast Track — Salesforce;Verificar com o Elder em Outubro
+225;101397;;[101397] Limitar os catálogos de preço por tipo de operação;02. Refinamento;Elder Rodrigues;Refrigeração;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Verificar com o Elder
+226;87262;;[87262] Melhoria : aprovação crédito pedido consignado.;02. Refinamento;Erick Almeida;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Aguardando retono do Bete - Verificar com o Felipe
+227;81296;;[81296] RELATÓRIO DE COMISSÃO DO REPRESENTANTE.;02. Refinamento;Erick Almeida;Refrigeração;Parametrização;Baixa;Aberta;;[SF] Fast Track — Salesforce;Aguardando retorno do usuario
+228;99616;;[99616] RELATÓRIOS E REPRESENTANTE PODER MARCAR UM FUNCIONÁRIO.;02. Refinamento;Erick Almeida;Refrigeração;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+229;69222;;[69222] cotação sobre a integração via API do Salesforce e RD Station.;01. Backlog;Marcio Souza;Automação;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;"Demanda aguardando priorização.
+
+Existe um estudo de viabilidade por conta de demanda concorrente para o time Digital sobre implantação de novo site institucional.(Marcio em 12/09)"
+230;63681;;[63681] Melhoria Marketplace;01. Backlog;Erick Almeida;TI;Produtividade TI;Média;Aberta;;[SF] Fast Track — Salesforce;
+231;79383;;[79383] Criação de Novo Tipo de Oportunidade;01. Backlog;Erick Almeida;Automação;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+232;87076;;[87076] Inclusão ZMDK para e-commerce;01. Backlog;Erick Almeida;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Verificar com Elder
+233;75017;;[75017] Automatizar o fluxo de Pedidos de Financiamento = Código E989;01. Backlog;Erick Almeida;Financeiro;Produtividade TI;Média;Aberta;;[SF] Fast Track — Salesforce;
+234;87057;;[87057] Alcadas de aprovação - Automação;01. Backlog;Erick Almeida;Automação;Produtividade TI;Média;Aberta;;[SF] Fast Track — Salesforce;
+235;87971;;[87971] Comissão zerada;01. Backlog;Erick Almeida;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+236;90249;;"[90249] Categoria - Var ; revenda; distribuidor ; e - commerce ; corporativo - No cadastro do cliente";01. Backlog;Erick Almeida;Automação;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+237;94354;;[94354] relatório de comissionamento de agenciados,;01. Backlog;Erick Almeida;Automação;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+238;94751;;[94751] Criar regra para buscar o perfil do pedido de acordo com o cadastro do cliente;01. Backlog;Erick Almeida;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+239;94797;;[94797] Fazer checagem de cota na tela de inserção de produtos;01. Backlog;Erick Almeida;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+240;94807;;[94807] Correção ce Bug ao alterar a condição de pagamento;01. Backlog;Erick Almeida;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+241;94815;;[94815] Trazer o tipo de frete CIF setado como padrão na criação da oportunidade;01. Backlog;Erick Almeida;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+242;94816;;[94816] Possibilitar cadastro na conta de informações de entrega (paletizado, agendado);01. Backlog;Erick Almeida;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+243;91023;;[91023] Abertura dos locais de expedição no pedido;01. Backlog;Erick Almeida;Programação de Materiais;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+244;92278;;[92278] Incluir coluna de tipo de pedido;01. Backlog;Erick Almeida;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+245;99614;;[99614] Criar um visual no painel e alertas com status das contas para representante (cliente 60 dias sem compra);01. Backlog;Erick Almeida;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+246;100006;;[100006] Cadastro de e-mails no depsnet;01. Backlog;Erick Almeida;Financeiro;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+247;88509;;[88509] Rastreabilidade de NFs Devolução e Garantia - Lincros;01. Backlog;Elder Rodrigues;Logística;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Verificar com o Elder
+248;93766;;[93766] Ajuste tela simulação de preços;01. Backlog;Erick Almeida;Refrigeração;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Na fila de atendimento do time SAP
+249;78463;;[78463] ZVT2 - recebedor da mercadoria (tratar contas com restrições no SAP ) na remessa;01. Backlog;Erick Almeida;Ar & Eletro;Parametrização;Baixa;Aberta;;[SF] Fast Track — Salesforce;Demanda Cross com outras frentes (SAP e Salesforce) - Próxima etapa, estimativa SAP e Salesforce
+250;90248;;[90248] Vizualização no SF por produto e familia;01. Backlog;Erick Almeida;Automação;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+251;94726;;[94726] Criação Painel Gestão de Atividades - (Bens de Consumo);01. Backlog;Erick Almeida;Diretoria;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+252;94741;;[94741] Estruturar Tela de Inclusão de Pedidos;01. Backlog;Erick Almeida;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+253;80712;;[80712] Refatoração da Integração SAP x Salesforce (Soap / Rest);01. Backlog;Marcio Souza;TI;Produtividade TI;Média;Aberta;;[SF] Fast Track — Salesforce;Aguardando aprovação ROI
+254;80509;;[80509] Tabela de preços - Cãrgas personalizadas;01. Backlog;Erick Almeida;Automação;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+255;78464;;[78464] Obrigação Fiscal - Declaração de PIs e Cofins;01. Backlog;Erick Almeida;Cadastros;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+256;81644;;[81644] Cadastro de clientes sem CNAE;01. Backlog;Erick Almeida;Cadastros;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+257;89251;;[89251] Integração Sintegra / Suframa x Salesforce - Inserção Middleware AWS;01. Backlog;Marcio Souza;TI;Produtividade TI;Média;Aberta;;[SF] Fast Track — Salesforce;Verificar com o Marcio
+258;91944;;[91944] Integração Simples Nacional / Simei - Inserção Middleware AWS;01. Backlog;Marcio Souza;TI;Produtividade TI;Média;Aberta;;[SF] Fast Track — Salesforce;Verificar com o Marcio
+259;91946;;[91946] Integração receita federal (pessoa fisica) - Inserção Middleware AWS;01. Backlog;Marcio Souza;TI;Produtividade TI;Média;Aberta;;[SF] Fast Track — Salesforce;Verificar com o Marcio
+260;93471;;[93471] Criação de Organograma Empresarial - Todas BU's;01. Backlog;Elder Rodrigues;TI;Produtividade TI;Média;Aberta;;[SF] Fast Track — Salesforce;Verificar com o Elder
+261;94791;;[94791] Tornar Portal 100% responsivo para mobile;01. Backlog;Carlos Almeida;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+262;94794;;[94794] Função de clonar estar disponível para CNPJ's diferentes da mesma matriz;01. Backlog;Erick Almeida;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+263;95076;;[95076] Liberação da funcionalidade de ações em massa;01. Backlog;Erick Almeida;Comercial;Produtividade Comercial;Média;Aberta;;[SF] Fast Track — Salesforce;
+264;90743;;[90743] Visualização de Saldo pendente ou cancelado;01. Backlog;Erick Almeida;Ar & Eletro;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+265;92585;;[92585] Alteração casas decimais.;01. Backlog;Felipe Nascimento;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Aguardando retorno do usuario
+266;92707;;[92707] Aparecer Cota Em Garantia;01. Backlog;Erick Almeida;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+267;99265;;[99265] ALTERAR MOTIVOS DENTRO DO SALES FORCE;01. Backlog;Erick Almeida;Logística;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+268;99267;;[99267] DEPOSITO de expedição;01. Backlog;Erick Almeida;Comercial;Produtividade Comercial;Média;Aberta;;[SF] Fast Track — Salesforce;
+269;99618;;[99618] OPORTUNIDADES (CJ INDUSTRIAL E VENDA DE PROJETOS);01. Backlog;Erick Almeida;Refrigeração;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+270;100153;;[100153] Incluir no relatório do comissionado - Parcela e Data Compensação;01. Backlog;Erick Almeida;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+271;100205;;[100205] Criação de uma visão para o treinamentos;01. Backlog;Erick Almeida;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+272;97555;;[97555] Habilitação de Visualização de Informação do Cadastro Contas;01. Backlog;Erick Almeida;Refrigeração;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Verificar com o Felipe
+273;97556;;[97556] Deposito;01. Backlog;Erick Almeida;Comercial;Produtividade Comercial;Média;Aberta;;[SF] Fast Track — Salesforce;
+274;97559;;[97559] Ajuste integração troca de itens;01. Backlog;Erick Almeida;Ar & Eletro;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+275;98544;;[98544] FATURAMENTO / IMPRESSÃO;01. Backlog;Erick Almeida;Automação;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+276;98608;;[98608] BLOQUEIO DE CHAVWE DE NOTA FISCAL DUPLICADA DENTRO DO SISTEMA;01. Backlog;Elder Rodrigues;Logística;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+277;98879;;[98879] TROCA DE PRODUTO, PORÉM O VALOR NÃO É ATUALIZADO;01. Backlog;Erick Almeida;Refrigeração;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+278;97553;;[97553] Informações de pedido na fase de aprovação.;01. Backlog;Felipe Nascimento;Logística;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Verificar com o Felipe
+279;100978;;[100978] Adequação no campo CNPJ - Reforma tributária;01. Backlog;Erick Almeida;Cadastros;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+280;100981;;[100981] Lists View e Aprovações em Massa;01. Backlog;Erick Almeida;Ar & Eletro;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+281;100971;;[100971] Processo de devolução - Garantia;01. Backlog;Elder Rodrigues;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Verificar com o Elder
+282;100977;;[100977] Inclusão de campo - NFD CLIENTE;01. Backlog;Elder Rodrigues;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Verificar com o Elder
+283;101370;;[101370] Aprovação dos pedidos de garantia lançados manualmente;01. Backlog;Elder Rodrigues;Comercial;Produtividade Comercial;Média;Aberta;;[SF] Fast Track — Salesforce;Verificar com o Elder
+284;101398;;[101398] PROCESSO DE DEVOLUÇÃO;01. Backlog;Felipe Nascimento;Automação;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Verificar com o Felipe
+285;100972;;[100972] URGENTE: PEDIDO DE PRODUTOS EM GARANTIA;01. Backlog;Felipe Nascimento;Refrigeração;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Verificar com o Felipe
+286;100973;;[100973] Pedido de devolução (BDV) Duplicado;01. Backlog;Felipe Nascimento;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Verificar com o Felipe
+287;101062;;[101062] Melhoria para incluir descrição do produto na tela de inserção de produtos na oportunidade;01. Backlog;Marcio Souza;Bens de consumo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Verificar com o MArcio
+288;97702;;[97702] Regras de Atribuição Salesforce | Refrigeração;01. Backlog;Marcio Souza;Marketing-Refrigeração;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Criação de Especificação Funcional previsão de conclusão em 11/08
+289;101918;;[101918] DE X PARA - POR CLIENTE;01. Backlog;Felipe Nascimento;Fiscal;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;Verificar com o Felipe
+290;101921;;[101921] Arredondamento de valores de NF - Pedidos de Garantia;01. Backlog;Elder Rodrigues;Comercial;Produtividade Comercial;Média;Aberta;;[SF] Fast Track — Salesforce;Verificar com o Elder
+291;101923;;[101923] BOLETO À VISTA;01. Backlog;Erick Almeida;Financeiro;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+292;101924;;[101924] PIX QR CODE;01. Backlog;Erick Almeida;Financeiro;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+293;101927;;[101927] pesquisar por pedido na Aba TAREFAS;01. Backlog;Elder Rodrigues;Logística;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+294;102106;;[102106] Integração de Imagens para Produtos no Salesforce;01. Backlog;Elder Rodrigues;Comercial;Produtividade Comercial;Média;Aberta;;[SF] Fast Track — Salesforce;
+295;102549;;[102549] SINALIZAÇÃO DE PAGAMENTO COM CARTÃO DE CRÉDITO;01. Backlog;Erick Almeida;Comercial;Produtividade Comercial;Média;Aberta;;[SF] Fast Track — Salesforce;
+296;102121;;[102121] IPI EM PORCENTAGEM NO ORÇAMENTO;01. Backlog;Erick Almeida;Automação;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+297;101499;;[101499] Erro divisão de remessa pedidos HDB;01. Backlog;Felipe Nascimento;Refrigeração;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+298;102122;;[102122] Devolução E-commerce _ NFD Teste Elgin NF 140610;01. Backlog;Felipe Nascimento;Ar & Eletro;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+299;103452;;[103452] Utilização de API para cancelamento de faturamento Telecontrol;01. Backlog;Elder Rodrigues;Comercial;Produtividade Comercial;Média;Aberta;;[SF] Fast Track — Salesforce;
+300;103258;;[103258] Exportação para Bens de consumo;01. Backlog;Erick Almeida;Fiscal;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+301;103532;;[103532] Permitir criação de Parâmetro - Ger Regional;01. Backlog;Felipe Nascimento;Ar & Eletro;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+302;103457;;[103457] Solicitação Urgente - Criação de Nova Fila/Território para Atendimento SAC;01. Backlog;Elder Rodrigues;Comercial;Produtividade Comercial;Média;Aberta;;[SF] Fast Track — Salesforce;
+303;103876;;[103876] Criação de Chamada de API - SAP para Notas de Serviços;01. Backlog;Marcio Souza;TI;Produtividade TI;Média;Aberta;;[SF] Fast Track — Salesforce;
+304;103907;;[103907] Campo de Condição de pagamento DDE;01. Backlog;Erick Almeida;Ar & Eletro;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+305;100380;;[100380] Bemol - Processo de alertas de Pedidos Parados;01. Backlog;Marcio Souza;Corporativo;Parametrização;Média;Aberta;;[SF] Fast Track — Salesforce;
+306;103902;;[103902] Criação de Novos Tipos de Pedidos no Salesforce (UP);01. Backlog;Marcio Souza;TI;Produtividade TI;Média;Aberta;;[SF] Fast Track — Salesforce;

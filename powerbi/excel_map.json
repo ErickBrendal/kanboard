@@ -1,0 +1,1052 @@
+{
+  "84402": {
+    "area": "Refrigeração",
+    "resp": "Marcio Souza",
+    "fase": "Implementado",
+    "golive": "2025-10-02 00:00:00",
+    "rdm": "1609",
+    "seq": "1",
+    "obs": "Implementado em 02/10",
+    "pri": "0"
+  },
+  "94743": {
+    "area": "Bens de consumo",
+    "resp": "Erick Almeida",
+    "fase": "Implementado",
+    "golive": "2025-10-03 00:00:00",
+    "rdm": "1610",
+    "seq": "2",
+    "obs": "Implementado em 03/10",
+    "pri": "3"
+  },
+  "84400": {
+    "area": "Automação",
+    "resp": "Marcio Souza",
+    "fase": "Implementado",
+    "golive": "2025-10-02 00:00:00",
+    "rdm": "1611",
+    "seq": "3",
+    "obs": "Implementado em 02/10",
+    "pri": ""
+  },
+  "95878": {
+    "area": "TI",
+    "resp": "Marcio Souza",
+    "fase": "Implementado",
+    "golive": "2025-10-02 00:00:00",
+    "rdm": "1613",
+    "seq": "4",
+    "obs": "Implementado em 02/10",
+    "pri": ""
+  },
+  "99256": {
+    "area": "Comercial",
+    "resp": "Elder Rodrigues",
+    "fase": "Implementado",
+    "golive": "2025-10-02 00:00:00",
+    "rdm": "",
+    "seq": "5",
+    "obs": "Implementado em 02/10",
+    "pri": ""
+  },
+  "94785": {
+    "area": "Bens de consumo",
+    "resp": "Erick Almeida",
+    "fase": "Implementado",
+    "golive": "2025-10-09 00:00:00",
+    "rdm": "1624",
+    "seq": "6",
+    "obs": "Implementado em  09/10",
+    "pri": "2"
+  },
+  "100379": {
+    "area": "TI",
+    "resp": "Marcio Souza",
+    "fase": "Implementado",
+    "golive": "2025-10-14 00:00:00",
+    "rdm": "1614",
+    "seq": "9",
+    "obs": "Implementada em 14/10",
+    "pri": ""
+  },
+  "93995": {
+    "area": "TI",
+    "resp": "Elder Rodrigues",
+    "fase": "Deploy",
+    "golive": "2025-10-23 00:00:00",
+    "rdm": "",
+    "seq": "7",
+    "obs": "Aguardando implementação 23/10",
+    "pri": "1"
+  },
+  "95865": {
+    "area": "Ar & Eletro",
+    "resp": "Felipe Nascimento",
+    "fase": "Deploy",
+    "golive": "2025-10-23 00:00:00",
+    "rdm": "",
+    "seq": "8",
+    "obs": "Aguardando implementação 16/10",
+    "pri": "0"
+  },
+  "101061": {
+    "area": "Bens de consumo",
+    "resp": "Marcio Souza",
+    "fase": "Homogação",
+    "golive": "2025-11-13 00:00:00",
+    "rdm": "",
+    "seq": "11",
+    "obs": "Em Homologação previsão de entrega em 13/11 em produção",
+    "pri": "1"
+  },
+  "101038": {
+    "area": "Automação",
+    "resp": "Erick Almeida",
+    "fase": "Desenvolvimento",
+    "golive": "2025-11-13 00:00:00",
+    "rdm": "",
+    "seq": "20",
+    "obs": "Priorizada pela Diretoria Automação",
+    "pri": "0"
+  },
+  "81643": {
+    "area": "Ar & Eletro",
+    "resp": "Marcio Souza",
+    "fase": "Desenvolvimento",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "10",
+    "obs": "Previsão inicio etapa 17/10 (fila de desenvolvimento)",
+    "pri": "0"
+  },
+  "95492": {
+    "area": "Fiscal",
+    "resp": "Marcio Souza",
+    "fase": "Desenvolvimento",
+    "golive": "2025-12-11 00:00:00",
+    "rdm": "",
+    "seq": "17",
+    "obs": "Aguardando aprovação Diretoria",
+    "pri": "0"
+  },
+  "92514": {
+    "area": "Ar & Eletro",
+    "resp": "Erick Almeida",
+    "fase": "Desenvolvimento",
+    "golive": "2025-10-23 00:00:00",
+    "rdm": "",
+    "seq": "21",
+    "obs": "Estimativa",
+    "pri": "4"
+  },
+  "101150": {
+    "area": "Financeiro",
+    "resp": "Marcio Souza",
+    "fase": "Desenvolvimento",
+    "golive": "2025-11-06 00:00:00",
+    "rdm": "",
+    "seq": "23",
+    "obs": "Marcio Analisar",
+    "pri": ""
+  },
+  "64742": {
+    "area": "Bens de consumo",
+    "resp": "Erick Almeida",
+    "fase": "Aguardando Aprovação",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "12",
+    "obs": "Aguardando aprovação Bens de Consumo em 02/09 (Natacha informou que solicitaria)",
+    "pri": "0"
+  },
+  "83499": {
+    "area": "TI",
+    "resp": "Erick Almeida",
+    "fase": "Aguardando Aprovação",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "13",
+    "obs": "Aguardando aprovação Diretoria",
+    "pri": "0"
+  },
+  "91555": {
+    "area": "Logística",
+    "resp": "Erick Almeida",
+    "fase": "Aguardando Aprovação",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "14",
+    "obs": "Aguardando aprovação Diretoria",
+    "pri": "0"
+  },
+  "87055": {
+    "area": "Refrigeração",
+    "resp": "Erick Almeida",
+    "fase": "Aguardando Aprovação",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "15",
+    "obs": "Aguardando aprovação Diretoria",
+    "pri": "1"
+  },
+  "94929": {
+    "area": "Bens de consumo",
+    "resp": "Erick Almeida",
+    "fase": "Aguardando Aprovação",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "16",
+    "obs": "Aguardando aprovação Diretoria",
+    "pri": "0"
+  },
+  "101551": {
+    "area": "Bens de consumo",
+    "resp": "Marcio Souza",
+    "fase": "Aguardando Aprovação",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "18",
+    "obs": "Aguardando aprovação Diretoria",
+    "pri": "0"
+  },
+  "103844": {
+    "area": "TI",
+    "resp": "Erick Almeida",
+    "fase": "Aguardando Aprovação",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "19",
+    "obs": "Aguardando aprovação Diretoria",
+    "pri": "0"
+  },
+  "98965": {
+    "area": "Ar & Eletro",
+    "resp": "Elder Rodrigues",
+    "fase": "Refinamento",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "22",
+    "obs": "Verificar com o Elder em Outubro",
+    "pri": "1"
+  },
+  "101397": {
+    "area": "Refrigeração",
+    "resp": "Elder Rodrigues",
+    "fase": "Refinamento",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "24",
+    "obs": "Verificar com o Elder",
+    "pri": "2"
+  },
+  "87262": {
+    "area": "Bens de consumo",
+    "resp": "Erick Almeida",
+    "fase": "Refinamento",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "25",
+    "obs": "Aguardando retono do Bete - Verificar com o Felipe",
+    "pri": "4"
+  },
+  "81296": {
+    "area": "Refrigeração",
+    "resp": "Erick Almeida",
+    "fase": "Refinamento",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "27",
+    "obs": "Aguardando retorno do usuario",
+    "pri": "3"
+  },
+  "99616": {
+    "area": "Refrigeração",
+    "resp": "Erick Almeida",
+    "fase": "Refinamento",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "28",
+    "obs": "",
+    "pri": "4"
+  },
+  "69222": {
+    "area": "Automação",
+    "resp": "Marcio Souza",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "29",
+    "obs": "Demanda aguardando priorização.\n\nExiste um estudo de viabilidade por conta de demanda concorrente para o time Digital sobre implantação de novo site institucional.(Marcio em 12/09)",
+    "pri": ""
+  },
+  "63681": {
+    "area": "TI",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "30",
+    "obs": "",
+    "pri": ""
+  },
+  "79383": {
+    "area": "Automação",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "31",
+    "obs": "",
+    "pri": ""
+  },
+  "87076": {
+    "area": "Bens de consumo",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "32",
+    "obs": "Verificar com Elder",
+    "pri": ""
+  },
+  "75017": {
+    "area": "Financeiro",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "33",
+    "obs": "",
+    "pri": ""
+  },
+  "87057": {
+    "area": "Automação",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "34",
+    "obs": "",
+    "pri": ""
+  },
+  "87971": {
+    "area": "Bens de consumo",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "35",
+    "obs": "",
+    "pri": ""
+  },
+  "90249": {
+    "area": "Automação",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "36",
+    "obs": "",
+    "pri": ""
+  },
+  "94354": {
+    "area": "Automação",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "37",
+    "obs": "",
+    "pri": ""
+  },
+  "94751": {
+    "area": "Bens de consumo",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "38",
+    "obs": "",
+    "pri": ""
+  },
+  "94797": {
+    "area": "Bens de consumo",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "39",
+    "obs": "",
+    "pri": ""
+  },
+  "94807": {
+    "area": "Bens de consumo",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "40",
+    "obs": "",
+    "pri": ""
+  },
+  "94815": {
+    "area": "Bens de consumo",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "41",
+    "obs": "",
+    "pri": ""
+  },
+  "94816": {
+    "area": "Bens de consumo",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "42",
+    "obs": "",
+    "pri": ""
+  },
+  "91023": {
+    "area": "Programação de Materiais",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "43",
+    "obs": "",
+    "pri": ""
+  },
+  "92278": {
+    "area": "Bens de consumo",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "44",
+    "obs": "",
+    "pri": ""
+  },
+  "99614": {
+    "area": "Bens de consumo",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "45",
+    "obs": "",
+    "pri": ""
+  },
+  "100006": {
+    "area": "Financeiro",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "46",
+    "obs": "",
+    "pri": ""
+  },
+  "88509": {
+    "area": "Logística",
+    "resp": "Elder Rodrigues",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "47",
+    "obs": "Verificar com o Elder",
+    "pri": ""
+  },
+  "93766": {
+    "area": "Refrigeração",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "48",
+    "obs": "Na fila de atendimento do time SAP",
+    "pri": "5"
+  },
+  "78463": {
+    "area": "Ar & Eletro",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "49",
+    "obs": "Demanda Cross com outras frentes (SAP e Salesforce) - Próxima etapa, estimativa SAP e Salesforce",
+    "pri": "3"
+  },
+  "90248": {
+    "area": "Automação",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "50",
+    "obs": "",
+    "pri": ""
+  },
+  "94726": {
+    "area": "Diretoria",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "51",
+    "obs": "",
+    "pri": ""
+  },
+  "94741": {
+    "area": "Bens de consumo",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "52",
+    "obs": "",
+    "pri": ""
+  },
+  "80712": {
+    "area": "TI",
+    "resp": "Marcio Souza",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "53",
+    "obs": "Aguardando aprovação ROI",
+    "pri": ""
+  },
+  "80509": {
+    "area": "Automação",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "54",
+    "obs": "",
+    "pri": ""
+  },
+  "78464": {
+    "area": "Cadastros",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "55",
+    "obs": "",
+    "pri": ""
+  },
+  "81644": {
+    "area": "Cadastros",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "56",
+    "obs": "",
+    "pri": ""
+  },
+  "89251": {
+    "area": "TI",
+    "resp": "Marcio Souza",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "57",
+    "obs": "Verificar com o Marcio",
+    "pri": ""
+  },
+  "91944": {
+    "area": "TI",
+    "resp": "Marcio Souza",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "58",
+    "obs": "Verificar com o Marcio",
+    "pri": ""
+  },
+  "91946": {
+    "area": "TI",
+    "resp": "Marcio Souza",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "59",
+    "obs": "Verificar com o Marcio",
+    "pri": ""
+  },
+  "93471": {
+    "area": "TI",
+    "resp": "Elder Rodrigues",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "60",
+    "obs": "Verificar com o Elder",
+    "pri": ""
+  },
+  "94791": {
+    "area": "Bens de consumo",
+    "resp": "Carlos Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "61",
+    "obs": "",
+    "pri": ""
+  },
+  "94794": {
+    "area": "Bens de consumo",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "62",
+    "obs": "",
+    "pri": ""
+  },
+  "95076": {
+    "area": "Comercial",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "63",
+    "obs": "",
+    "pri": ""
+  },
+  "90743": {
+    "area": "Ar & Eletro",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "64",
+    "obs": "",
+    "pri": "6"
+  },
+  "92585": {
+    "area": "Bens de consumo",
+    "resp": "Felipe Nascimento",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "65",
+    "obs": "Aguardando retorno do usuario",
+    "pri": ""
+  },
+  "92707": {
+    "area": "Bens de consumo",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "66",
+    "obs": "",
+    "pri": ""
+  },
+  "99265": {
+    "area": "Logística",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "67",
+    "obs": "",
+    "pri": ""
+  },
+  "99267": {
+    "area": "Comercial",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "68",
+    "obs": "",
+    "pri": ""
+  },
+  "99618": {
+    "area": "Refrigeração",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "69",
+    "obs": "",
+    "pri": "6"
+  },
+  "100153": {
+    "area": "Bens de consumo",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "70",
+    "obs": "",
+    "pri": ""
+  },
+  "100205": {
+    "area": "Bens de consumo",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "71",
+    "obs": "",
+    "pri": ""
+  },
+  "97555": {
+    "area": "Refrigeração",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "72",
+    "obs": "Verificar com o Felipe",
+    "pri": "7"
+  },
+  "97556": {
+    "area": "Comercial",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "73",
+    "obs": "",
+    "pri": ""
+  },
+  "97559": {
+    "area": "Ar & Eletro",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "74",
+    "obs": "",
+    "pri": "5"
+  },
+  "98544": {
+    "area": "Automação",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "75",
+    "obs": "",
+    "pri": ""
+  },
+  "98608": {
+    "area": "Logística",
+    "resp": "Elder Rodrigues",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "76",
+    "obs": "",
+    "pri": ""
+  },
+  "98879": {
+    "area": "Refrigeração",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "77",
+    "obs": "",
+    "pri": "8"
+  },
+  "97553": {
+    "area": "Logística",
+    "resp": "Felipe Nascimento",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "78",
+    "obs": "Verificar com o Felipe",
+    "pri": ""
+  },
+  "100978": {
+    "area": "Cadastros",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "79",
+    "obs": "",
+    "pri": ""
+  },
+  "100981": {
+    "area": "Ar & Eletro",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "80",
+    "obs": "",
+    "pri": "4"
+  },
+  "100971": {
+    "area": "Bens de consumo",
+    "resp": "Elder Rodrigues",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "81",
+    "obs": "Verificar com o Elder",
+    "pri": ""
+  },
+  "100977": {
+    "area": "Bens de consumo",
+    "resp": "Elder Rodrigues",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "82",
+    "obs": "Verificar com o Elder",
+    "pri": ""
+  },
+  "101370": {
+    "area": "Comercial",
+    "resp": "Elder Rodrigues",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "83",
+    "obs": "Verificar com o Elder",
+    "pri": ""
+  },
+  "101398": {
+    "area": "Automação",
+    "resp": "Felipe Nascimento",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "84",
+    "obs": "Verificar com o Felipe",
+    "pri": ""
+  },
+  "100972": {
+    "area": "Refrigeração",
+    "resp": "Felipe Nascimento",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "85",
+    "obs": "Verificar com o Felipe",
+    "pri": "9"
+  },
+  "100973": {
+    "area": "Bens de consumo",
+    "resp": "Felipe Nascimento",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "86",
+    "obs": "Verificar com o Felipe",
+    "pri": ""
+  },
+  "101062": {
+    "area": "Bens de consumo",
+    "resp": "Marcio Souza",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em planejamento",
+    "rdm": "",
+    "seq": "87",
+    "obs": "Verificar com o MArcio",
+    "pri": ""
+  },
+  "97702": {
+    "area": "Marketing-Refrigeração",
+    "resp": "Marcio Souza",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "88",
+    "obs": "Criação de Especificação Funcional previsão de conclusão em 11/08",
+    "pri": ""
+  },
+  "101918": {
+    "area": "Fiscal",
+    "resp": "Felipe Nascimento",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "89",
+    "obs": "Verificar com o Felipe",
+    "pri": ""
+  },
+  "101921": {
+    "area": "Comercial",
+    "resp": "Elder Rodrigues",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "90",
+    "obs": "Verificar com o Elder",
+    "pri": ""
+  },
+  "101923": {
+    "area": "Financeiro",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "91",
+    "obs": "",
+    "pri": ""
+  },
+  "101924": {
+    "area": "Financeiro",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "92",
+    "obs": "",
+    "pri": ""
+  },
+  "101927": {
+    "area": "Logística",
+    "resp": "Elder Rodrigues",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "93",
+    "obs": "",
+    "pri": ""
+  },
+  "102106": {
+    "area": "Comercial",
+    "resp": "Elder Rodrigues",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "94",
+    "obs": "",
+    "pri": ""
+  },
+  "102549": {
+    "area": "Comercial",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "95",
+    "obs": "",
+    "pri": ""
+  },
+  "102121": {
+    "area": "Automação",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "96",
+    "obs": "",
+    "pri": ""
+  },
+  "101499": {
+    "area": "Refrigeração",
+    "resp": "Felipe Nascimento",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "97",
+    "obs": "",
+    "pri": ""
+  },
+  "102122": {
+    "area": "Ar & Eletro",
+    "resp": "Felipe Nascimento",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "98",
+    "obs": "",
+    "pri": "2"
+  },
+  "103452": {
+    "area": "Comercial",
+    "resp": "Elder Rodrigues",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "99",
+    "obs": "",
+    "pri": ""
+  },
+  "103258": {
+    "area": "Fiscal",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "100",
+    "obs": "",
+    "pri": ""
+  },
+  "103532": {
+    "area": "Ar & Eletro",
+    "resp": "Felipe Nascimento",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "101",
+    "obs": "",
+    "pri": ""
+  },
+  "103457": {
+    "area": "Comercial",
+    "resp": "Elder Rodrigues",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "102",
+    "obs": "",
+    "pri": ""
+  },
+  "103876": {
+    "area": "TI",
+    "resp": "Marcio Souza",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "103",
+    "obs": "",
+    "pri": ""
+  },
+  "103907": {
+    "area": "Ar & Eletro",
+    "resp": "Erick Almeida",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "104",
+    "obs": "",
+    "pri": ""
+  },
+  "100380": {
+    "area": "Corporativo",
+    "resp": "Marcio Souza",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "105",
+    "obs": "",
+    "pri": ""
+  },
+  "103902": {
+    "area": "TI",
+    "resp": "Marcio Souza",
+    "fase": "Backlog/Sem priorização",
+    "golive": "Em Planejamento",
+    "rdm": "",
+    "seq": "106",
+    "obs": "",
+    "pri": ""
+  }
+}

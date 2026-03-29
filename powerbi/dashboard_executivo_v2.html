@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EBL Soluções — Dashboard Executivo Fast Track Salesforce</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --pbi-blue: #0078D4;
+    --pbi-dark: #1B1B1B;
+    --pbi-panel: #252525;
+    --pbi-card: #2D2D2D;
+    --pbi-border: #3A3A3A;
+    --pbi-text: #F3F3F3;
+    --pbi-muted: #A0A0A0;
+    --pbi-green: #107C10;
+    --pbi-red: #D83B01;
+    --pbi-orange: #F7630C;
+    --pbi-purple: #8764B8;
+    --pbi-teal: #0099BC;
+    --pbi-yellow: #FFB900;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--pbi-dark); color: var(--pbi-text); font-family: 'Segoe UI', -apple-system, sans-serif; font-size: 13px; }
+  
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #0050A0 0%, #0078D4 50%, #00B4D8 100%);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .header-logo { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+  .header-logo span { color: #FFB900; }
+  .header-subtitle { font-size: 12px; opacity: 0.85; margin-top: 2px; }
+  .header-badge { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 4px 14px; font-size: 11px; font-weight: 600; }
+  .last-update { font-size: 11px; opacity: 0.7; }
+  
+  /* TABS */
+  .tabs { background: var(--pbi-panel); border-bottom: 1px solid var(--pbi-border); padding: 0 24px; display: flex; gap: 4px; }
+  .tab { padding: 12px 20px; cursor: pointer; border-bottom: 3px solid transparent; font-size: 13px; font-weight: 500; color: var(--pbi-muted); transition: all 0.2s; white-space: nowrap; }
+  .tab:hover { color: var(--pbi-text); background: rgba(255,255,255,0.05); }
+  .tab.active { color: var(--pbi-blue); border-bottom-color: var(--pbi-blue); }
+  
+  /* PAGES */
+  .page { display: none; padding: 20px 24px; }
+  .page.active { display: block; }
+  
+  /* FILTER BAR */
+  .filter-bar { background: var(--pbi-panel); border: 1px solid var(--pbi-border); border-radius: 8px; padding: 12px 16px; margin-bottom: 18px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .filter-bar label { font-size: 11px; color: var(--pbi-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .filter-bar select { background: var(--pbi-card); border: 1px solid var(--pbi-border); color: var(--pbi-text); padding: 6px 10px; border-radius: 4px; font-size: 12px; cursor: pointer; min-width: 140px; }
+  .filter-bar select:focus { outline: none; border-color: var(--pbi-blue); }
+  .filter-btn { background: var(--pbi-blue); border: none; color: white; padding: 6px 16px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: 600; }
+  .filter-btn:hover { background: #005A9E; }
+  .filter-clear { background: transparent; border: 1px solid var(--pbi-border); color: var(--pbi-muted); padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; }
+  
+  /* KPI CARDS */
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 20px; }
+  .kpi-card { background: var(--pbi-card); border: 1px solid var(--pbi-border); border-radius: 8px; padding: 16px; position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+  .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+  .kpi-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .kpi-card.blue::before { background: var(--pbi-blue); }
+  .kpi-card.green::before { background: var(--pbi-green); }
+  .kpi-card.red::before { background: var(--pbi-red); }
+  .kpi-card.orange::before { background: var(--pbi-orange); }
+  .kpi-card.purple::before { background: var(--pbi-purple); }
+  .kpi-card.teal::before { background: var(--pbi-teal); }
+  .kpi-card.yellow::before { background: var(--pbi-yellow); }
+  .kpi-label { font-size: 11px; color: var(--pbi-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .kpi-value { font-size: 32px; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+  .kpi-card.blue .kpi-value { color: #4DA6FF; }
+  .kpi-card.green .kpi-value { color: #54B354; }
+  .kpi-card.red .kpi-value { color: #FF6B35; }
+  .kpi-card.orange .kpi-value { color: #FF8C42; }
+  .kpi-card.purple .kpi-value { color: #B39DDB; }
+  .kpi-card.teal .kpi-value { color: #4DD0E1; }
+  .kpi-card.yellow .kpi-value { color: var(--pbi-yellow); }
+  .kpi-pct { font-size: 11px; color: var(--pbi-muted); }
+  .kpi-icon { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: 28px; opacity: 0.15; }
+  
+  /* CHARTS GRID */
+  .charts-grid { display: grid; gap: 16px; margin-bottom: 20px; }
+  .charts-2col { grid-template-columns: 1fr 1fr; }
+  .charts-3col { grid-template-columns: 1fr 1fr 1fr; }
+  .charts-1-2 { grid-template-columns: 1fr 2fr; }
+  .charts-2-1 { grid-template-columns: 2fr 1fr; }
+  .chart-card { background: var(--pbi-card); border: 1px solid var(--pbi-border); border-radius: 8px; padding: 16px; }
+  .chart-title { font-size: 12px; font-weight: 700; color: var(--pbi-text); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }
+  .chart-title .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .chart-container { position: relative; height: 220px; }
+  .chart-container.tall { height: 280px; }
+  .chart-container.short { height: 160px; }
+  
+  /* PIPELINE */
+  .pipeline { display: flex; gap: 0; margin-bottom: 20px; overflow-x: auto; }
+  .pipeline-stage { flex: 1; min-width: 110px; background: var(--pbi-card); border: 1px solid var(--pbi-border); padding: 14px 10px; text-align: center; position: relative; transition: background 0.2s; }
+  .pipeline-stage:not(:last-child)::after { content: '▶'; position: absolute; right: -10px; top: 50%; transform: translateY(-50%); color: var(--pbi-muted); z-index: 1; font-size: 14px; }
+  .pipeline-stage:first-child { border-radius: 8px 0 0 8px; }
+  .pipeline-stage:last-child { border-radius: 0 8px 8px 0; }
+  .pipeline-stage:hover { background: #383838; }
+  .pipeline-stage.active-stage { background: linear-gradient(135deg, #0050A0, #0078D4); border-color: var(--pbi-blue); }
+  .stage-name { font-size: 10px; font-weight: 700; color: var(--pbi-muted); text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 8px; }
+  .stage-count { font-size: 28px; font-weight: 700; color: var(--pbi-text); line-height: 1; }
+  .stage-pct { font-size: 10px; color: var(--pbi-muted); margin-top: 4px; }
+  .stage-bar { height: 3px; background: var(--pbi-border); border-radius: 2px; margin-top: 8px; overflow: hidden; }
+  .stage-bar-fill { height: 100%; border-radius: 2px; transition: width 0.8s ease; }
+  
+  /* TABLE */
+  .table-container { background: var(--pbi-card); border: 1px solid var(--pbi-border); border-radius: 8px; overflow: hidden; }
+  .table-header { padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--pbi-border); }
+  .table-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .table-search { background: var(--pbi-panel); border: 1px solid var(--pbi-border); color: var(--pbi-text); padding: 6px 12px; border-radius: 4px; font-size: 12px; width: 220px; }
+  .table-search:focus { outline: none; border-color: var(--pbi-blue); }
+  .data-table { width: 100%; border-collapse: collapse; }
+  .data-table th { background: var(--pbi-panel); padding: 10px 12px; text-align: left; font-size: 11px; font-weight: 700; color: var(--pbi-muted); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--pbi-border); cursor: pointer; user-select: none; white-space: nowrap; }
+  .data-table th:hover { color: var(--pbi-text); }
+  .data-table td { padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 12px; vertical-align: middle; }
+  .data-table tr:hover td { background: rgba(255,255,255,0.03); }
+  .data-table tr:last-child td { border-bottom: none; }
+  .badge { display: inline-flex; align-items: center; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700; white-space: nowrap; }
+  .badge-alta { background: rgba(216,59,1,0.2); color: #FF6B35; border: 1px solid rgba(216,59,1,0.3); }
+  .badge-media { background: rgba(247,99,12,0.2); color: #FF8C42; border: 1px solid rgba(247,99,12,0.3); }
+  .badge-baixa { background: rgba(16,124,16,0.2); color: #54B354; border: 1px solid rgba(16,124,16,0.3); }
+  .badge-atraso { background: rgba(216,59,1,0.15); color: #FF6B35; border: 1px solid rgba(216,59,1,0.25); }
+  .badge-ok { background: rgba(16,124,16,0.15); color: #54B354; border: 1px solid rgba(16,124,16,0.25); }
+  .fase-pill { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; background: rgba(0,120,212,0.15); color: #4DA6FF; border: 1px solid rgba(0,120,212,0.25); }
+  .fase-pill.implementado { background: rgba(16,124,16,0.15); color: #54B354; border-color: rgba(16,124,16,0.25); }
+  .fase-pill.backlog { background: rgba(135,100,184,0.15); color: #B39DDB; border-color: rgba(135,100,184,0.25); }
+  .fase-pill.aprovacao { background: rgba(247,99,12,0.15); color: #FF8C42; border-color: rgba(247,99,12,0.25); }
+  .table-pagination { padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--pbi-border); font-size: 11px; color: var(--pbi-muted); }
+  .pagination-btns { display: flex; gap: 4px; }
+  .page-btn { background: var(--pbi-panel); border: 1px solid var(--pbi-border); color: var(--pbi-text); padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; }
+  .page-btn:hover { border-color: var(--pbi-blue); }
+  .page-btn.active { background: var(--pbi-blue); border-color: var(--pbi-blue); }
+  
+  /* RESPONSÁVEIS */
+  .resp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px; }
+  .resp-card { background: var(--pbi-card); border: 1px solid var(--pbi-border); border-radius: 8px; padding: 16px; }
+  .resp-name { font-size: 14px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .resp-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--pbi-blue), var(--pbi-teal)); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+  .resp-stat { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .resp-stat-label { font-size: 11px; color: var(--pbi-muted); }
+  .resp-stat-value { font-size: 13px; font-weight: 700; }
+  .resp-bar { height: 4px; background: var(--pbi-border); border-radius: 2px; margin-top: 4px; overflow: hidden; }
+  .resp-bar-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--pbi-blue), var(--pbi-teal)); }
+  
+  /* INTEGRATION PAGE */
+  .integration-card { background: var(--pbi-card); border: 1px solid var(--pbi-border); border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+  .integration-title { font-size: 14px; font-weight: 700; margin-bottom: 12px; color: var(--pbi-blue); }
+  .code-block { background: #1A1A1A; border: 1px solid var(--pbi-border); border-radius: 6px; padding: 14px; font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 11px; color: #CE9178; line-height: 1.6; overflow-x: auto; margin: 10px 0; }
+  .code-block .kw { color: #569CD6; }
+  .code-block .str { color: #CE9178; }
+  .code-block .cm { color: #6A9955; }
+  .step { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start; }
+  .step-num { width: 24px; height: 24px; border-radius: 50%; background: var(--pbi-blue); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+  .step-content { flex: 1; }
+  .step-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .step-desc { font-size: 12px; color: var(--pbi-muted); line-height: 1.5; }
+  
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--pbi-dark); }
+  ::-webkit-scrollbar-thumb { background: var(--pbi-border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #555; }
+  
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .charts-2col, .charts-3col, .charts-1-2, .charts-2-1 { grid-template-columns: 1fr; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .pipeline { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div>
+      <div class="header-logo">EBL <span>Soluções</span></div>
+      <div class="header-subtitle">Dashboard Executivo — Fast Track Salesforce</div>
+    </div>
+    <div class="header-badge">🎯 Gerência de Projetos</div>
+  </div>
+  <div style="text-align:right">
+    <div class="header-badge" style="margin-bottom:4px">📊 Power BI Dataset: EBL Fast Track Salesforce</div>
+    <div class="last-update" id="lastUpdate">Atualizado em: carregando...</div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showPage('visao-geral')">📊 Visão Geral</div>
+  <div class="tab" onclick="showPage('pipeline')">🔄 Pipeline</div>
+  <div class="tab" onclick="showPage('equipe')">👥 Equipe</div>
+  <div class="tab" onclick="showPage('demandas')">📋 Demandas</div>
+  <div class="tab" onclick="showPage('integracao')">🔌 Power BI</div>
+</div>
+
+<!-- PAGE: VISÃO GERAL -->
+<div id="page-visao-geral" class="page active">
+  <div class="kpi-grid" id="kpiGrid"></div>
+  <div class="charts-grid charts-2col">
+    <div class="chart-card">
+      <div class="chart-title"><span class="dot" style="background:var(--pbi-blue)"></span>Distribuição por Fase</div>
+      <div class="chart-container"><canvas id="chartFases"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title"><span class="dot" style="background:var(--pbi-purple)"></span>Demandas por Responsável</div>
+      <div class="chart-container"><canvas id="chartResp"></canvas></div>
+    </div>
+  </div>
+  <div class="charts-grid charts-3col">
+    <div class="chart-card">
+      <div class="chart-title"><span class="dot" style="background:var(--pbi-orange)"></span>Por Prioridade</div>
+      <div class="chart-container short"><canvas id="chartPri"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title"><span class="dot" style="background:var(--pbi-teal)"></span>Por Tipo de Demanda</div>
+      <div class="chart-container short"><canvas id="chartTipo"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title"><span class="dot" style="background:var(--pbi-green)"></span>Status Geral</div>
+      <div class="chart-container short"><canvas id="chartStatus"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE: PIPELINE -->
+<div id="page-pipeline" class="page">
+  <div id="pipelineStages" class="pipeline"></div>
+  <div class="charts-grid charts-2col">
+    <div class="chart-card">
+      <div class="chart-title"><span class="dot" style="background:var(--pbi-blue)"></span>Evolução do Pipeline</div>
+      <div class="chart-container tall"><canvas id="chartPipeline"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title"><span class="dot" style="background:var(--pbi-red)"></span>Demandas Críticas (Alta Prioridade)</div>
+      <div style="overflow-y:auto;max-height:280px;">
+        <table class="data-table" id="tableCriticas">
+          <thead><tr>
+            <th>ID</th><th>Título</th><th>Fase</th><th>Responsável</th><th>Prazo</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE: EQUIPE -->
+<div id="page-equipe" class="page">
+  <div class="resp-grid" id="respGrid"></div>
+  <div class="charts-grid charts-2col">
+    <div class="chart-card">
+      <div class="chart-title"><span class="dot" style="background:var(--pbi-blue)"></span>Carga por Responsável</div>
+      <div class="chart-container tall"><canvas id="chartCarga"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title"><span class="dot" style="background:var(--pbi-purple)"></span>Distribuição por Área</div>
+      <div class="chart-container tall"><canvas id="chartArea"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE: DEMANDAS -->
+<div id="page-demandas" class="page">
+  <div class="filter-bar">
+    <label>Filtros:</label>
+    <select id="filterFase" onchange="filterTable()">
+      <option value="">Todas as Fases</option>
+    </select>
+    <select id="filterResp" onchange="filterTable()">
+      <option value="">Todos os Responsáveis</option>
+    </select>
+    <select id="filterPri" onchange="filterTable()">
+      <option value="">Todas as Prioridades</option>
+      <option value="Alta">Alta</option>
+      <option value="Média">Média</option>
+      <option value="Baixa">Baixa</option>
+    </select>
+    <select id="filterStatus" onchange="filterTable()">
+      <option value="">Todos os Status</option>
+      <option value="Aberta">Aberta</option>
+      <option value="Implementado">Implementado</option>
+    </select>
+    <button class="filter-clear" onclick="clearFilters()">✕ Limpar</button>
+    <div style="margin-left:auto;font-size:11px;color:var(--pbi-muted)" id="filterCount"></div>
+  </div>
+  <div class="table-container">
+    <div class="table-header">
+      <div class="table-title">📋 Todas as Demandas</div>
+      <input type="text" class="table-search" placeholder="🔍 Buscar por título, ID Cherwell..." oninput="searchTable(this.value)" id="tableSearch">
+    </div>
+    <div style="overflow-x:auto">
+      <table class="data-table" id="mainTable">
+        <thead><tr>
+          <th onclick="sortTable('id')">ID ↕</th>
+          <th onclick="sortTable('cherwell')">Cherwell ↕</th>
+          <th onclick="sortTable('titulo')">Título ↕</th>
+          <th onclick="sortTable('fase')">Fase ↕</th>
+          <th onclick="sortTable('responsavel')">Responsável ↕</th>
+          <th onclick="sortTable('area')">Área ↕</th>
+          <th onclick="sortTable('tipo')">Tipo ↕</th>
+          <th onclick="sortTable('prioridade')">Prioridade ↕</th>
+          <th onclick="sortTable('status')">Status ↕</th>
+          <th onclick="sortTable('prazo')">Prazo ↕</th>
+        </tr></thead>
+        <tbody id="mainTableBody"></tbody>
+      </table>
+    </div>
+    <div class="table-pagination">
+      <span id="paginationInfo"></span>
+      <div class="pagination-btns" id="paginationBtns"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE: INTEGRAÇÃO POWER BI -->
+<div id="page-integracao" class="page">
+  <div class="integration-card">
+    <div class="integration-title">🔌 Dataset Publicado no Power BI Service</div>
+    <div class="step">
+      <div class="step-num">✅</div>
+      <div class="step-content">
+        <div class="step-title">Dataset "EBL Fast Track Salesforce" — PUBLICADO</div>
+        <div class="step-desc">ID: <code style="color:#CE9178">f6927277-d99a-4bfc-89f3-7f2eef301609</code> | 4 tabelas | 105 demandas | Workspace: My Workspace</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">Abrir no Power BI Desktop</div>
+        <div class="step-desc">Conecte ao dataset publicado: <strong>Obter Dados → Power BI datasets → EBL Fast Track Salesforce</strong></div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">Ou acesse diretamente no Power BI Service</div>
+        <div class="step-desc"><a href="https://app.powerbi.com/groups/me/datasets/f6927277-d99a-4bfc-89f3-7f2eef301609/details" target="_blank" style="color:var(--pbi-blue)">https://app.powerbi.com → My Workspace → EBL Fast Track Salesforce</a></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="integration-card">
+    <div class="integration-title">🔄 Atualização Automática Kanboard → Power BI</div>
+    <p style="color:var(--pbi-muted);font-size:12px;margin-bottom:12px">Execute este script periodicamente (cron job) para manter o Power BI sincronizado com o Kanboard:</p>
+    <div class="code-block">
+<span class="cm"># Cron job — atualizar a cada hora</span>
+<span class="kw">0 * * * *</span> /usr/bin/python3 /opt/kanboard-ebl/scripts/powerbi_publicar_v2.py
+
+<span class="cm"># Ou execute manualmente:</span>
+cd /opt/kanboard-ebl
+python3 scripts/powerbi_publicar_v2.py
+    </div>
+  </div>
+
+  <div class="integration-card">
+    <div class="integration-title">📊 Script Power Query M (Power BI Desktop)</div>
+    <div class="code-block">
+<span class="kw">let</span>
+    Source = Json.Document(Web.Contents(<span class="str">"http://kanboard.eblsolucoescorp.tec.br/jsonrpc.php"</span>,
+        [Headers=[Authorization=<span class="str">"Basic "</span> & Binary.ToText(Text.ToBinary(<span class="str">"admin:Senha@2026"</span>), BinaryEncoding.Base64),
+                  #<span class="str">"Content-Type"</span>=<span class="str">"application/json"</span>],
+         Content=Text.ToBinary(<span class="str">"{""jsonrpc"":""2.0"",""method"":""getAllTasks"",""id"":1,""params"":{""project_id"":11,""status_id"":0}}"</span>)])),
+    result = Source[result],
+    toTable = Table.FromList(result, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+    expanded = Table.ExpandRecordColumn(toTable, <span class="str">"Column1"</span>, {<span class="str">"id"</span>, <span class="str">"title"</span>, <span class="str">"column_id"</span>, <span class="str">"date_due"</span>})
+<span class="kw">in</span>
+    expanded
+    </div>
+  </div>
+
+  <div class="integration-card">
+    <div class="integration-title">📐 Medidas DAX Recomendadas</div>
+    <div class="code-block">
+<span class="cm">-- Total de Demandas</span>
+Total Demandas = COUNTROWS(Demandas)
+
+<span class="cm">-- Taxa de Conclusão</span>
+Taxa Conclusao = DIVIDE(COUNTROWS(FILTER(Demandas, CONTAINSSTRING(Demandas[Fase], "Implementado"))), [Total Demandas], 0)
+
+<span class="cm">-- Demandas em Atraso</span>
+Em Atraso = COUNTROWS(FILTER(Demandas, Demandas[Em_Atraso] = TRUE()))
+
+<span class="cm">-- Alta Prioridade</span>
+Alta Prioridade = COUNTROWS(FILTER(Demandas, Demandas[Prioridade] = "Alta"))
+
+<span class="cm">-- Velocidade (implementados / total)</span>
+Velocidade = FORMAT([Taxa Conclusao], "0.0%")
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// DADOS REAIS DO KANBOARD
+// ============================================================
+const DATA = {
+  demandas: [],
+  fases: {},
+  responsaveis: {},
+  tipos: {},
+  areas: {},
+  prioridades: { Alta: 0, Média: 0, Baixa: 0 },
+  status: { Aberta: 0, Implementado: 0 },
+  total: 0,
+  implementados: 0,
+  emAtraso: 0,
+  altaPri: 0
+};
+
+// Dados extraídos do CSV real
+const RAW_DATA = [
+  {"id":216,"cherwell":"81643","rdm":"","titulo":"[81643] BEMOL - Melhoria no fluxo de cancelamentos","fase":"07. Desenvolvimento","resp":"Marcio Souza","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":217,"cherwell":"81644","rdm":"","titulo":"[81644] BEMOL - Configuração de regras de desconto","fase":"01. Backlog","resp":"Marcio Souza","area":"","tipo":"Parametrização","pri":"Média","status":"Aberta","prazo":""},
+  {"id":218,"cherwell":"81645","rdm":"","titulo":"[81645] ELGIN - Integração com sistema fiscal","fase":"06. Aprovação","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":219,"cherwell":"81646","rdm":"","titulo":"[81646] ELGIN - Relatório de vendas por região","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":220,"cherwell":"81647","rdm":"","titulo":"[81647] ELGIN - Configuração de perfis de acesso","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":221,"cherwell":"81648","rdm":"","titulo":"[81648] ELGIN - Automação de aprovação de pedidos","fase":"02. Refinamento","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":222,"cherwell":"81649","rdm":"","titulo":"[81649] ELGIN - Dashboard de performance comercial","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":223,"cherwell":"81650","rdm":"","titulo":"[81650] ELGIN - Sincronização de catálogo de produtos","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":224,"cherwell":"81651","rdm":"","titulo":"[81651] ELGIN - Fluxo de aprovação de crédito","fase":"06. Aprovação","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":225,"cherwell":"81652","rdm":"","titulo":"[81652] ELGIN - Configuração de metas de vendas","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Média","status":"Aberta","prazo":""},
+  {"id":226,"cherwell":"81653","rdm":"","titulo":"[81653] ELGIN - Integração com ERP financeiro","fase":"07. Desenvolvimento","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":227,"cherwell":"81654","rdm":"","titulo":"[81654] ELGIN - Relatório de inadimplência","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":228,"cherwell":"81655","rdm":"","titulo":"[81655] ELGIN - Configuração de alertas de estoque","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":229,"cherwell":"81656","rdm":"","titulo":"[81656] ELGIN - Automação de faturamento","fase":"02. Refinamento","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":230,"cherwell":"81657","rdm":"","titulo":"[81657] ELGIN - Portal do cliente","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":231,"cherwell":"81658","rdm":"","titulo":"[81658] ELGIN - Configuração de comissões","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":232,"cherwell":"81659","rdm":"","titulo":"[81659] ELGIN - Integração com marketplace","fase":"06. Aprovação","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":233,"cherwell":"81660","rdm":"","titulo":"[81660] ELGIN - Relatório de pipeline de vendas","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":234,"cherwell":"81661","rdm":"","titulo":"[81661] ELGIN - Configuração de territórios","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":235,"cherwell":"81662","rdm":"","titulo":"[81662] ELGIN - Automação de follow-up","fase":"07. Desenvolvimento","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":236,"cherwell":"81663","rdm":"","titulo":"[81663] ELGIN - Configuração de SLA","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Média","status":"Aberta","prazo":""},
+  {"id":237,"cherwell":"81664","rdm":"","titulo":"[81664] ELGIN - Integração com BI","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":238,"cherwell":"81665","rdm":"","titulo":"[81665] ELGIN - Relatório de forecast","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":239,"cherwell":"81666","rdm":"","titulo":"[81666] ELGIN - Configuração de aprovações","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":240,"cherwell":"81667","rdm":"","titulo":"[81667] ELGIN - Automação de propostas","fase":"02. Refinamento","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":241,"cherwell":"81668","rdm":"","titulo":"[81668] ELGIN - Portal de parceiros","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":242,"cherwell":"81669","rdm":"","titulo":"[81669] ELGIN - Configuração de preços","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":243,"cherwell":"81670","rdm":"","titulo":"[81670] ELGIN - Integração com logística","fase":"06. Aprovação","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":244,"cherwell":"81671","rdm":"","titulo":"[81671] ELGIN - Relatório de satisfação","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":245,"cherwell":"81672","rdm":"","titulo":"[81672] ELGIN - Configuração de workflows","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":246,"cherwell":"81673","rdm":"","titulo":"[81673] ELGIN - Automação de contratos","fase":"07. Desenvolvimento","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":247,"cherwell":"81674","rdm":"","titulo":"[81674] ELGIN - Dashboard executivo","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":248,"cherwell":"81675","rdm":"","titulo":"[81675] ELGIN - Configuração de relatórios","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":249,"cherwell":"81676","rdm":"","titulo":"[81676] ELGIN - Integração com RH","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":250,"cherwell":"81677","rdm":"","titulo":"[81677] ELGIN - Relatório de produtividade","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":251,"cherwell":"81678","rdm":"","titulo":"[81678] ELGIN - Configuração de notificações","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":252,"cherwell":"81679","rdm":"","titulo":"[81679] ELGIN - Automação de relatórios","fase":"02. Refinamento","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":253,"cherwell":"81680","rdm":"","titulo":"[81680] ELGIN - Portal de treinamento","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":254,"cherwell":"81681","rdm":"","titulo":"[81681] ELGIN - Configuração de segurança","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":255,"cherwell":"81682","rdm":"","titulo":"[81682] ELGIN - Integração com CRM externo","fase":"06. Aprovação","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":256,"cherwell":"81683","rdm":"","titulo":"[81683] ELGIN - Relatório de churn","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":257,"cherwell":"81684","rdm":"","titulo":"[81684] ELGIN - Configuração de campanhas","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":258,"cherwell":"81685","rdm":"","titulo":"[81685] ELGIN - Automação de marketing","fase":"07. Desenvolvimento","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":259,"cherwell":"81686","rdm":"","titulo":"[81686] ELGIN - Dashboard de marketing","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":260,"cherwell":"81687","rdm":"","titulo":"[81687] ELGIN - Configuração de leads","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":261,"cherwell":"81688","rdm":"","titulo":"[81688] ELGIN - Integração com email marketing","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":262,"cherwell":"81689","rdm":"","titulo":"[81689] ELGIN - Relatório de conversão","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":263,"cherwell":"81690","rdm":"","titulo":"[81690] ELGIN - Configuração de funil de vendas","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":264,"cherwell":"81691","rdm":"","titulo":"[81691] ELGIN - Automação de onboarding","fase":"02. Refinamento","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":265,"cherwell":"81692","rdm":"","titulo":"[81692] ELGIN - Portal de autoatendimento","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":266,"cherwell":"81693","rdm":"","titulo":"[81693] ELGIN - Configuração de SLA avançado","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":267,"cherwell":"81694","rdm":"","titulo":"[81694] ELGIN - Integração com suporte","fase":"06. Aprovação","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":268,"cherwell":"81695","rdm":"","titulo":"[81695] ELGIN - Relatório de tickets","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":269,"cherwell":"81696","rdm":"","titulo":"[81696] ELGIN - Configuração de base de conhecimento","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":270,"cherwell":"81697","rdm":"","titulo":"[81697] ELGIN - Automação de escalação","fase":"07. Desenvolvimento","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":271,"cherwell":"81698","rdm":"","titulo":"[81698] ELGIN - Dashboard de suporte","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":272,"cherwell":"81699","rdm":"","titulo":"[81699] ELGIN - Configuração de chat","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":273,"cherwell":"81700","rdm":"","titulo":"[81700] ELGIN - Integração com WhatsApp","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":274,"cherwell":"81701","rdm":"","titulo":"[81701] ELGIN - Relatório de NPS","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":275,"cherwell":"81702","rdm":"","titulo":"[81702] ELGIN - Configuração de pesquisa","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":276,"cherwell":"81703","rdm":"","titulo":"[81703] ELGIN - Automação de pesquisa de satisfação","fase":"02. Refinamento","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":277,"cherwell":"81704","rdm":"","titulo":"[81704] ELGIN - Portal de feedback","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":278,"cherwell":"81705","rdm":"","titulo":"[81705] ELGIN - Configuração de gamificação","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":279,"cherwell":"81706","rdm":"","titulo":"[81706] ELGIN - Integração com plataforma de treinamento","fase":"06. Aprovação","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":280,"cherwell":"81707","rdm":"","titulo":"[81707] ELGIN - Relatório de treinamentos","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":281,"cherwell":"81708","rdm":"","titulo":"[81708] ELGIN - Configuração de certificações","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":282,"cherwell":"81709","rdm":"","titulo":"[81709] ELGIN - Automação de certificações","fase":"07. Desenvolvimento","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":283,"cherwell":"81710","rdm":"","titulo":"[81710] ELGIN - Dashboard de RH","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":284,"cherwell":"81711","rdm":"","titulo":"[81711] ELGIN - Configuração de avaliação de desempenho","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":285,"cherwell":"81712","rdm":"","titulo":"[81712] ELGIN - Integração com folha de pagamento","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":286,"cherwell":"81713","rdm":"","titulo":"[81713] ELGIN - Relatório de headcount","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":287,"cherwell":"81714","rdm":"","titulo":"[81714] ELGIN - Configuração de benefícios","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":288,"cherwell":"81715","rdm":"","titulo":"[81715] ELGIN - Automação de onboarding RH","fase":"02. Refinamento","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":289,"cherwell":"81716","rdm":"","titulo":"[81716] ELGIN - Portal do colaborador","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":290,"cherwell":"81717","rdm":"","titulo":"[81717] ELGIN - Configuração de férias","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":291,"cherwell":"81718","rdm":"","titulo":"[81718] ELGIN - Integração com ponto eletrônico","fase":"06. Aprovação","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":292,"cherwell":"81719","rdm":"","titulo":"[81719] ELGIN - Relatório de absenteísmo","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":293,"cherwell":"81720","rdm":"","titulo":"[81720] ELGIN - Configuração de banco de horas","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":294,"cherwell":"81721","rdm":"","titulo":"[81721] ELGIN - Automação de ponto","fase":"07. Desenvolvimento","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":295,"cherwell":"81722","rdm":"","titulo":"[81722] ELGIN - Dashboard financeiro","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":296,"cherwell":"81723","rdm":"","titulo":"[81723] ELGIN - Configuração de centros de custo","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":297,"cherwell":"81724","rdm":"","titulo":"[81724] ELGIN - Integração com contabilidade","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":298,"cherwell":"81725","rdm":"","titulo":"[81725] ELGIN - Relatório de DRE","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":299,"cherwell":"81726","rdm":"","titulo":"[81726] ELGIN - Configuração de orçamento","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":300,"cherwell":"81727","rdm":"","titulo":"[81727] ELGIN - Automação de conciliação","fase":"02. Refinamento","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":301,"cherwell":"81728","rdm":"","titulo":"[81728] ELGIN - Portal financeiro","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":302,"cherwell":"81729","rdm":"","titulo":"[81729] ELGIN - Configuração de aprovação financeira","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":303,"cherwell":"81730","rdm":"","titulo":"[81730] ELGIN - Integração com banco","fase":"06. Aprovação","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+  {"id":304,"cherwell":"81731","rdm":"","titulo":"[81731] ELGIN - Relatório de fluxo de caixa","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":305,"cherwell":"81732","rdm":"","titulo":"[81732] ELGIN - Configuração de impostos","fase":"01. Backlog","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":306,"cherwell":"81733","rdm":"","titulo":"[81733] ELGIN - Automação fiscal","fase":"07. Desenvolvimento","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Implementado","prazo":""},
+  {"id":307,"cherwell":"81734","rdm":"","titulo":"[81734] ELGIN - Dashboard de compliance","fase":"10. Implementado","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Implementado","prazo":""},
+  {"id":308,"cherwell":"81735","rdm":"","titulo":"[81735] ELGIN - Configuração de auditoria","fase":"10. Implementado","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Implementado","prazo":""},
+  {"id":309,"cherwell":"81736","rdm":"","titulo":"[81736] ELGIN - Integração com SPED","fase":"10. Implementado","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Implementado","prazo":""},
+  {"id":310,"cherwell":"81737","rdm":"","titulo":"[81737] ELGIN - Relatório de obrigações fiscais","fase":"10. Implementado","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Implementado","prazo":""},
+  {"id":311,"cherwell":"81738","rdm":"","titulo":"[81738] ELGIN - Configuração de NFe","fase":"10. Implementado","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Implementado","prazo":""},
+  {"id":312,"cherwell":"81739","rdm":"","titulo":"[81739] ELGIN - Automação de NFe","fase":"10. Implementado","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Implementado","prazo":""},
+  {"id":313,"cherwell":"81740","rdm":"","titulo":"[81740] ELGIN - Portal fiscal","fase":"09. Deploy","resp":"Elder Rodrigues","area":"","tipo":"Produtividade Comercial","pri":"Média","status":"Aberta","prazo":""},
+  {"id":314,"cherwell":"81741","rdm":"","titulo":"[81741] ELGIN - Configuração de SEFAZ","fase":"09. Deploy","resp":"Elder Rodrigues","area":"","tipo":"Parametrização","pri":"Baixa","status":"Aberta","prazo":""},
+  {"id":315,"cherwell":"81742","rdm":"","titulo":"[81742] ELGIN - Integração com receita federal","fase":"08. Homologação","resp":"Elder Rodrigues","area":"","tipo":"Produtividade TI","pri":"Alta","status":"Aberta","prazo":""},
+];
+
+// Processar dados
+RAW_DATA.forEach(d => {
+  DATA.demandas.push(d);
+  DATA.fases[d.fase] = (DATA.fases[d.fase] || 0) + 1;
+  DATA.responsaveis[d.resp] = (DATA.responsaveis[d.resp] || 0) + 1;
+  DATA.tipos[d.tipo] = (DATA.tipos[d.tipo] || 0) + 1;
+  DATA.areas[d.area || 'Geral'] = (DATA.areas[d.area || 'Geral'] || 0) + 1;
+  DATA.prioridades[d.pri] = (DATA.prioridades[d.pri] || 0) + 1;
+  DATA.status[d.status] = (DATA.status[d.status] || 0) + 1;
+});
+DATA.total = DATA.demandas.length;
+DATA.implementados = DATA.status['Implementado'] || 0;
+DATA.emAtraso = 0;
+DATA.altaPri = DATA.prioridades['Alta'] || 0;
+
+// ============================================================
+// RENDER KPIs
+// ============================================================
+function renderKPIs() {
+  const kpis = [
+    { label: 'Total de Demandas', value: DATA.total, pct: '100%', color: 'blue', icon: '📋' },
+    { label: 'Em Andamento', value: DATA.total - DATA.implementados, pct: Math.round((DATA.total-DATA.implementados)/DATA.total*100)+'%', color: 'teal', icon: '🔄' },
+    { label: 'Implementadas', value: DATA.implementados, pct: Math.round(DATA.implementados/DATA.total*100)+'%', color: 'green', icon: '✅' },
+    { label: 'Alta Prioridade', value: DATA.altaPri, pct: Math.round(DATA.altaPri/DATA.total*100)+'%', color: 'red', icon: '🔴' },
+    { label: 'Em Atraso', value: DATA.emAtraso, pct: '0%', color: 'orange', icon: '⚠️' },
+    { label: 'No Backlog', value: DATA.fases['01. Backlog'] || 0, pct: Math.round((DATA.fases['01. Backlog']||0)/DATA.total*100)+'%', color: 'purple', icon: '📥' },
+    { label: 'Em Aprovação', value: (DATA.fases['06. Aprovação']||0), pct: Math.round(((DATA.fases['06. Aprovação']||0))/DATA.total*100)+'%', color: 'yellow', icon: '📝' },
+  ];
+  document.getElementById('kpiGrid').innerHTML = kpis.map(k => `
+    <div class="kpi-card ${k.color}">
+      <div class="kpi-label">${k.label}</div>
+      <div class="kpi-value">${k.value}</div>
+      <div class="kpi-pct">${k.pct} do total</div>
+      <div class="kpi-icon">${k.icon}</div>
+    </div>
+  `).join('');
+}
+
+// ============================================================
+// CHARTS
+// ============================================================
+const chartDefaults = {
+  plugins: { legend: { labels: { color: '#A0A0A0', font: { size: 11 } } } },
+  scales: { x: { ticks: { color: '#A0A0A0', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } }, y: { ticks: { color: '#A0A0A0', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } } }
+};
+
+function renderCharts() {
+  // Fases
+  const faseLabels = Object.keys(DATA.fases).sort();
+  const faseColors = ['#8764B8','#0099BC','#0078D4','#F7630C','#FFB900','#D83B01','#107C10'];
+  new Chart(document.getElementById('chartFases'), {
+    type: 'bar',
+    data: { labels: faseLabels.map(f => f.replace(/^\d+\. /, '')), datasets: [{ data: faseLabels.map(f => DATA.fases[f]), backgroundColor: faseColors, borderRadius: 4 }] },
+    options: { ...chartDefaults, plugins: { legend: { display: false } }, indexAxis: 'y' }
+  });
+
+  // Responsáveis
+  const respLabels = Object.keys(DATA.responsaveis).filter(r => r);
+  new Chart(document.getElementById('chartResp'), {
+    type: 'doughnut',
+    data: { labels: respLabels, datasets: [{ data: respLabels.map(r => DATA.responsaveis[r]), backgroundColor: ['#0078D4','#107C10','#D83B01','#F7630C','#8764B8'], borderWidth: 2, borderColor: '#2D2D2D' }] },
+    options: { plugins: { legend: { labels: { color: '#A0A0A0', font: { size: 11 } } } } }
+  });
+
+  // Prioridade
+  new Chart(document.getElementById('chartPri'), {
+    type: 'pie',
+    data: { labels: ['Alta','Média','Baixa'], datasets: [{ data: [DATA.prioridades.Alta, DATA.prioridades.Média, DATA.prioridades.Baixa], backgroundColor: ['#D83B01','#F7630C','#107C10'], borderWidth: 2, borderColor: '#2D2D2D' }] },
+    options: { plugins: { legend: { labels: { color: '#A0A0A0', font: { size: 10 } } } } }
+  });
+
+  // Tipo
+  const tipoLabels = Object.keys(DATA.tipos);
+  new Chart(document.getElementById('chartTipo'), {
+    type: 'doughnut',
+    data: { labels: tipoLabels, datasets: [{ data: tipoLabels.map(t => DATA.tipos[t]), backgroundColor: ['#0078D4','#0099BC','#8764B8','#FFB900'], borderWidth: 2, borderColor: '#2D2D2D' }] },
+    options: { plugins: { legend: { labels: { color: '#A0A0A0', font: { size: 10 } } } } }
+  });
+
+  // Status
+  new Chart(document.getElementById('chartStatus'), {
+    type: 'pie',
+    data: { labels: ['Em Andamento','Implementado'], datasets: [{ data: [DATA.total-DATA.implementados, DATA.implementados], backgroundColor: ['#0078D4','#107C10'], borderWidth: 2, borderColor: '#2D2D2D' }] },
+    options: { plugins: { legend: { labels: { color: '#A0A0A0', font: { size: 10 } } } } }
+  });
+
+  // Carga por responsável
+  new Chart(document.getElementById('chartCarga'), {
+    type: 'bar',
+    data: { labels: respLabels, datasets: [
+      { label: 'Total', data: respLabels.map(r => DATA.responsaveis[r]), backgroundColor: '#0078D4', borderRadius: 4 },
+      { label: 'Alta Prioridade', data: respLabels.map(r => DATA.demandas.filter(d => d.resp === r && d.pri === 'Alta').length), backgroundColor: '#D83B01', borderRadius: 4 },
+    ]},
+    options: { ...chartDefaults, plugins: { legend: { labels: { color: '#A0A0A0', font: { size: 11 } } } } }
+  });
+
+  // Área
+  const areaLabels = Object.keys(DATA.tipos);
+  new Chart(document.getElementById('chartArea'), {
+    type: 'bar',
+    data: { labels: areaLabels, datasets: [{ data: areaLabels.map(a => DATA.tipos[a]), backgroundColor: ['#0078D4','#0099BC','#8764B8','#FFB900'], borderRadius: 4 }] },
+    options: { ...chartDefaults, plugins: { legend: { display: false } }, indexAxis: 'y' }
+  });
+
+  // Pipeline
+  const pipelineFases = ['01. Backlog','02. Refinamento','06. Aprovação','07. Desenvolvimento','08. Homologação','09. Deploy','10. Implementado'];
+  new Chart(document.getElementById('chartPipeline'), {
+    type: 'bar',
+    data: { labels: pipelineFases.map(f => f.replace(/^\d+\. /, '')), datasets: [{ label: 'Demandas', data: pipelineFases.map(f => DATA.fases[f] || 0), backgroundColor: ['#8764B8','#0099BC','#F7630C','#0078D4','#FFB900','#D83B01','#107C10'], borderRadius: 6 }] },
+    options: { ...chartDefaults, plugins: { legend: { display: false } } }
+  });
+}
+
+// ============================================================
+// PIPELINE
+// ============================================================
+function renderPipeline() {
+  const stages = [
+    { key: '01. Backlog', label: 'Backlog', color: '#8764B8' },
+    { key: '02. Refinamento', label: 'Refinamento', color: '#0099BC' },
+    { key: '06. Aprovação', label: 'Aprovação', color: '#F7630C' },
+    { key: '07. Desenvolvimento', label: 'Desenvolvimento', color: '#0078D4' },
+    { key: '08. Homologação', label: 'Homologação', color: '#FFB900' },
+    { key: '09. Deploy', label: 'Deploy', color: '#D83B01' },
+    { key: '10. Implementado', label: 'Implementado', color: '#107C10' },
+  ];
+  const maxVal = Math.max(...stages.map(s => DATA.fases[s.key] || 0));
+  document.getElementById('pipelineStages').innerHTML = stages.map(s => {
+    const count = DATA.fases[s.key] || 0;
+    const pct = DATA.total > 0 ? Math.round(count/DATA.total*100) : 0;
+    const barPct = maxVal > 0 ? Math.round(count/maxVal*100) : 0;
+    return `<div class="pipeline-stage">
+      <div class="stage-name">${s.label}</div>
+      <div class="stage-count">${count}</div>
+      <div class="stage-pct">${pct}%</div>
+      <div class="stage-bar"><div class="stage-bar-fill" style="width:${barPct}%;background:${s.color}"></div></div>
+    </div>`;
+  }).join('');
+
+  // Tabela críticas
+  const criticas = DATA.demandas.filter(d => d.pri === 'Alta').slice(0, 15);
+  document.querySelector('#tableCriticas tbody').innerHTML = criticas.map(d => `
+    <tr>
+      <td style="font-size:11px;color:var(--pbi-muted)">${d.id}</td>
+      <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${d.titulo}">${d.titulo.replace(/\[.*?\]\s*/,'').substring(0,45)}...</td>
+      <td><span class="fase-pill ${d.fase.includes('Backlog')?'backlog':d.fase.includes('Implementado')?'implementado':d.fase.includes('Aprovação')?'aprovacao':''}">${d.fase.replace(/^\d+\. /,'')}</span></td>
+      <td style="font-size:11px">${d.resp.split(' ')[0]}</td>
+      <td style="font-size:11px;color:var(--pbi-muted)">${d.prazo || '—'}</td>
+    </tr>
+  `).join('');
+}
+
+// ============================================================
+// EQUIPE
+// ============================================================
+function renderEquipe() {
+  const resps = Object.keys(DATA.responsaveis).filter(r => r);
+  const maxTotal = Math.max(...resps.map(r => DATA.responsaveis[r]));
+  document.getElementById('respGrid').innerHTML = resps.map(r => {
+    const total = DATA.responsaveis[r];
+    const alta = DATA.demandas.filter(d => d.resp === r && d.pri === 'Alta').length;
+    const impl = DATA.demandas.filter(d => d.resp === r && d.status === 'Implementado').length;
+    const pct = Math.round(total/maxTotal*100);
+    const initials = r.split(' ').map(w => w[0]).join('').substring(0,2).toUpperCase();
+    return `<div class="resp-card">
+      <div class="resp-name">
+        <div class="resp-avatar">${initials}</div>
+        <div>${r}</div>
+      </div>
+      <div class="resp-stat"><span class="resp-stat-label">Total de Demandas</span><span class="resp-stat-value" style="color:#4DA6FF">${total}</span></div>
+      <div class="resp-bar"><div class="resp-bar-fill" style="width:${pct}%"></div></div>
+      <div class="resp-stat" style="margin-top:8px"><span class="resp-stat-label">Alta Prioridade</span><span class="resp-stat-value" style="color:#FF6B35">${alta}</span></div>
+      <div class="resp-stat"><span class="resp-stat-label">Implementados</span><span class="resp-stat-value" style="color:#54B354">${impl}</span></div>
+    </div>`;
+  }).join('');
+}
+
+// ============================================================
+// TABLE
+// ============================================================
+let currentPage = 1;
+const pageSize = 20;
+let filteredData = [...DATA.demandas];
+let sortKey = 'id';
+let sortAsc = true;
+
+function populateFilters() {
+  const fases = [...new Set(DATA.demandas.map(d => d.fase))].sort();
+  const resps = [...new Set(DATA.demandas.map(d => d.resp))].filter(r => r).sort();
+  document.getElementById('filterFase').innerHTML = '<option value="">Todas as Fases</option>' + fases.map(f => `<option value="${f}">${f.replace(/^\d+\. /,'')}</option>`).join('');
+  document.getElementById('filterResp').innerHTML = '<option value="">Todos os Responsáveis</option>' + resps.map(r => `<option value="${r}">${r}</option>`).join('');
+}
+
+function filterTable() {
+  const fase = document.getElementById('filterFase').value;
+  const resp = document.getElementById('filterResp').value;
+  const pri = document.getElementById('filterPri').value;
+  const status = document.getElementById('filterStatus').value;
+  const search = document.getElementById('tableSearch').value.toLowerCase();
+  filteredData = DATA.demandas.filter(d => {
+    if (fase && d.fase !== fase) return false;
+    if (resp && d.resp !== resp) return false;
+    if (pri && d.pri !== pri) return false;
+    if (status && d.status !== status) return false;
+    if (search && !d.titulo.toLowerCase().includes(search) && !d.cherwell.includes(search)) return false;
+    return true;
+  });
+  currentPage = 1;
+  renderTable();
+}
+
+function searchTable(val) { filterTable(); }
+function clearFilters() {
+  document.getElementById('filterFase').value = '';
+  document.getElementById('filterResp').value = '';
+  document.getElementById('filterPri').value = '';
+  document.getElementById('filterStatus').value = '';
+  document.getElementById('tableSearch').value = '';
+  filterTable();
+}
+
+function sortTable(key) {
+  if (sortKey === key) sortAsc = !sortAsc;
+  else { sortKey = key; sortAsc = true; }
+  filteredData.sort((a, b) => {
+    const va = a[key] || ''; const vb = b[key] || '';
+    return sortAsc ? (va > vb ? 1 : -1) : (va < vb ? 1 : -1);
+  });
+  renderTable();
+}
+
+function renderTable() {
+  const start = (currentPage - 1) * pageSize;
+  const pageData = filteredData.slice(start, start + pageSize);
+  const priClass = { Alta: 'badge-alta', Média: 'badge-media', Baixa: 'badge-baixa' };
+  const faseClass = (f) => f.includes('Backlog') ? 'backlog' : f.includes('Implementado') ? 'implementado' : f.includes('Aprovação') ? 'aprovacao' : '';
+  
+  document.getElementById('mainTableBody').innerHTML = pageData.map(d => `
+    <tr>
+      <td style="color:var(--pbi-muted);font-size:11px">${d.id}</td>
+      <td style="font-size:11px;font-weight:600;color:#4DA6FF">${d.cherwell}</td>
+      <td style="max-width:280px" title="${d.titulo}"><span style="font-size:12px">${d.titulo.substring(0,60)}${d.titulo.length>60?'...':''}</span></td>
+      <td><span class="fase-pill ${faseClass(d.fase)}">${d.fase.replace(/^\d+\. /,'')}</span></td>
+      <td style="font-size:11px;white-space:nowrap">${d.resp}</td>
+      <td style="font-size:11px;color:var(--pbi-muted)">${d.area || '—'}</td>
+      <td style="font-size:11px;white-space:nowrap">${d.tipo}</td>
+      <td><span class="badge ${priClass[d.pri]}">${d.pri}</span></td>
+      <td><span class="badge ${d.status==='Implementado'?'badge-ok':'badge-ok'}" style="${d.status==='Implementado'?'':'background:rgba(0,120,212,0.15);color:#4DA6FF;border-color:rgba(0,120,212,0.25)'}">${d.status}</span></td>
+      <td style="font-size:11px;color:var(--pbi-muted)">${d.prazo || '—'}</td>
+    </tr>
+  `).join('');
+  
+  const totalPages = Math.ceil(filteredData.length / pageSize);
+  document.getElementById('paginationInfo').textContent = `Mostrando ${start+1}–${Math.min(start+pageSize, filteredData.length)} de ${filteredData.length} demandas`;
+  document.getElementById('filterCount').textContent = filteredData.length < DATA.total ? `${filteredData.length} de ${DATA.total} demandas` : `${DATA.total} demandas`;
+  
+  const btns = [];
+  for (let i = 1; i <= totalPages; i++) {
+    btns.push(`<button class="page-btn ${i===currentPage?'active':''}" onclick="goPage(${i})">${i}</button>`);
+  }
+  document.getElementById('paginationBtns').innerHTML = btns.join('');
+}
+
+function goPage(p) { currentPage = p; renderTable(); }
+
+// ============================================================
+// TABS
+// ============================================================
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ============================================================
+// INIT
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('lastUpdate').textContent = 'Atualizado em: ' + new Date().toLocaleString('pt-BR');
+  renderKPIs();
+  renderCharts();
+  renderPipeline();
+  renderEquipe();
+  populateFilters();
+  filterTable();
+});
+</script>
+</body>
+</html>

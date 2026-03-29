@@ -1,0 +1,11 @@
+{
+  "dataset_id": "f6927277-d99a-4bfc-89f3-7f2eef301609",
+  "dataset_name": "EBL Fast Track Salesforce",
+  "tenant_id": "208364c6-eee7-4324-ac4a-d45fe452a1bd",
+  "client_id": "04b07795-8ddb-461a-bbee-02f9e1bf7b46",
+  "username": "admebl@eblsolucoescorporativas.com",
+  "total_rows": 0,
+  "last_update": "2026-03-29T17:12:10.958836",
+  "kanboard_api": "http://kanboard.eblsolucoescorp.tec.br/jsonrpc.php",
+  "powerbi_url": "https://app.powerbi.com/groups/me/datasets/f6927277-d99a-4bfc-89f3-7f2eef301609/details"
+}
