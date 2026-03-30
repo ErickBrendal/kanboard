@@ -355,13 +355,28 @@ window.populateFilters = function(data) {
 };
 
 document.addEventListener("DOMContentLoaded", function() {
-    window.populateFilters(window.DATA || []);
-    window.render();
+    let attempts = 0;
+    const maxAttempts = 50; // 5 segundos
+    const interval = 100; // 100ms
 
-    // Event Listeners para os filtros (fora da função render para evitar recriação)
-    document.getElementById("filter-status").addEventListener("change", window.render);
-    document.getElementById("filter-priority").addEventListener("change", window.render);
-    document.getElementById("filter-responsible").addEventListener("change", window.render);
-    document.getElementById("filter-area").addEventListener("change", window.render);
-    document.getElementById("search-input").addEventListener("keyup", window.render);
+    function checkDataAndRender() {
+        if (window.DATA && window.DATA.length > 0) {
+            window.populateFilters(window.DATA);
+            window.render();
+
+            // Adicionar event listeners após a renderização inicial
+            document.getElementById("filter-status").addEventListener("change", window.render);
+            document.getElementById("filter-priority").addEventListener("change", window.render);
+            document.getElementById("filter-responsible").addEventListener("change", window.render);
+            document.getElementById("filter-area").addEventListener("change", window.render);
+            document.getElementById("search-input").addEventListener("keyup", window.render);
+        } else if (attempts < maxAttempts) {
+            attempts++;
+            setTimeout(checkDataAndRender, interval);
+        } else {
+            console.error("Falha ao carregar os dados do dashboard (window.DATA) após 5 segundos.");
+        }
+    }
+
+    checkDataAndRender();
 });
