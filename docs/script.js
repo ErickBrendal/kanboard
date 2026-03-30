@@ -1,13 +1,13 @@
 function render() {
     // Funções auxiliares
     function formatCurrency(value) {
-        return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+        return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(value);
     }
 
     function formatDate(timestamp) {
-        if (!timestamp) return 'N/A';
+        if (!timestamp) return "N/A";
         const date = new Date(timestamp * 1000);
-        return date.toLocaleDateString('pt-BR');
+        return date.toLocaleDateString("pt-BR");
     }
 
     function calculateDaysInPhase(task) {
@@ -18,23 +18,23 @@ function render() {
 
     function getPriorityColor(priority) {
         switch (priority) {
-            case 'Alta': return 'red';
-            case 'Média': return 'yellow';
-            case 'Baixa': return 'green';
-            default: return 'muted';
+            case "Alta": return "red";
+            case "Média": return "yellow";
+            case "Baixa": return "green";
+            default: return "muted";
         }
     }
 
     function getStatusColor(status) {
         switch (status) {
-            case 'Implementado': return 'green';
-            case 'Aberta': return 'blue';
-            default: return 'muted';
+            case "Implementado": return "green";
+            case "Aberta": return "blue";
+            default: return "muted";
         }
     }
 
     function getAreaColor(area) {
-        const colors = ['b-01', 'b-02', 'b-03', 'b-04', 'b-05', 'b-06', 'b-07', 'b-08', 'b-09', 'b-10', 'b-11'];
+        const colors = ["b-01", "b-02", "b-03", "b-04", "b-05", "b-06", "b-07", "b-08", "b-09", "b-10", "b-11"];
         let hash = 0;
         for (let i = 0; i < area.length; i++) {
             hash = area.charCodeAt(i) + ((hash << 5) - hash);
@@ -45,18 +45,18 @@ function render() {
     // Renderização dos KPIs
     function renderKPIs(filteredData) {
         const totalDemandas = filteredData.length;
-        const demandasAbertas = filteredData.filter(d => d.status === 'Aberta').length;
-        const demandasImplementadas = filteredData.filter(d => d.status === 'Implementado').length;
+        const demandasAbertas = filteredData.filter(d => d.status === "Aberta").length;
+        const demandasImplementadas = filteredData.filter(d => d.status === "Implementado").length;
         const valorTotal = filteredData.reduce((sum, d) => sum + (d.valor || 0), 0);
         const horasTotais = filteredData.reduce((sum, d) => sum + (d.horas || 0), 0);
         const mediaDiasEmFase = totalDemandas > 0 ? filteredData.reduce((sum, d) => sum + calculateDaysInPhase(d), 0) / totalDemandas : 0;
 
-        document.getElementById('kpi-total-demandas').innerText = totalDemandas;
-        document.getElementById('kpi-demandas-abertas').innerText = demandasAbertas;
-        document.getElementById('kpi-demandas-implementadas').innerText = demandasImplementadas;
-        document.getElementById('kpi-valor-total').innerText = formatCurrency(valorTotal);
-        document.getElementById('kpi-horas-totais').innerText = horasTotais.toFixed(0) + 'h';
-        document.getElementById('kpi-media-dias-fase').innerText = mediaDiasEmFase.toFixed(1);
+        document.getElementById("kpi-total-demandas").innerText = totalDemandas;
+        document.getElementById("kpi-demandas-abertas").innerText = demandasAbertas;
+        document.getElementById("kpi-demandas-implementadas").innerText = demandasImplementadas;
+        document.getElementById("kpi-valor-total").innerText = formatCurrency(valorTotal);
+        document.getElementById("kpi-horas-totais").innerText = horasTotais.toFixed(0) + "h";
+        document.getElementById("kpi-media-dias-fase").innerText = mediaDiasEmFase.toFixed(1);
     }
 
     // Renderização do Pipeline
@@ -67,32 +67,34 @@ function render() {
         });
 
         const pipelineStages = [
-            '01. Backlog', '02. Refinamento', '03. Análise', '04. Aprovação', '05. Desenvolvimento', '06. Testes', '07. Deploy', '08. Implementado', '09. Cancelado'
+            "01. Backlog", "02. Refinamento", "03. Análise", "04. Aprovação", "05. Desenvolvimento", "06. Testes", "07. Deploy", "08. Implementado", "09. Cancelado"
         ];
+
+        const totalDemandas = filteredData.length; // Definir totalDemandas aqui para uso no pipeline
 
         const pipelineHtml = pipelineStages.map(stage => {
             const count = pipelineData[stage] || 0;
             const percentage = totalDemandas > 0 ? (count / totalDemandas) * 100 : 0;
-            let stageClass = '';
-            if (stage.includes('Implementado')) stageClass = 'done';
-            else if (stage.includes('Cancelado')) stageClass = 'warn';
-            else if (stage.includes('Desenvolvimento')) stageClass = 'hl';
+            let stageClass = "";
+            if (stage.includes("Implementado")) stageClass = "done";
+            else if (stage.includes("Cancelado")) stageClass = "warn";
+            else if (stage.includes("Desenvolvimento")) stageClass = "hl";
 
             return `
                 <div class="pstage ${stageClass}">
                     <div class="pnum">${count}</div>
-                    <div class="plabel">${stage.replace(/\d{2}\.\s/, '')}</div>
+                    <div class="plabel">${stage.replace(/\d{2}\.\s/, "")}</div>
                     <div class="ppct">${percentage.toFixed(1)}%</div>
                 </div>
             `;
-        }).join('');
-        document.getElementById('pipeline-overview').innerHTML = pipelineHtml;
+        }).join("");
+        document.getElementById("pipeline-overview").innerHTML = pipelineHtml;
     }
 
     // Renderização da Tabela de Demandas
     function renderDemandTable(filteredData) {
-        const tableBody = document.getElementById('demand-table-body');
-        tableBody.innerHTML = '';
+        const tableBody = document.getElementById("demand-table-body");
+        tableBody.innerHTML = "";
 
         filteredData.forEach(demand => {
             const row = tableBody.insertRow();
@@ -106,7 +108,7 @@ function render() {
                 <td>${demand.area}</td>
                 <td>${demand.tipo}</td>
                 <td><span class="badge b-${getPriorityColor(demand.pri)}">${demand.pri}</span></td>
-                <td>${demand.golive || 'N/A'}</td>
+                <td>${demand.golive || "N/A"}</td>
                 <td>${formatCurrency(demand.valor)}</td>
                 <td><span class="badge b-${getStatusColor(demand.status)}">${demand.status}</span></td>
             `;
@@ -119,6 +121,8 @@ function render() {
         filteredData.forEach(d => {
             responsibleCounts[d.resp] = (responsibleCounts[d.resp] || 0) + 1;
         });
+
+        const totalDemandas = filteredData.length; // Definir totalDemandas aqui para uso nos responsáveis
 
         const responsibleList = Object.entries(responsibleCounts)
             .sort((a, b) => b[1] - a[1])
@@ -136,8 +140,8 @@ function render() {
                         <div class="rstat"><span>${percentage.toFixed(1)}%</span><span>${count}</span></div>
                     </div>
                 `;
-            }).join('');
-        document.getElementById('responsible-grid').innerHTML = responsibleList;
+            }).join("");
+        document.getElementById("responsible-grid").innerHTML = responsibleList;
     }
 
     // Renderização das Áreas Solicitantes
@@ -146,6 +150,8 @@ function render() {
         filteredData.forEach(d => {
             areaCounts[d.area] = (areaCounts[d.area] || 0) + 1;
         });
+
+        const totalDemandas = filteredData.length; // Definir totalDemandas aqui para uso nas áreas
 
         const areaList = Object.entries(areaCounts)
             .sort((a, b) => b[1] - a[1])
@@ -160,8 +166,8 @@ function render() {
                         <div class="area-count">${count}</div>
                     </div>
                 `;
-            }).join('');
-        document.getElementById('area-list').innerHTML = areaList;
+            }).join("");
+        document.getElementById("area-list").innerHTML = areaList;
     }
 
     // Renderização dos Gráficos (Chart.js)
@@ -175,28 +181,28 @@ function render() {
         const barChartLabels = sortedFases.map(item => item[0]);
         const barChartData = sortedFases.map(item => item[1]);
 
-        new Chart(document.getElementById('faseBarChart'), {
-            type: 'bar',
+        new Chart(document.getElementById("faseBarChart"), {
+            type: "bar",
             data: {
                 labels: barChartLabels,
                 datasets: [{
                     data: barChartData,
-                    backgroundColor: 'rgba(79, 110, 247, 0.8)',
-                    borderColor: 'rgba(79, 110, 247, 1)',
+                    backgroundColor: "rgba(79, 110, 247, 0.8)",
+                    borderColor: "rgba(79, 110, 247, 1)",
                     borderWidth: 1
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                indexAxis: 'y',
+                indexAxis: "y",
                 plugins: {
                     legend: { display: false },
                     title: { display: false }
                 },
                 scales: {
-                    x: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#e2e8f0' } },
-                    y: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#e2e8f0' } }
+                    x: { beginAtZero: true, grid: { color: "rgba(255,255,255,0.1)" }, ticks: { color: "#e2e8f0" } },
+                    y: { grid: { color: "rgba(255,255,255,0.1)" }, ticks: { color: "#e2e8f0" } }
                 }
             }
         });
@@ -210,21 +216,21 @@ function render() {
         const donutChartData = Object.values(priCounts);
         const donutChartColors = donutChartLabels.map(pri => {
             switch (pri) {
-                case 'Alta': return '#ef4444';
-                case 'Média': return '#f59e0b';
-                case 'Baixa': return '#22c55e';
-                default: return '#8892b0';
+                case "Alta": return "#ef4444";
+                case "Média": return "#f59e0b";
+                case "Baixa": return "#22c55e";
+                default: return "#8892b0";
             }
         });
 
-        new Chart(document.getElementById('prioridadeDonutChart'), {
-            type: 'doughnut',
+        new Chart(document.getElementById("prioridadeDonutChart"), {
+            type: "doughnut",
             data: {
                 labels: donutChartLabels,
                 datasets: [{
                     data: donutChartData,
                     backgroundColor: donutChartColors,
-                    borderColor: '#0f1117',
+                    borderColor: "#0f1117",
                     borderWidth: 2
                 }]
             },
@@ -247,20 +253,20 @@ function render() {
         const statusDonutData = Object.values(statusCounts);
         const statusDonutColors = statusDonutLabels.map(status => {
             switch (status) {
-                case 'Implementado': return '#22c55e';
-                case 'Aberta': return '#4f6ef7';
-                default: return '#8892b0';
+                case "Implementado": return "#22c55e";
+                case "Aberta": return "#4f6ef7";
+                default: return "#8892b0";
             }
         });
 
-        new Chart(document.getElementById('statusDonutChart'), {
-            type: 'doughnut',
+        new Chart(document.getElementById("statusDonutChart"), {
+            type: "doughnut",
             data: {
                 labels: statusDonutLabels,
                 datasets: [{
                     data: statusDonutData,
                     backgroundColor: statusDonutColors,
-                    borderColor: '#0f1117',
+                    borderColor: "#0f1117",
                     borderWidth: 2
                 }]
             },
@@ -277,22 +283,23 @@ function render() {
 
     // Função principal de renderização
     window.render = function() {
+        console.log("DATA no render():", window.DATA); // Adicionado para depuração
         const currentData = window.DATA || []; // Usar window.DATA que vem de data.js
         const totalDemandas = currentData.length;
 
         // Filtros
-        const filterStatus = document.getElementById('filter-status').value;
-        const filterPriority = document.getElementById('filter-priority').value;
-        const filterResponsible = document.getElementById('filter-responsible').value;
-        const filterArea = document.getElementById('filter-area').value;
-        const searchInput = document.getElementById('search-input').value.toLowerCase();
+        const filterStatus = document.getElementById("filter-status").value;
+        const filterPriority = document.getElementById("filter-priority").value;
+        const filterResponsible = document.getElementById("filter-responsible").value;
+        const filterArea = document.getElementById("filter-area").value;
+        const searchInput = document.getElementById("search-input").value.toLowerCase();
 
         let filteredData = currentData.filter(demand => {
-            const matchesStatus = filterStatus === 'all' || demand.status === filterStatus;
-            const matchesPriority = filterPriority === 'all' || demand.pri === filterPriority;
-            const matchesResponsible = filterResponsible === 'all' || demand.resp === filterResponsible;
-            const matchesArea = filterArea === 'all' || demand.area === filterArea;
-            const matchesSearch = searchInput === '' || 
+            const matchesStatus = filterStatus === "all" || demand.status === filterStatus;
+            const matchesPriority = filterPriority === "all" || demand.pri === filterPriority;
+            const matchesResponsible = filterResponsible === "all" || demand.resp === filterResponsible;
+            const matchesArea = filterArea === "all" || demand.area === filterArea;
+            const matchesSearch = searchInput === "" || 
                                   demand.title.toLowerCase().includes(searchInput) ||
                                   demand.description.toLowerCase().includes(searchInput) ||
                                   demand.cherwell.toLowerCase().includes(searchInput) ||
@@ -300,7 +307,7 @@ function render() {
             return matchesStatus && matchesPriority && matchesResponsible && matchesArea && matchesSearch;
         });
 
-        document.getElementById('filter-count').innerText = `${filteredData.length} demandas`;
+        document.getElementById("filter-count").innerText = `${filteredData.length} demandas`;
 
         renderKPIs(filteredData);
         renderPipeline(filteredData);
@@ -311,11 +318,11 @@ function render() {
     };
 
     // Event Listeners para os filtros
-    document.getElementById('filter-status').addEventListener('change', window.render);
-    document.getElementById('filter-priority').addEventListener('change', window.render);
-    document.getElementById('filter-responsible').addEventListener('change', window.render);
-    document.getElementById('filter-area').addEventListener('change', window.render);
-    document.getElementById('search-input').addEventListener('keyup', window.render);
+    document.getElementById("filter-status").addEventListener("change", window.render);
+    document.getElementById("filter-priority").addEventListener("change", window.render);
+    document.getElementById("filter-responsible").addEventListener("change", window.render);
+    document.getElementById("filter-area").addEventListener("change", window.render);
+    document.getElementById("search-input").addEventListener("keyup", window.render);
 
     // Inicializar filtros
     function populateFilters(data) {
@@ -326,10 +333,10 @@ function render() {
 
         const createOptions = (selectId, items) => {
             const select = document.getElementById(selectId);
-            select.innerHTML = '<option value="all">Todos</option>';
+            select.innerHTML = "<option value=\"all\">Todos</option>";
             items.sort().forEach(item => {
-                if (item && item !== 'N/A') {
-                    const option = document.createElement('option');
+                if (item && item !== "N/A") {
+                    const option = document.createElement("option");
                     option.value = item;
                     option.innerText = item;
                     select.appendChild(option);
@@ -337,24 +344,24 @@ function render() {
             });
         };
 
-        createOptions('filter-status', statuses);
-        createOptions('filter-priority', priorities);
-        createOptions('filter-responsible', responsibles);
-        createOptions('filter-area', areas);
+        createOptions("filter-status", statuses);
+        createOptions("filter-priority", priorities);
+        createOptions("filter-responsible", responsibles);
+        createOptions("filter-area", areas);
     }
 
     // Ativar abas
-    document.querySelectorAll('.tab').forEach(tab => {
-        tab.addEventListener('click', function() {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(this.dataset.page).classList.add('active');
+    document.querySelectorAll(".tab").forEach(tab => {
+        tab.addEventListener("click", function() {
+            document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+            this.classList.add("active");
+            document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+            document.getElementById(this.dataset.page).classList.add("active");
         });
     });
 
     // Ativar a primeira aba por padrão
-    document.querySelector('.tab').click();
+    document.querySelector(".tab").click();
 
     // Chamar render() e popular filtros inicialmente
     populateFilters(window.DATA || []);
@@ -363,4 +370,4 @@ function render() {
 }
 
 // Chamar a função principal de renderização quando o DOM estiver carregado
-document.addEventListener('DOMContentLoaded', render);
+document.addEventListener("DOMContentLoaded", render);
