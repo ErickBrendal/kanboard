@@ -34,18 +34,57 @@ mkdir -p /home/ubuntu/kanboard/{nginx,css,sql,scripts,logs,backups}
 
 if [ ! -f .env ]; then
     DB_PASS=$(openssl rand -base64 24 | tr -dc 'a-zA-Z0-9' | head -c 24)
+    DOMAIN="kanboard.eblsolucoescorp.tec.br"
     echo "DB_PASSWORD=$DB_PASS" > /home/ubuntu/kanboard/.env
-    echo "DOMAIN=kanboard.eblsolucoescorp.tec.br" >> /home/ubuntu/kanboard/.env
+    echo "DOMAIN=$DOMAIN" >> /home/ubuntu/kanboard/.env
     echo "SSL_EMAIL=ti@eblsolucoescorp.tec.br" >> /home/ubuntu/kanboard/.env
-    echo "KANBOARD_URL=https://kanboard.eblsolucoescorp.tec.br/jsonrpc.php" >> /home/ubuntu/kanboard/.env
+    echo "KANBOARD_URL=https://${DOMAIN}/jsonrpc.php" >> /home/ubuntu/kanboard/.env
+
+    # Gerar config.php dinamicamente para evitar conflitos
+    cat > /home/ubuntu/kanboard/config.php << EOF
+<?php
+define(\'DB_DRIVER\', \'postgres\');
+define(\'DB_USERNAME\', \'kanboard\');
+// Usar a senha gerada diretamente
+define(\'DB_PASSWORD\', \'${DB_PASS}\');
+define(\'DB_HOSTNAME\', \'db\');
+define(\'DB_PORT\', \'5432\');
+define(\'DB_NAME\', \'kanboard\');
+define(\'DATA_DIR\', __DIR__ . \'/data\');
+define(\'APP_NAME\', \'EBL Kanboard\');
+define(\'APP_BASE_URL\', \'https://${DOMAIN}/\');
+define(\'APP_TIMEZONE\', \'America/Sao_Paulo\');
+define(\'APP_LANGUAGE\', \'pt_BR\');
+define(\'ENABLE_HSTS\', true);
+define(\'ENABLE_XFRAME\', true);
+define(\'ENABLE_URL_REWRITE\', true);
+define(\'SESSION_DURATION\', 0);
+define(\'REMEMBER_ME_AUTH\', true);
+define(\'SESSION_HANDLER\', \'db\');
+define(\'BRUTEFORCE_CAPTCHA\', 3);
+define(\'BRUTEFORCE_LOCKDOWN\', 6);
+define(\'BRUTEFORCE_LOCKDOWN_DURATION\', 15);
+define(\'API_AUTHENTICATION_HEADER\', \'X-API-Auth\');
+define(\'MAIL_TRANSPORT\', \'smtp\');
+define(\'MAIL_SMTP_HOSTNAME\', \'smtp.eblsolucoescorp.tec.br\');
+define(\'MAIL_SMTP_PORT\', 587);
+define(\'MAIL_SMTP_ENCRYPTION\', \'tls\');
+define(\'MAIL_SMTP_USERNAME\', \'kanboard@eblsolucoescorp.tec.br\');
+define(\'MAIL_SMTP_PASSWORD\', \'ALTERE_SENHA_SMTP\');
+define(\'MAIL_FROM\', \'kanboard@eblsolucoescorp.tec.br\');
+define(\'LOG_DRIVER\', \'file\');
+define(\'LOG_FILE\', DATA_DIR.\'/debug.log\');
+define(\'PLUGIN_API_URL\', \'https://kanboard.org/plugin/list.json\');
+define(\'PLUGIN_INSTALLER\', true);
+define(\'WEBHOOK_URL_BASE_URL\', \'https://${DOMAIN}/\');
+EOF
+
     echo "SENHA DO BANCO GERADA: $DB_PASS"
     echo "ANOTE ESTA SENHA!"
 fi
 
 # 5. Subir Containers
-echo "4/7 Subindo containers (HTTP)..."
-sed -i "/define('DB_NAME', 'kanboard');/a define('DATA_DIR', __DIR__ . '/data');" config.php
-    docker compose -f /home/ubuntu/kanboard/docker-compose.yml up -d
+echo "4/7 Subindo containers (HTTP)..docker compose -f /home/ubuntu/kanboard/docker-compose.yml up -d
 sleep 15
 
 # 6. SSL
