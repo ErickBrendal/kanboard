@@ -44,7 +44,8 @@ fi
 
 # 5. Subir Containers
 echo "4/7 Subindo containers (HTTP)..."
-docker compose -f /home/ubuntu/kanboard/docker-compose.yml up -d
+sed -i "/define('DB_NAME', 'kanboard');/a define('DATA_DIR', __DIR__ . '/data');" config.php
+    docker compose -f /home/ubuntu/kanboard/docker-compose.yml up -d
 sleep 15
 
 # 6. SSL
