@@ -1,6 +1,7 @@
 window.render = function() {
     console.log("render() called.");
     console.log("window.DATA inside render():", window.DATA);
+    console.log("Element kpi-total-demandas inside render():", document.getElementById("kpi-total-demandas"));
 
     // Funções auxiliares
     function formatCurrency(value) {
@@ -55,7 +56,13 @@ window.render = function() {
         const horasTotais = filteredData.reduce((sum, d) => sum + (d.horas || 0), 0);
         const mediaDiasEmFase = totalDemandas > 0 ? filteredData.reduce((sum, d) => sum + calculateDaysInPhase(d), 0) / totalDemandas : 0;
 
-        document.getElementById("kpi-total-demandas").innerText = totalDemandas;
+        const kpiTotalDemandasElement = document.getElementById("kpi-total-demandas");
+        if (kpiTotalDemandasElement) {
+            kpiTotalDemandasElement.innerText = totalDemandas;
+        } else {
+            console.error("Elemento kpi-total-demandas não encontrado.");
+        }
+
         // Apenas para o test_index.html, o restante será implementado no index.html completo
         // document.getElementById("kpi-demandas-abertas").innerText = demandasAbertas;
         // document.getElementById("kpi-demandas-implementadas").innerText = demandasImplementadas;
@@ -66,7 +73,6 @@ window.render = function() {
 
     // Função principal de renderização
     const currentData = window.DATA || [];
-    const totalDemandas = currentData.length;
 
     // Filtros (simplificados para o teste)
     const filterStatus = "all";
@@ -104,6 +110,32 @@ window.populateFilters = function(data) {
     // Nenhuma lógica de filtro real para o teste mínimo
 };
 
-// Chamar as funções diretamente após a definição
-window.populateFilters(window.DATA || []);
-window.render();
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOMContentLoaded fired.");
+    let attempts = 0;
+    const maxAttempts = 50; // 5 segundos
+    const interval = 100; // 100ms
+
+    function checkDataAndRender() {
+        console.log(`Attempt ${attempts + 1}/${maxAttempts}: Checking window.DATA...`);
+        if (window.DATA && window.DATA.length > 0) {
+            console.log("window.DATA found. Populating filters and rendering.");
+            window.populateFilters(window.DATA);
+            window.render();
+
+            // Adicionar event listeners após a renderização inicial (apenas para o index.html completo)
+            // document.getElementById("filter-status").addEventListener("change", window.render);
+            // document.getElementById("filter-priority").addEventListener("change", window.render);
+            // document.getElementById("filter-responsible").addEventListener("change", window.render);
+            // document.getElementById("filter-area").addEventListener("change", window.render);
+            // document.getElementById("search-input").addEventListener("keyup", window.render);
+        } else if (attempts < maxAttempts) {
+            attempts++;
+            setTimeout(checkDataAndRender, interval);
+        } else {
+            console.error("Falha ao carregar os dados do dashboard (window.DATA) após 5 segundos.");
+        }
+    }
+
+    checkDataAndRender();
+});
