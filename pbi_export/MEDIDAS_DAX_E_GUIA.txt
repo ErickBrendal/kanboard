@@ -1,0 +1,29 @@
+=== GUIA EXECUTIVO: POWER BI DESKTOP (EBL FAST TRACK) ===
+
+1. COMO IMPORTAR OS DADOS:
+   - Abra o Power BI Desktop.
+   - Clique em "Obter Dados" -> "Texto/CSV".
+   - Selecione o arquivo 'ebl_dados_kanboard.csv'.
+   - Origem do Arquivo: 65001: Unicode (UTF-8).
+   - Delimitador: Ponto e vírgula (;).
+
+2. MEDIDAS DAX RECOMENDADAS (Copie e cole em "Nova Medida"):
+
+   - Valor Total (R$):
+     Valor Total = SUM(Demandas[valor])
+
+   - Horas Totais (h):
+     Horas Totais = SUM(Demandas[horas])
+
+   - % de Conclusão:
+     % Conclusão = DIVIDE(CALCULATE(COUNTROWS(Demandas); Demandas[status] = "Fechada"); COUNTROWS(Demandas); 0)
+
+   - Demandas em Atraso:
+     Qtd Atraso = CALCULATE(COUNTROWS(Demandas); Demandas[aprovado] = "Não")
+
+3. VISUAIS SUGERIDOS:
+   - Cartão: 'Valor Total' e 'Horas Totais'.
+   - Gráfico de Funil: Eixo: 'fase' | Valores: 'seq' (Contagem).
+   - Gráfico de Barras: Eixo: 'resp' | Valores: 'valor'.
+   - Treemap: Grupo: 'area' | Valores: 'valor'.
+

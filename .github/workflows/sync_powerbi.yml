@@ -1,0 +1,86 @@
+name: 🔄 Sync Kanboard → Power BI
+
+on:
+  schedule:
+    # Executa às 10:00 UTC = 07:00 BRT (Brasília) todos os dias
+    - cron: '0 10 * * *'
+  workflow_dispatch:
+    # Permite execução manual pelo botão "Run workflow" no GitHub
+    inputs:
+      motivo:
+        description: 'Motivo da execução manual'
+        required: false
+        default: 'Atualização manual solicitada'
+
+jobs:
+  sync:
+    name: Sincronizar dados com Power BI
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: 📥 Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: 🐍 Configurar Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: 📦 Instalar dependências
+        run: |
+          pip install msal requests openpyxl
+
+      - name: 🔄 Executar sincronização Kanboard → Power BI
+        env:
+          KANBOARD_URL:  ${{ secrets.KANBOARD_URL }}
+          KANBOARD_USER: ${{ secrets.KANBOARD_USER }}
+          KANBOARD_PASS: ${{ secrets.KANBOARD_PASS }}
+          PBI_USERNAME:  ${{ secrets.PBI_USERNAME }}
+          PBI_PASSWORD:  ${{ secrets.PBI_PASSWORD }}
+          PBI_TENANT_ID: ${{ secrets.PBI_TENANT_ID }}
+          PBI_CLIENT_ID: ${{ secrets.PBI_CLIENT_ID }}
+          PBI_DATASET_ID: ${{ secrets.PBI_DATASET_ID }}
+        run: |
+          python3 scripts/sync_powerbi_actions.py
+
+      - name: 📊 Exibir resultado da sincronização
+        if: always()
+        run: |
+          if [ -f powerbi/sync_log.json ]; then
+            echo "=== Último log de sincronização ==="
+            python3 -c "
+          import json
+          with open('powerbi/sync_log.json') as f:
+              logs = json.load(f)
+          last = logs[-1] if logs else {}
+          print(f'Status: {last.get(\"status\",\"?\")}')
+          print(f'Tarefas sincronizadas: {last.get(\"tasks_synced\",0)}')
+          print(f'Tempo: {last.get(\"elapsed_seconds\",0):.1f}s')
+          print(f'Timestamp: {last.get(\"timestamp\",\"?\")}')
+          "
+          fi
+
+      - name: 🔄 Atualizar Dashboard HTML no GitHub Pages
+        run: |
+          git config user.name  "EBL Sync Bot"
+          git config user.email "sync@eblsolucoescorporativas.com"
+          python3 scripts/update_github_dashboard.py
+
+      - name: 💾 Commit do CSV atualizado
+        if: success()
+        run: |
+          git config user.name  "EBL Sync Bot"
+          git config user.email "sync@eblsolucoescorporativas.com"
+          git add powerbi/kanboard_dados_final.csv powerbi/sync_log.json || true
+          git diff --staged --quiet || git commit -m "chore: sync automático Power BI $(date '+%Y-%m-%d %H:%M')"
+          git push || true
+
+      - name: ✅ Notificar sucesso
+        if: success()
+        run: echo "✅ Sincronização concluída com sucesso! $(date '+%Y-%m-%d %H:%M:%S')"
+
+      - name: ❌ Notificar falha
+        if: failure()
+        run: echo "❌ FALHA na sincronização! Verifique os logs acima."
