@@ -10,7 +10,7 @@ echo "=== Iniciando Deploy Kanboard EBL ==="
 # 1. Preparar o servidor
 echo "1/7 Atualizando sistema e instalando dependências..."
 apt update && apt upgrade -y
-apt install -y curl python3-pip python3-venv ufw fail2ban netfilter-persistent
+apt install -y curl python3-pip python3-venv fail2ban netfilter-persistent
 
 # 2. Instalar Docker
 if ! command -v docker &> /dev/null; then
@@ -21,20 +21,16 @@ fi
 
 # 3. Configurar Firewall
 echo "2/7 Configurando Firewall..."
-ufw allow 22/tcp
-ufw allow 80/tcp
-ufw allow 443/tcp
-ufw --force enable
 
 # Oracle Cloud iptables
-iptables -I INPUT 6 -m state --state NEW -p tcp --dport 80 -j ACCEPT
-iptables -I INPUT 6 -m state --state NEW -p tcp --dport 443 -j ACCEPT
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 netfilter-persistent save
 
 # 4. Preparar estrutura e .env
 echo "3/7 Preparando ambiente..."
 mkdir -p /opt/kanboard-ebl/{nginx,css,sql,scripts,logs,backups}
-cd /opt/kanboard-ebl
+
 
 if [ ! -f .env ]; then
     DB_PASS=$(openssl rand -base64 24 | tr -dc 'a-zA-Z0-9' | head -c 24)
@@ -48,7 +44,7 @@ fi
 
 # 5. Subir Containers
 echo "4/7 Subindo containers (HTTP)..."
-docker compose up -d
+docker compose -f /home/ubuntu/kanboard/docker-compose.yml up -d
 sleep 15
 
 # 6. SSL
@@ -83,9 +79,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 */15 * * * * root /opt/kanboard-ebl/venv/bin/python /opt/kanboard-ebl/scripts/etl_kanboard.py 2>&1
 
 # Renovação SSL
-0 0,12 * * * root cd /opt/kanboard-ebl && docker compose run --rm certbot renew --quiet && docker compose restart nginx
-EOF
-chmod 644 /etc/cron.d/kanboard-ebl
+0 0,12 * * cd /home/ubuntu/kanboard && docker compose run --rm certbot renew --quiet && docker compose restart nginx4 /etc/cron.d/kanboard-ebl
 chmod +x /opt/kanboard-ebl/scripts/*.sh
 
 echo "=== Deploy Concluído! ==="
