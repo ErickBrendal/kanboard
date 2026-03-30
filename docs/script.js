@@ -70,7 +70,7 @@ function render() {
             "01. Backlog", "02. Refinamento", "03. Análise", "04. Aprovação", "05. Desenvolvimento", "06. Testes", "07. Deploy", "08. Implementado", "09. Cancelado"
         ];
 
-        const totalDemandas = filteredData.length; // Definir totalDemandas aqui para uso no pipeline
+        const totalDemandas = filteredData.length;
 
         const pipelineHtml = pipelineStages.map(stage => {
             const count = pipelineData[stage] || 0;
@@ -122,7 +122,7 @@ function render() {
             responsibleCounts[d.resp] = (responsibleCounts[d.resp] || 0) + 1;
         });
 
-        const totalDemandas = filteredData.length; // Definir totalDemandas aqui para uso nos responsáveis
+        const totalDemandas = filteredData.length;
 
         const responsibleList = Object.entries(responsibleCounts)
             .sort((a, b) => b[1] - a[1])
@@ -151,7 +151,7 @@ function render() {
             areaCounts[d.area] = (areaCounts[d.area] || 0) + 1;
         });
 
-        const totalDemandas = filteredData.length; // Definir totalDemandas aqui para uso nas áreas
+        const totalDemandas = filteredData.length;
 
         const areaList = Object.entries(areaCounts)
             .sort((a, b) => b[1] - a[1])
@@ -283,8 +283,7 @@ function render() {
 
     // Função principal de renderização
     window.render = function() {
-        console.log("DATA no render():", window.DATA); // Adicionado para depuração
-        const currentData = window.DATA || []; // Usar window.DATA que vem de data.js
+        const currentData = window.DATA || [];
         const totalDemandas = currentData.length;
 
         // Filtros
@@ -333,7 +332,7 @@ function render() {
 
         const createOptions = (selectId, items) => {
             const select = document.getElementById(selectId);
-            select.innerHTML = "<option value=\"all\">Todos</option>";
+            select.innerHTML = '<option value="all">Todos</option>';
             items.sort().forEach(item => {
                 if (item && item !== "N/A") {
                     const option = document.createElement("option");
@@ -369,5 +368,4 @@ function render() {
 
 }
 
-// Chamar a função principal de renderização quando o DOM estiver carregado
-render();
+document.addEventListener("DOMContentLoaded", render);

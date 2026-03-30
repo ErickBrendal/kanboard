@@ -3298,4 +3298,3 @@ window.DATA = [
     "valtech": ""
   }
 ];
-window.render();
