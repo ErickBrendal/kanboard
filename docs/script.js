@@ -370,4 +370,4 @@ function render() {
 }
 
 // Chamar a função principal de renderização quando o DOM estiver carregado
-// document.addEventListener("DOMContentLoaded", render); // Removido
+render();

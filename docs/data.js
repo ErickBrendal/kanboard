@@ -1,4 +1,4 @@
-const DATA = [
+window.DATA = [
   {
     "id": 216,
     "title": "[81643] BEMOL - Melhoria no fluxo de cancelamentos",
@@ -3298,3 +3298,4 @@ const DATA = [
     "valtech": ""
   }
 ];
+window.render();
