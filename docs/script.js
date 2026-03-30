@@ -1,4 +1,4 @@
-function render() {
+window.render = function() {
     // Funções auxiliares
     function formatCurrency(value) {
         return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(value);
@@ -282,72 +282,63 @@ function render() {
     }
 
     // Função principal de renderização
-    window.render = function() {
-        const currentData = window.DATA || [];
-        const totalDemandas = currentData.length;
+    const currentData = window.DATA || [];
+    const totalDemandas = currentData.length;
 
-        // Filtros
-        const filterStatus = document.getElementById("filter-status").value;
-        const filterPriority = document.getElementById("filter-priority").value;
-        const filterResponsible = document.getElementById("filter-responsible").value;
-        const filterArea = document.getElementById("filter-area").value;
-        const searchInput = document.getElementById("search-input").value.toLowerCase();
+    // Filtros
+    const filterStatus = document.getElementById("filter-status").value;
+    const filterPriority = document.getElementById("filter-priority").value;
+    const filterResponsible = document.getElementById("filter-responsible").value;
+    const filterArea = document.getElementById("filter-area").value;
+    const searchInput = document.getElementById("search-input").value.toLowerCase();
 
-        let filteredData = currentData.filter(demand => {
-            const matchesStatus = filterStatus === "all" || demand.status === filterStatus;
-            const matchesPriority = filterPriority === "all" || demand.pri === filterPriority;
-            const matchesResponsible = filterResponsible === "all" || demand.resp === filterResponsible;
-            const matchesArea = filterArea === "all" || demand.area === filterArea;
-            const matchesSearch = searchInput === "" || 
-                                  demand.title.toLowerCase().includes(searchInput) ||
-                                  demand.description.toLowerCase().includes(searchInput) ||
-                                  demand.cherwell.toLowerCase().includes(searchInput) ||
-                                  demand.rdm.toLowerCase().includes(searchInput);
-            return matchesStatus && matchesPriority && matchesResponsible && matchesArea && matchesSearch;
+    let filteredData = currentData.filter(demand => {
+        const matchesStatus = filterStatus === "all" || demand.status === filterStatus;
+        const matchesPriority = filterPriority === "all" || demand.pri === filterPriority;
+        const matchesResponsible = filterResponsible === "all" || demand.resp === filterResponsible;
+        const matchesArea = filterArea === "all" || demand.area === filterArea;
+        const matchesSearch = searchInput === "" || 
+                              demand.title.toLowerCase().includes(searchInput) ||
+                              demand.description.toLowerCase().includes(searchInput) ||
+                              demand.cherwell.toLowerCase().includes(searchInput) ||
+                              demand.rdm.toLowerCase().includes(searchInput);
+        return matchesStatus && matchesPriority && matchesResponsible && matchesArea && matchesSearch;
+    });
+
+    document.getElementById("filter-count").innerText = `${filteredData.length} demandas`;
+
+    renderKPIs(filteredData);
+    renderPipeline(filteredData);
+    renderDemandTable(filteredData);
+    renderResponsibles(filteredData);
+    renderAreas(filteredData);
+    renderCharts(filteredData);
+};
+
+window.populateFilters = function(data) {
+    const statuses = [...new Set(data.map(d => d.status))];
+    const priorities = [...new Set(data.map(d => d.pri))];
+    const responsibles = [...new Set(data.map(d => d.resp))];
+    const areas = [...new Set(data.map(d => d.area))];
+
+    const createOptions = (selectId, items) => {
+        const select = document.getElementById(selectId);
+        select.innerHTML = 
+        `<option value="all">Todos</option>`;
+        items.sort().forEach(item => {
+            if (item && item !== "N/A") {
+                const option = document.createElement("option");
+                option.value = item;
+                option.innerText = item;
+                select.appendChild(option);
+            }
         });
-
-        document.getElementById("filter-count").innerText = `${filteredData.length} demandas`;
-
-        renderKPIs(filteredData);
-        renderPipeline(filteredData);
-        renderDemandTable(filteredData);
-        renderResponsibles(filteredData);
-        renderAreas(filteredData);
-        renderCharts(filteredData);
     };
 
-    // Event Listeners para os filtros
-    document.getElementById("filter-status").addEventListener("change", window.render);
-    document.getElementById("filter-priority").addEventListener("change", window.render);
-    document.getElementById("filter-responsible").addEventListener("change", window.render);
-    document.getElementById("filter-area").addEventListener("change", window.render);
-    document.getElementById("search-input").addEventListener("keyup", window.render);
-
-    // Inicializar filtros
-    function populateFilters(data) {
-        const statuses = [...new Set(data.map(d => d.status))];
-        const priorities = [...new Set(data.map(d => d.pri))];
-        const responsibles = [...new Set(data.map(d => d.resp))];
-        const areas = [...new Set(data.map(d => d.area))];
-
-        const createOptions = (selectId, items) => {
-            const select = document.getElementById(selectId);
-            select.innerHTML = '<option value="all">Todos</option>';
-            items.sort().forEach(item => {
-                if (item && item !== "N/A") {
-                    const option = document.createElement("option");
-                    option.value = item;
-                    option.innerText = item;
-                    select.appendChild(option);
-                }
-            });
-        };
-
-        createOptions("filter-status", statuses);
-        createOptions("filter-priority", priorities);
-        createOptions("filter-responsible", responsibles);
-        createOptions("filter-area", areas);
-    }
+    createOptions("filter-status", statuses);
+    createOptions("filter-priority", priorities);
+    createOptions("filter-responsible", responsibles);
+    createOptions("filter-area", areas);
 
     // Ativar abas
     document.querySelectorAll(".tab").forEach(tab => {
@@ -361,11 +352,15 @@ function render() {
 
     // Ativar a primeira aba por padrão
     document.querySelector(".tab").click();
+};
 
-    // Chamar render() e popular filtros inicialmente
-    populateFilters(window.DATA || []);
-    window.render();
+// Event Listeners para os filtros (fora da função render para evitar recriação)
+document.getElementById("filter-status").addEventListener("change", window.render);
+document.getElementById("filter-priority").addEventListener("change", window.render);
+document.getElementById("filter-responsible").addEventListener("change", window.render);
+document.getElementById("filter-area").addEventListener("change", window.render);
+document.getElementById("search-input").addEventListener("keyup", window.render);
 
-}
-
-document.addEventListener("DOMContentLoaded", render);
+// Chamar populateFilters e render inicialmente
+window.populateFilters(window.DATA || []);
+window.render();
