@@ -354,14 +354,9 @@ window.populateFilters = function(data) {
     document.querySelector(".tab").click();
 };
 
-document.addEventListener("DOMContentLoaded", function() {
-    window.populateFilters(window.DATA || []);
-    window.render();
-
-    // Event Listeners para os filtros (fora da função render para evitar recriação)
-    document.getElementById("filter-status").addEventListener("change", window.render);
-    document.getElementById("filter-priority").addEventListener("change", window.render);
-    document.getElementById("filter-responsible").addEventListener("change", window.render);
-    document.getElementById("filter-area").addEventListener("change", window.render);
-    document.getElementById("search-input").addEventListener("keyup", window.render);
-});
+// Event Listeners para os filtros (fora da função render para evitar recriação)
+document.getElementById("filter-status").addEventListener("change", window.render);
+document.getElementById("filter-priority").addEventListener("change", window.render);
+document.getElementById("filter-responsible").addEventListener("change", window.render);
+document.getElementById("filter-area").addEventListener("change", window.render);
+document.getElementById("search-input").addEventListener("keyup", window.render);
