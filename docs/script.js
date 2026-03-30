@@ -360,3 +360,9 @@ document.getElementById("filter-priority").addEventListener("change", window.ren
 document.getElementById("filter-responsible").addEventListener("change", window.render);
 document.getElementById("filter-area").addEventListener("change", window.render);
 document.getElementById("search-input").addEventListener("keyup", window.render);
+
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOMContentLoaded fired. window.DATA:", window.DATA);
+    window.populateFilters(window.DATA || []);
+    window.render();
+});
