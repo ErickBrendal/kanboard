@@ -29,15 +29,15 @@ netfilter-persistent save
 
 # 4. Preparar estrutura e .env
 echo "3/7 Preparando ambiente..."
-mkdir -p /opt/kanboard-ebl/{nginx,css,sql,scripts,logs,backups}
+mkdir -p /home/ubuntu/kanboard/{nginx,css,sql,scripts,logs,backups}
 
 
 if [ ! -f .env ]; then
     DB_PASS=$(openssl rand -base64 24 | tr -dc 'a-zA-Z0-9' | head -c 24)
-    echo "DB_PASSWORD=$DB_PASS" > .env
-    echo "DOMAIN=kanboard.eblsolucoescorp.tec.br" >> .env
-    echo "SSL_EMAIL=ti@eblsolucoescorp.tec.br" >> .env
-    echo "KANBOARD_URL=https://kanboard.eblsolucoescorp.tec.br/jsonrpc.php" >> .env
+    echo "DB_PASSWORD=$DB_PASS" > /home/ubuntu/kanboard/.env
+    echo "DOMAIN=kanboard.eblsolucoescorp.tec.br" >> /home/ubuntu/kanboard/.env
+    echo "SSL_EMAIL=ti@eblsolucoescorp.tec.br" >> /home/ubuntu/kanboard/.env
+    echo "KANBOARD_URL=https://kanboard.eblsolucoescorp.tec.br/jsonrpc.php" >> /home/ubuntu/kanboard/.env
     echo "SENHA DO BANCO GERADA: $DB_PASS"
     echo "ANOTE ESTA SENHA!"
 fi
@@ -63,24 +63,22 @@ fi
 
 # 7. Python Venv
 echo "6/7 Configurando ambiente Python para ETL..."
-python3 -m venv /opt/kanboard-ebl/venv
-/opt/kanboard-ebl/venv/bin/pip install requests psycopg2-binary
-
-# 8. Cron Jobs
+python3 -m venv /home/ubuntu/kanboard/venv
+/home/ubuntu/kanboard/venv/bin/pip install requests psycopg2-binary
 echo "7/7 Configurando agendamentos (Cron)..."
 cat > /etc/cron.d/kanboard-ebl << 'EOF'
 SHELL=/bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 # Backup diário às 02:00
-0 2 * * * root /opt/kanboard-ebl/scripts/backup.sh >> /opt/kanboard-ebl/logs/backup.log 2>&1
+0 2 * * * root /home/ubuntu/kanboard/scripts/backup.sh >> /home/ubuntu/kanboard/logs/backup.log 2>&1
 
 # ETL a cada 15 minutos
-*/15 * * * * root /opt/kanboard-ebl/venv/bin/python /opt/kanboard-ebl/scripts/etl_kanboard.py 2>&1
+*/15 * * * * root /home/ubuntu/kanboard/venv/bin/python /home/ubuntu/kanboard/scripts/etl_kanboard.py 2>&1
 
 # Renovação SSL
-0 0,12 * * cd /home/ubuntu/kanboard && docker compose run --rm certbot renew --quiet && docker compose restart nginx4 /etc/cron.d/kanboard-ebl
-chmod +x /opt/kanboard-ebl/scripts/*.sh
+0 0,12 * * * root cd /home/ubuntu/kanboard && docker compose run --rm certbot renew --quiet && docker compose restart nginx
+chmod +x /home/ubuntu/kanboard/scripts/*.sh
 
 echo "=== Deploy Concluído! ==="
 echo "Acesse: https://kanboard.eblsolucoescorp.tec.br"
