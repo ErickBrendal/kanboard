@@ -3298,5 +3298,3 @@ window.DATA = [
     "valtech": "CE-20251031075"
   }
 ];
-window.populateFilters(window.DATA || []);
-window.render();
