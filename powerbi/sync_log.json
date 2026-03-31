@@ -19,5 +19,22 @@
     "tasks_synced": 105,
     "error": null,
     "elapsed_seconds": 9.029372
+  },
+  {
+    "timestamp": "2026-03-31T09:06:41.271522",
+    "status": "error",
+    "tasks_synced": 0,
+    "error": "('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
+  },
+  {
+    "timestamp": "2026-03-31T09:13:06.371306",
+    "status": "success",
+    "tasks_synced": 105,
+    "fonte": "local_enriched",
+    "error": null,
+    "kpis_synced": 8,
+    "fases_synced": 7,
+    "resp_synced": 5,
+    "elapsed_seconds": 14.67714
   }
 ]
