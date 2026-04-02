@@ -1,109 +1,1652 @@
 ﻿seq;cherwell;rdm;titulo;fase;status;resp;area;tipo;pri;golive;previsao;obs;valor;horas;dev;aprovado;aprovado_por;requisitante;valtech;data_criacao;task_id;sync_at
-1;84402;1609;Melhoria de Serviços Refrigeração(UP);10. Implementado;Implementado;Marcio Souza;Refrigeração;Parametrização;Média;02/10/2025;25/09/2025;Implementado em 02/10;4000.0;20.0;Valtech/Cross;N/A;Alinhado TI (transferencia do UP);Carlos Almeida;CE-20250729451;;;2026-03-31 09:13:06
-2;94743;1610;[Bens de Consumo]Melhorias no Portal do Representante (Partner Community) - Elgin;10. Implementado;Implementado;Erick Almeida;Bens de consumo;Produtividade Comercial;Alta;03/10/2025;25/09/2025;Implementado em 03/10;3200.0;16.0;Valtech;N/A;Solicitação TI (Ana Corazzini/Projeto portal Representantes);Natacha Santos;CE-20250830026;;;2026-03-31 09:13:06
-3;84400;1611;Melhoria de Serviços Automação (UP);10. Implementado;Implementado;Marcio Souza;Automação;Parametrização;Média;02/10/2025;25/09/2025;Implementado em 02/10;4000.0;20.0;Valtech/Cross;N/A;Alinhado TI (transferencia do UP);Carlos Almeida;CE-20250729450;;;2026-03-31 09:13:06
-4;95878;1613;Demanda de Pedidos de Serviços UP - Refrigeração - Maquina de Sorvete;10. Implementado;Implementado;Marcio Souza;TI;Parametrização;Média;02/10/2025;25/09/2025;Implementado em 02/10;2000.0;10.0;Valtech/Cross;N/A;Alinhado TI (transferencia do UP);Carlos Almeida;CE-20250729515;;;2026-03-31 09:13:06
-5;99256;;Habilitação de Campos SALESFORCE - Garantia;10. Implementado;Implementado;Elder Rodrigues;Comercial;Parametrização;Média;02/10/2025;25/09/2025;Implementado em 02/10;4000.0;20.0;Valtech;N/A;Alinhado TI (transferencia do UP);Elbison Souza;CE-20250830269;;;2026-03-31 09:13:06
-6;94785;1624;Criar exclusão de item da oportunidade (modificação produto);10. Implementado;Implementado;Erick Almeida;Bens de consumo;Produtividade Comercial;Média;09/10/2025;09/10/2025;Implementado em  09/10;4000.0;20.0;Experiência do Usuario;Sim;Solicitação TI (Ana Corazzini/Projeto portal Representantes);Natacha Santos;CE-20250930459;;;2026-03-31 09:13:06
-7;100379;1614;Bemol - Venda de Produtos de Automação;10. Implementado;Implementado;Marcio Souza;TI;Parametrização;Média;14/10/2025;06/10/2025;Implementada em 14/10;2400.0;12.0;Elgin;N/A;Alinhado TI (transferencia do UP);Carlos Almeida;;;;2026-03-31 09:13:06
-8;93995;;Notificação de Contas paradas há mais de 15 dias - Gerente;09. Deploy;Aberta;Elder Rodrigues;TI;Produtividade Comercial;Baixa;23/10/2025;23/10/2025;Aguardando implementação 23/10;6400.0;32.0;;Sim;Solicitação TI (Ana Corazzini/Projeto portal Representantes);Carlos Almeida;CE-20250930461;;;2026-03-31 09:13:06
-9;95865;;agrupamento Raiz CNPJ (incidente);09. Deploy;Aberta;Felipe Nascimento;Ar & Eletro;Incidente;Média;23/10/2025;25/09/2025;Aguardando implementação 16/10;4700.0;23.5;Valtech;;;Elisangela Santos;CE-20250729339;;;2026-03-31 09:13:06
-10;101061;;Criação de Automação da Atualização de Saldo/Cotas Salesforce / SAP;08. Homologação;Aberta;Marcio Souza;Bens de consumo;Produtividade Comercial;Baixa;13/11/2025;30/10/2025;Em Homologação previsão de entrega em 13/11 em produção;20000.0;100.0;Valtech/Cross;Sim;Aprovado pelo Marcel;Natacha Santos;CE-20241025444;;;2026-03-31 09:13:06
-11;101038;;ZVDS - VENDA DEMONSTRAÇÃO SIMBOLICA;07. Desenvolvimento;Aberta;Erick Almeida;Automação;Parametrização;Média;13/11/2025;05/11/2025;Priorizada pela Diretoria Automação;8000.0;40.0;;Sim;Aprovado pelo Nelson Romero;Vanessa Borsarini Bonalume;CE-20251031069;;;2026-03-31 09:13:06
-12;81643;;BEMOL - Melhoria no fluxo de cancelamentos;07. Desenvolvimento;Aberta;Marcio Souza;Ar & Eletro;Produtividade TI;Média;Em Planejamento;12/12/2025;Previsão inicio etapa 17/10 (fila de desenvolvimento);14000.0;70.0;Valtech/Cross;Sim;Alinhado TI (Lika);Willian Romero;CE-20250427877;;;2026-03-31 09:13:06
-13;95492;;Desenvolvimento Simples Remessa ZVSR no Salesforce;07. Desenvolvimento;Aberta;Marcio Souza;Fiscal;Parametrização;Média;11/12/2025;18/11/2025;Aguardando aprovação Diretoria;12000.0;60.0;Valtech;;;Carlos Almeida;CE-20250930397;;;2026-03-31 09:13:06
-14;92514;;Busca pela ordem de compra do cliente;07. Desenvolvimento;Aberta;Erick Almeida;Ar & Eletro;Parametrização;Alta;23/10/2025;16/10/2025;Estimativa;0.0;0.0;;;;Elisangela Santos;;;;2026-03-31 09:13:06
-15;101150;;Limitar a opção de parcelas no Salesforce conforme a BU;07. Desenvolvimento;Aberta;Marcio Souza;Financeiro;Incidente;Média;06/11/2025;22/10/2025;Marcio Analisar;3200.0;16.0;;;;Viviane Carlotti Topan;CE-20251031075;;;2026-03-31 09:13:06
-16;64742;;INCLUIR REJEITAR NAS EM TODAS FASES DE APROVAÇÕES PARA BACKOFFICE;06. Aprovação;Aberta;Erick Almeida;Bens de consumo;Produtividade Comercial;Média;Em planejamento;;Aguardando aprovação Bens de Consumo em 02/09 (Natacha informou que solicitaria);2800.0;14.0;Valtech;;;Natacha Santos;CE-20250930416;;;2026-03-31 09:13:06
-17;83499;;Local de Expedição no Salesforce - Verificar possibilidade de implementação de melhoria no SF;06. Aprovação;Aberta;Erick Almeida;TI;Produtividade Comercial;Média;Em planejamento;;Aguardando aprovação Diretoria;3200.0;16.0;Valtech;;;Felipe Gomes da Silva;CE-20250830277;;;2026-03-31 09:13:06
-18;91555;;Envio de notificações aos clientes (Emissão, Previsão e confirmação de Entrega);06. Aprovação;Aberta;Erick Almeida;Logística;Produtividade Comercial;Média;Em Planejamento;;Aguardando aprovação Diretoria;4800.0;24.0;Valtech;Não;Aguardando aprovação BU;Marjorie de Andrade Silva;CE-20250528716;;;2026-03-31 09:13:06
-19;87055;;LANÇAMENTO DE METAS (POR GRUPOS DE PRODUTOS);06. Aprovação;Aberta;Erick Almeida;Refrigeração;Produtividade Comercial;Baixa;Em Planejamento;;Aguardando aprovação Diretoria;10000.0;50.0;Valtech;;;Luiz Arnaldo Carrasco Lopes;CE-20250930420;;;2026-03-31 09:13:06
-20;94929;;EDI para integração de pedidos - Cliente Leroy;06. Aprovação;Aberta;Erick Almeida;Bens de consumo;Produtividade Comercial;Média;Em planejamento;;Aguardando aprovação Diretoria;5600.0;28.0;Valtech;;Solicitação TI (Ana Corazzini/Projeto portal Representantes);Natacha Santos;CE-20250729439;;;2026-03-31 09:13:06
-21;101551;;"Refaturar Saldo de Estoque por 
-Linha de Produto";06. Aprovação;Aberta;Marcio Souza;Bens de consumo;Produtividade Comercial;Média;Em Planejamento;;Aguardando aprovação Diretoria;8000.0;40.0;;;;Carlos Almeida;CE-20250930618;;;2026-03-31 09:13:06
-22;103844;;Aprovação direta por Margem de contribuição;06. Aprovação;Aberta;Erick Almeida;TI;Incidente;Média;Em Planejamento;;Aguardando aprovação Diretoria;4800.0;24.0;Valtech;;;Carlos Almeida;CE-20251031122;;;2026-03-31 09:13:06
-23;98965;;Refatorar Integração Telecontrol X Salesforce com Middleware;02. Refinamento;Aberta;Elder Rodrigues;Ar & Eletro;Incidente;Baixa;Em planejamento;23/10/2025;Verificar com o Elder em Outubro;0.0;0.0;;;;Elbison Souza;;;;2026-03-31 09:13:06
-24;101397;;Limitar os catálogos de preço por tipo de operação;02. Refinamento;Aberta;Elder Rodrigues;Refrigeração;Incidente;Média;Em planejamento;23/10/2025;Verificar com o Elder;0.0;0.0;;;;Pedro Cappellani;;;;2026-03-31 09:13:06
-25;87262;;Melhoria : aprovação crédito pedido consignado.;02. Refinamento;Aberta;Erick Almeida;Bens de consumo;Parametrização;Alta;Em Planejamento;23/10/2025;Aguardando retono do Bete - Verificar com o Felipe;0.0;0.0;;;;Elisabete Fatima Batista;CE-20250327489;;;2026-03-31 09:13:06
-26;81296;;RELATÓRIO DE COMISSÃO DO REPRESENTANTE.;02. Refinamento;Aberta;Erick Almeida;Refrigeração;Parametrização;Alta;Em planejamento;17/10/2025;Aguardando retorno do usuario;0.0;0.0;;;;Luiz Arnaldo Carrasco Lopes;;;;2026-03-31 09:13:06
-27;99616;;RELATÓRIOS E REPRESENTANTE PODER MARCAR UM FUNCIONÁRIO.;02. Refinamento;Aberta;Erick Almeida;Refrigeração;Parametrização;Alta;Em planejamento;16/10/2025;;0.0;0.0;;;;Luiz Arnaldo Carrasco Lopes;;;;2026-03-31 09:13:06
-28;69222;;cotação sobre a integração via API do Salesforce e RD Station.;01. Backlog;Aberta;Marcio Souza;Automação;;Média;Em Planejamento;;"Demanda aguardando priorização.
+1;[81643] BEMOL;;Melhoria no fluxo de cancelamentos;07. Desenvolvimento;Aberta;Marcio Souza;;;Média;;;"**📝 Observação:** Previsão inicio etapa 17/10 (fila de desenvolvimento)
 
-Existe um estudo de viabilidade por conta de demanda concorrente para o time Digital sobre implantação de novo site institucional.(Marcio em 12/09)";0.0;0.0;;;;Vanessa Borsarini Bonalume;;;;2026-03-31 09:13:06
-29;63681;;Melhoria Marketplace;01. Backlog;Aberta;Erick Almeida;TI;;Média;Em planejamento;;;0.0;0.0;;;;Felipe Nascimento;;;;2026-03-31 09:13:06
-30;79383;;Criação de Novo Tipo de Oportunidade;01. Backlog;Aberta;Erick Almeida;Automação;;Média;Em planejamento;;;0.0;0.0;;;;Marcio Fabian;;;;2026-03-31 09:13:06
-31;87076;;Inclusão ZMDK para e-commerce;01. Backlog;Aberta;Erick Almeida;Bens de consumo;;Média;Em planejamento;;Verificar com Elder;0.0;0.0;;;;Willian Romero;;;;2026-03-31 09:13:06
-32;75017;;Automatizar o fluxo de Pedidos de Financiamento = Código E989;01. Backlog;Aberta;Erick Almeida;Financeiro;;Média;Em planejamento;;;0.0;0.0;;;;Elisabete Fatima Batista;;;;2026-03-31 09:13:06
-33;87057;;Alcadas de aprovação - Automação;01. Backlog;Aberta;Erick Almeida;Automação;;Média;Em planejamento;;;0.0;0.0;;;;Vanessa Borsarini Bonalume;;;;2026-03-31 09:13:06
-34;87971;;Comissão zerada;01. Backlog;Aberta;Erick Almeida;Bens de consumo;;Média;Em planejamento;;;0.0;0.0;;;;Melina Carretoni;;;;2026-03-31 09:13:06
-35;90249;;"Categoria - Var ; revenda; distribuidor ; e - commerce ; corporativo - No cadastro do cliente";01. Backlog;Aberta;Erick Almeida;Automação;;Média;Em planejamento;;;0.0;0.0;;;;Vanessa Borsarini Bonalume;;;;2026-03-31 09:13:06
-36;94354;;relatório de comissionamento de agenciados,;01. Backlog;Aberta;Erick Almeida;Automação;;Média;Em planejamento;;;0.0;0.0;;;;Vanessa Borsarini Bonalume;;;;2026-03-31 09:13:06
-37;94751;;Criar regra para buscar o perfil do pedido de acordo com o cadastro do cliente;01. Backlog;Aberta;Erick Almeida;Bens de consumo;;Média;Em planejamento;;;0.0;0.0;;;;Natacha Santos;;;;2026-03-31 09:13:06
-38;94797;;Fazer checagem de cota na tela de inserção de produtos;01. Backlog;Aberta;Erick Almeida;Bens de consumo;;Média;Em planejamento;;;0.0;0.0;;;;Natacha Santos;;;;2026-03-31 09:13:06
-39;94807;;Correção ce Bug ao alterar a condição de pagamento;01. Backlog;Aberta;Erick Almeida;Bens de consumo;;Média;Em planejamento;;;0.0;0.0;;;;Natacha Santos;;;;2026-03-31 09:13:06
-40;94815;;Trazer o tipo de frete CIF setado como padrão na criação da oportunidade;01. Backlog;Aberta;Erick Almeida;Bens de consumo;;Média;Em planejamento;;;0.0;0.0;;;;Natacha Santos;;;;2026-03-31 09:13:06
-41;94816;;Possibilitar cadastro na conta de informações de entrega (paletizado, agendado);01. Backlog;Aberta;Erick Almeida;Bens de consumo;;Média;Em planejamento;;;0.0;0.0;;;;Natacha Santos;;;;2026-03-31 09:13:06
-42;91023;;Abertura dos locais de expedição no pedido;01. Backlog;Aberta;Erick Almeida;Programação de Materiais;;Média;Em planejamento;;;0.0;0.0;;;;Julio Francisco da Silva Junior;;;;2026-03-31 09:13:06
-43;92278;;Incluir coluna de tipo de pedido;01. Backlog;Aberta;Erick Almeida;Bens de consumo;;Média;Em planejamento;;;0.0;0.0;;;;Melina Carretoni;;;;2026-03-31 09:13:06
-44;99614;;Criar um visual no painel e alertas com status das contas para representante (cliente 60 dias sem co;01. Backlog;Aberta;Erick Almeida;Bens de consumo;;Média;Em planejamento;;;0.0;0.0;;;;Patricia Martins Borges;;;;2026-03-31 09:13:06
-45;100006;;Cadastro de e-mails no depsnet;01. Backlog;Aberta;Erick Almeida;Financeiro;;Média;Em planejamento;;;0.0;0.0;;;;Elisabete Fatima Batista;;;;2026-03-31 09:13:06
-46;88509;;Rastreabilidade de NFs Devolução e Garantia - Lincros;01. Backlog;Aberta;Elder Rodrigues;Logística;;Média;Em planejamento;;Verificar com o Elder;0.0;0.0;;;;Roberta Bourg do Nascimento;;;;2026-03-31 09:13:06
-47;93766;;Ajuste tela simulação de preços;01. Backlog;Aberta;Erick Almeida;Refrigeração;;Alta;Em planejamento;;Na fila de atendimento do time SAP;0.0;0.0;;;;Pedro Cappellani;;;;2026-03-31 09:13:06
-48;78463;;ZVT2 - recebedor da mercadoria (tratar contas com restrições no SAP ) na remessa;01. Backlog;Aberta;Erick Almeida;Ar & Eletro;;Alta;Em planejamento;;Demanda Cross com outras frentes (SAP e Salesforce) - Próxima etapa, estimativa SAP e Salesforce;0.0;0.0;;;;Elisangela Santos;;;;2026-03-31 09:13:06
-49;90248;;Vizualização no SF por produto e familia;01. Backlog;Aberta;Erick Almeida;Automação;;Média;Em planejamento;;;0.0;0.0;;;;Vanessa Borsarini Bonalume;;;;2026-03-31 09:13:06
-50;94726;;Criação Painel Gestão de Atividades - (Bens de Consumo);01. Backlog;Aberta;Erick Almeida;Diretoria;;Média;Em planejamento;;;0.0;0.0;;;;Marcel Serafim;;;;2026-03-31 09:13:06
-51;94741;;Estruturar Tela de Inclusão de Pedidos;01. Backlog;Aberta;Erick Almeida;Bens de consumo;;Média;Em planejamento;;;0.0;0.0;;;;Natacha Santos;;;;2026-03-31 09:13:06
-52;80712;;Refatoração da Integração SAP x Salesforce (Soap / Rest);01. Backlog;Aberta;Marcio Souza;TI;;Média;Em planejamento;;Aguardando aprovação ROI;4800.0;24.0;Valtech/Cross;Não;Aguardando aprovação BU;Carlos Almeida;CE-20250628971;;;2026-03-31 09:13:06
-53;80509;;Tabela de preços - Cãrgas personalizadas;01. Backlog;Aberta;Erick Almeida;Automação;;Média;Em planejamento;;;0.0;0.0;;;;Vanessa Borsarini Bonalume;;;;2026-03-31 09:13:06
-54;78464;;Obrigação Fiscal - Declaração de PIs e Cofins;01. Backlog;Aberta;Erick Almeida;Cadastros;;Média;Em planejamento;;;0.0;0.0;;;;Viviane Piva;;;;2026-03-31 09:13:06
-55;81644;;Cadastro de clientes sem CNAE;01. Backlog;Aberta;Erick Almeida;Cadastros;;Média;Em planejamento;;;0.0;0.0;;;;Vitoria Faria Carvalho da Costa;;;;2026-03-31 09:13:06
-56;89251;;Integração Sintegra / Suframa x Salesforce - Inserção Middleware AWS;01. Backlog;Aberta;Marcio Souza;TI;;Média;Em planejamento;;Verificar com o Marcio;0.0;0.0;;;;Carlos Almeida;;;;2026-03-31 09:13:06
-57;91944;;Integração Simples Nacional / Simei - Inserção Middleware AWS;01. Backlog;Aberta;Marcio Souza;TI;;Média;Em planejamento;;Verificar com o Marcio;0.0;0.0;;;;Carlos Almeida;;;;2026-03-31 09:13:06
-58;91946;;Integração receita federal (pessoa fisica) - Inserção Middleware AWS;01. Backlog;Aberta;Marcio Souza;TI;;Média;Em planejamento;;Verificar com o Marcio;0.0;0.0;;;;Carlos Almeida;;;;2026-03-31 09:13:06
-59;93471;;Criação de Organograma Empresarial - Todas BU's;01. Backlog;Aberta;Elder Rodrigues;TI;;Média;Em planejamento;;Verificar com o Elder;0.0;0.0;;;;Carlos Almeida;;;;2026-03-31 09:13:06
-60;94791;;Tornar Portal 100% responsivo para mobile;01. Backlog;Aberta;Carlos Almeida;Bens de consumo;;Média;Em planejamento;;;0.0;0.0;;;;Natacha Santos;;;;2026-03-31 09:13:06
-61;94794;;Função de clonar estar disponível para CNPJ's diferentes da mesma matriz;01. Backlog;Aberta;Erick Almeida;Bens de consumo;;Média;Em planejamento;;;0.0;0.0;;;;Natacha Santos;;;;2026-03-31 09:13:06
-62;95076;;Liberação da funcionalidade de ações em massa;01. Backlog;Aberta;Erick Almeida;Comercial;;Média;Em planejamento;;;0.0;0.0;;;;Elbison Souza;;;;2026-03-31 09:13:06
-63;90743;;Visualização de Saldo pendente ou cancelado;01. Backlog;Aberta;Erick Almeida;Ar & Eletro;;Alta;Em planejamento;;;0.0;0.0;;;;Elisangela Santos;;;;2026-03-31 09:13:06
-64;92585;;Alteração casas decimais.;01. Backlog;Aberta;Felipe Nascimento;Bens de consumo;;Média;Em planejamento;;Aguardando retorno do usuario;0.0;0.0;;;;Melina Carretoni;;;;2026-03-31 09:13:06
-65;92707;;Aparecer Cota Em Garantia;01. Backlog;Aberta;Erick Almeida;Bens de consumo;;Média;Em planejamento;;;0.0;0.0;;;;Bruna Souza;;;;2026-03-31 09:13:06
-66;99265;;ALTERAR MOTIVOS DENTRO DO SALES FORCE;01. Backlog;Aberta;Erick Almeida;Logística;;Média;Em planejamento;;;0.0;0.0;;;;Diogo da Silva Branco;;;;2026-03-31 09:13:06
-67;99267;;DEPOSITO de expedição;01. Backlog;Aberta;Erick Almeida;Comercial;;Média;Em planejamento;;;0.0;0.0;;;;Leila Almeida;;;;2026-03-31 09:13:06
-68;99618;;OPORTUNIDADES (CJ INDUSTRIAL E VENDA DE PROJETOS);01. Backlog;Aberta;Erick Almeida;Refrigeração;;Alta;Em planejamento;;;0.0;0.0;;;;Luiz Arnaldo Carrasco Lopes;;;;2026-03-31 09:13:06
-69;100153;;Incluir no relatório do comissionado - Parcela e Data Compensação;01. Backlog;Aberta;Erick Almeida;Bens de consumo;;Média;Em planejamento;;;0.0;0.0;;;;Patricia Martins Borges;;;;2026-03-31 09:13:06
-70;100205;;Criação de uma visão para o treinamentos;01. Backlog;Aberta;Erick Almeida;Bens de consumo;;Média;Em planejamento;;;0.0;0.0;;;;Juan Martins;;;;2026-03-31 09:13:06
-71;97555;;Habilitação de Visualização de Informação do Cadastro Contas;01. Backlog;Aberta;Erick Almeida;Refrigeração;;Alta;Em planejamento;;Verificar com o Felipe;0.0;0.0;;;;Marcio Fabian;;;;2026-03-31 09:13:06
-72;97556;;Deposito;01. Backlog;Aberta;Erick Almeida;Comercial;;Média;Em planejamento;;;0.0;0.0;;;;Leila Almeida;;;;2026-03-31 09:13:06
-73;97559;;Ajuste integração troca de itens;01. Backlog;Aberta;Erick Almeida;Ar & Eletro;;Alta;Em planejamento;;;0.0;0.0;;;;Elisangela Santos;;;;2026-03-31 09:13:06
-74;98544;;FATURAMENTO / IMPRESSÃO;01. Backlog;Aberta;Erick Almeida;Automação;;Média;Em planejamento;;;0.0;0.0;;;;Leila Almeida;;;;2026-03-31 09:13:06
-75;98608;;BLOQUEIO DE CHAVWE DE NOTA FISCAL DUPLICADA DENTRO DO SISTEMA;01. Backlog;Aberta;Elder Rodrigues;Logística;;Média;Em planejamento;;;0.0;0.0;;;;Diogo da Silva Branco;;;;2026-03-31 09:13:06
-76;98879;;TROCA DE PRODUTO, PORÉM O VALOR NÃO É ATUALIZADO;01. Backlog;Aberta;Erick Almeida;Refrigeração;;Alta;Em planejamento;;;0.0;0.0;;;;Andressa Teixeira;;;;2026-03-31 09:13:06
-77;97553;;Informações de pedido na fase de aprovação.;01. Backlog;Aberta;Felipe Nascimento;Logística;;Média;Em planejamento;;Verificar com o Felipe;0.0;0.0;;;;Diogo da Silva Branco;;;;2026-03-31 09:13:06
-78;100978;;Adequação no campo CNPJ - Reforma tributária;01. Backlog;Aberta;Erick Almeida;Cadastros;;Média;Em planejamento;;;0.0;0.0;;;;Vitoria Faria Carvalho da Costa;;;;2026-03-31 09:13:06
-79;100981;;Lists View e Aprovações em Massa;01. Backlog;Aberta;Erick Almeida;Ar & Eletro;;Alta;Em planejamento;;;0.0;0.0;;;;Elisangela Santos;;;;2026-03-31 09:13:06
-80;100971;;Processo de devolução - Garantia;01. Backlog;Aberta;Elder Rodrigues;Bens de consumo;;Média;Em planejamento;;Verificar com o Elder;0.0;0.0;;;;Andressa Marques;;;;2026-03-31 09:13:06
-81;100977;;Inclusão de campo - NFD CLIENTE;01. Backlog;Aberta;Elder Rodrigues;Bens de consumo;;Média;Em planejamento;;Verificar com o Elder;0.0;0.0;;;;Andressa Marques;;;;2026-03-31 09:13:06
-82;101370;;Aprovação dos pedidos de garantia lançados manualmente;01. Backlog;Aberta;Elder Rodrigues;Comercial;;Média;Em planejamento;;Verificar com o Elder;0.0;0.0;;;;Julio Francisco da Silva Junior;;;;2026-03-31 09:13:06
-83;101398;;PROCESSO DE DEVOLUÇÃO;01. Backlog;Aberta;Felipe Nascimento;Automação;;Média;Em planejamento;;Verificar com o Felipe;0.0;0.0;;;;Florislene Silva dos Santos;;;;2026-03-31 09:13:06
-84;100972;;URGENTE: PEDIDO DE PRODUTOS EM GARANTIA;01. Backlog;Aberta;Felipe Nascimento;Refrigeração;;Alta;Em planejamento;;Verificar com o Felipe;0.0;0.0;;;;Harumi Tachikawa;;;;2026-03-31 09:13:06
-85;100973;;Pedido de devolução (BDV) Duplicado;01. Backlog;Aberta;Felipe Nascimento;Bens de consumo;;Média;Em planejamento;;Verificar com o Felipe;0.0;0.0;;;;Andressa Marques;;;;2026-03-31 09:13:06
-86;101062;;Melhoria para incluir descrição do produto na tela de inserção de produtos na oportunidade;01. Backlog;Aberta;Marcio Souza;Bens de consumo;;Média;Em planejamento;;Verificar com o MArcio;0.0;0.0;;;;Natacha Santos;;;;2026-03-31 09:13:06
-87;97702;;Regras de Atribuição Salesforce | Refrigeração;01. Backlog;Aberta;Marcio Souza;Marketing-Refrigeração;;Média;Em Planejamento;;Criação de Especificação Funcional previsão de conclusão em 11/08;0.0;0.0;;;;Georjes Bruel;;;;2026-03-31 09:13:06
-88;101918;;DE X PARA - POR CLIENTE;01. Backlog;Aberta;Felipe Nascimento;Fiscal;;Média;Em Planejamento;;Verificar com o Felipe;0.0;0.0;;;;Amanda dos Santos Hirota;;;;2026-03-31 09:13:06
-89;101921;;Arredondamento de valores de NF - Pedidos de Garantia;01. Backlog;Aberta;Elder Rodrigues;Comercial;;Média;Em Planejamento;;Verificar com o Elder;0.0;0.0;;;;Miraneide Soares;;;;2026-03-31 09:13:06
-90;101923;;BOLETO À VISTA;01. Backlog;Aberta;Erick Almeida;Financeiro;;Média;Em Planejamento;;;0.0;0.0;;;;Viviane Carlotti Topan;;;;2026-03-31 09:13:06
-91;101924;;PIX QR CODE;01. Backlog;Aberta;Erick Almeida;Financeiro;;Média;Em Planejamento;;;0.0;0.0;;;;Viviane Carlotti Topan;;;;2026-03-31 09:13:06
-92;101927;;pesquisar por pedido na Aba TAREFAS;01. Backlog;Aberta;Elder Rodrigues;Logística;;Média;Em Planejamento;;;0.0;0.0;;;;Diogo da Silva Branco;;;;2026-03-31 09:13:06
-93;102106;;Integração de Imagens para Produtos no Salesforce;01. Backlog;Aberta;Elder Rodrigues;Comercial;;Média;Em Planejamento;;;0.0;0.0;;;;Carlos Almeida;;;;2026-03-31 09:13:06
-94;102549;;SINALIZAÇÃO DE PAGAMENTO COM CARTÃO DE CRÉDITO;01. Backlog;Aberta;Erick Almeida;Comercial;;Média;Em Planejamento;;;0.0;0.0;;;;Renata Oliveira;;;;2026-03-31 09:13:06
-95;102121;;IPI EM PORCENTAGEM NO ORÇAMENTO;01. Backlog;Aberta;Erick Almeida;Automação;;Média;Em Planejamento;;;0.0;0.0;;;;Pecas Automacao;;;;2026-03-31 09:13:06
-96;101499;;Erro divisão de remessa pedidos HDB;01. Backlog;Aberta;Felipe Nascimento;Refrigeração;;Média;Em Planejamento;;;0.0;0.0;;;;Pedro Cappellani;;;;2026-03-31 09:13:06
-97;102122;;Devolução E-commerce _ NFD Teste Elgin NF 140610;01. Backlog;Aberta;Felipe Nascimento;Ar & Eletro;;Média;Em Planejamento;;;0.0;0.0;;;;Yara Silva;;;;2026-03-31 09:13:06
-98;103452;;Utilização de API para cancelamento de faturamento Telecontrol;01. Backlog;Aberta;Elder Rodrigues;Comercial;;Média;Em Planejamento;;;0.0;0.0;;;;Julio Francisco da Silva Junior;;;;2026-03-31 09:13:06
-99;103258;;Exportação para Bens de consumo;01. Backlog;Aberta;Erick Almeida;Fiscal;;Média;Em Planejamento;;;0.0;0.0;;;;Rita de Cassia Pereira Gomes;;;;2026-03-31 09:13:06
-100;103532;;Permitir criação de Parâmetro - Ger Regional;01. Backlog;Aberta;Felipe Nascimento;Ar & Eletro;;Média;Em Planejamento;;;0.0;0.0;;;;Elisangela Santos;;;;2026-03-31 09:13:06
-101;103457;;Solicitação Urgente - Criação de Nova Fila/Território para Atendimento SAC;01. Backlog;Aberta;Elder Rodrigues;Comercial;;Média;Em Planejamento;;;0.0;0.0;;;;Elbison Souza;;;;2026-03-31 09:13:06
-102;103876;;Criação de Chamada de API - SAP para Notas de Serviços;01. Backlog;Aberta;Marcio Souza;TI;;Média;Em Planejamento;;;0.0;0.0;;;;Carlos Almeida;;;;2026-03-31 09:13:06
-103;103907;;Campo de Condição de pagamento DDE;01. Backlog;Aberta;Erick Almeida;Ar & Eletro;;Média;Em Planejamento;;;0.0;0.0;;;;Jessica Ingrid de Assis Rezende;;;;2026-03-31 09:13:06
-104;100380;;Bemol - Processo de alertas de Pedidos Parados;01. Backlog;Aberta;Marcio Souza;Corporativo;;Média;Em Planejamento;;;0.0;0.0;;;;Raugélio Gutemberg Neves Silva;;;;2026-03-31 09:13:06
-105;103902;;Criação de Novos Tipos de Pedidos no Salesforce (UP);01. Backlog;Aberta;Marcio Souza;TI;;Média;Em Planejamento;;;0.0;0.0;;;;Carlos Almeida;;;;2026-03-31 09:13:06
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Ar & Eletro
+**👤 Requisitante:** Willian Romero
+**🎯 Responsável:** Marcio Souza
+**📌 Tipo:** Produtividade TI
+**⚙️ Desenvolvimento:** Valtech/Cross
+
+### 💰 Financeiro & Estima";0.0;0.0;;;;;;2026-03-29;216;2026-04-02 09:10:44
+2;KB-217;;[64742] INCLUIR REJEITAR NAS EM TODAS FASES DE APROVAÇÕES PARA BACKOFFICE;06. Aprovação;Aberta;admin;;;Média;;;"**📝 Observação:** Aguardando aprovação Bens de Consumo em 02/09 (Natacha informou que solicitaria)
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Natacha Santos
+**🎯 Responsável:** Erick Almeida
+**📌 Tipo:** Produtividade Comercial
+**⚙️ Desenvolvimento:** V";0.0;0.0;;;;;;2026-03-29;217;2026-04-02 09:10:44
+3;[83499] Local de Expedição no Salesforce;;Verificar possibilidade de implementação de melhoria no SF;06. Aprovação;Aberta;admin;;;Média;;;"**📝 Observação:** Aguardando aprovação Diretoria
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** TI
+**👤 Requisitante:** Felipe Gomes da Silva
+**🎯 Responsável:** Erick Almeida
+**📌 Tipo:** Produtividade Comercial
+**⚙️ Desenvolvimento:** Valtech
+
+### 💰 Financeiro & Estimativas
+
+**⏱️ Horas Valte";0.0;0.0;;;;;;2026-03-29;218;2026-04-02 09:10:44
+4;KB-219;;[91555] Envio de notificações aos clientes (Emissão, Previsão e confirmação de Entrega);06. Aprovação;Aberta;admin;;;Média;;;"**📝 Observação:** Aguardando aprovação Diretoria
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Logística
+**👤 Requisitante:** Marjorie de Andrade Silva
+**🎯 Responsável:** Erick Almeida
+**📌 Tipo:** Produtividade Comercial
+**⚙️ Desenvolvimento:** Valtech
+
+### 💰 Financeiro & Estimativas
+
+**⏱️ ";0.0;0.0;;;;;;2026-03-29;219;2026-04-02 09:10:44
+5;KB-220;;[87055] LANÇAMENTO DE METAS (POR GRUPOS DE PRODUTOS);06. Aprovação;Aberta;admin;;;Alta;;;"**📝 Observação:** Aguardando aprovação Diretoria
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Refrigeração
+**👤 Requisitante:** Luiz Arnaldo Carrasco Lopes
+**🎯 Responsável:** Erick Almeida
+**📌 Tipo:** Produtividade Comercial
+**⚙️ Desenvolvimento:** Valtech
+
+### 💰 Financeiro & Estimativas
+
+";0.0;0.0;;;;;;2026-03-29;220;2026-04-02 09:10:44
+6;[94929] EDI para integração de pedidos;;Cliente Leroy;06. Aprovação;Aberta;admin;;;Média;;;"**📝 Observação:** Aguardando aprovação Diretoria
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Natacha Santos
+**🎯 Responsável:** Erick Almeida
+**📌 Tipo:** Produtividade Comercial
+**⚙️ Desenvolvimento:** Valtech
+
+### 💰 Financeiro & Estimativas
+
+**⏱️ Horas";0.0;0.0;;;;;;2026-03-29;221;2026-04-02 09:10:44
+7;KB-222;;"[101551] Refaturar Saldo de Estoque por 
+Linha de Produto";06. Aprovação;Aberta;Marcio Souza;;;Média;;;"**📝 Observação:** Aguardando aprovação Diretoria
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Carlos Almeida
+**🎯 Responsável:** Marcio Souza
+**📌 Tipo:** Produtividade Comercial
+
+### 💰 Financeiro & Estimativas
+
+**⏱️ Horas Valtech:** 40h
+**💵 Valor:** R$ 8";0.0;0.0;;;;;;2026-03-29;222;2026-04-02 09:10:44
+8;KB-223;;[103844] Aprovação direta por Margem de contribuição;06. Aprovação;Aberta;admin;;;Média;;;"**📝 Observação:** Aguardando aprovação Diretoria
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** TI
+**👤 Requisitante:** Carlos Almeida
+**🎯 Responsável:** Erick Almeida
+**📌 Tipo:** Incidente
+**⚙️ Desenvolvimento:** Valtech
+
+### 💰 Financeiro & Estimativas
+
+**⏱️ Horas Valtech:** 24h
+**💵 Valor:*";0.0;0.0;;;;;;2026-03-29;223;2026-04-02 09:10:44
+9;KB-224;;[98965] Refatorar Integração Telecontrol X Salesforce com Middleware;02. Refinamento;Aberta;Elder Rodrigues;;;Alta;;;"**📝 Observação:** Verificar com o Elder em Outubro
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Ar & Eletro
+**👤 Requisitante:** Elbison Souza
+**🎯 Responsável:** Elder Rodrigues
+**📌 Tipo:** Incidente
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências";0.0;0.0;;;;;;2026-03-29;224;2026-04-02 09:10:44
+10;KB-225;;[101397] Limitar os catálogos de preço por tipo de operação;02. Refinamento;Aberta;Elder Rodrigues;;;Média;;;"**📝 Observação:** Verificar com o Elder
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Refrigeração
+**👤 Requisitante:** Pedro Cappellani
+**🎯 Responsável:** Elder Rodrigues
+**📌 Tipo:** Incidente
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #101397";0.0;0.0;;;;;;2026-03-29;225;2026-04-02 09:10:44
+11;KB-226;;[87262] Melhoria : aprovação crédito pedido consignado.;02. Refinamento;Aberta;admin;;;Média;;;"**📝 Observação:** Aguardando retono do Bete - Verificar com o Felipe
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Elisabete Fatima Batista
+**🎯 Responsável:** Erick Almeida
+**📌 Tipo:** Parametrização
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+##";0.0;0.0;;;;;;2026-03-29;226;2026-04-02 09:10:44
+12;KB-227;;[81296] RELATÓRIO DE COMISSÃO DO REPRESENTANTE.;02. Refinamento;Aberta;admin;;;Média;;;"**📝 Observação:** Aguardando retorno do usuario
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Refrigeração
+**👤 Requisitante:** Luiz Arnaldo Carrasco Lopes
+**🎯 Responsável:** Erick Almeida
+**📌 Tipo:** Parametrização
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+##";0.0;0.0;;;;;;2026-03-29;227;2026-04-02 09:10:44
+13;KB-228;;[99616] RELATÓRIOS E REPRESENTANTE PODER MARCAR UM FUNCIONÁRIO.;02. Refinamento;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Refrigeração
+**👤 Requisitante:** Luiz Arnaldo Carrasco Lopes
+**🎯 Responsável:** Erick Almeida
+**📌 Tipo:** Parametrização
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #99616";0.0;0.0;;;;;;2026-03-29;228;2026-04-02 09:10:44
+14;KB-229;;[69222] cotação sobre a integração via API do Salesforce e RD Station.;01. Backlog;Aberta;Marcio Souza;;;Média;;;"**📝 Observação:** Demanda aguardando priorização.
+
+Existe um estudo de viabilidade por conta de demanda concorrente para o time Digital sobre implantação de novo site institucional.(Marcio em 12/09)
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Automação
+**👤 Requisitante:** Vanessa Borsari";0.0;0.0;;;;;;2026-03-29;229;2026-04-02 09:10:44
+15;KB-231;;[79383] Criação de Novo Tipo de Oportunidade;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Automação
+**👤 Requisitante:** Marcio Fabian
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #79383";0.0;0.0;;;;;;2026-03-29;231;2026-04-02 09:10:44
+16;KB-232;;[87076] Inclusão ZMDK para e-commerce;01. Backlog;Aberta;admin;;;Média;;;"**📝 Observação:** Verificar com Elder
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Willian Romero
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #87076";0.0;0.0;;;;;;2026-03-29;232;2026-04-02 09:10:44
+17;KB-233;;[75017] Automatizar o fluxo de Pedidos de Financiamento = Código E989;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Financeiro
+**👤 Requisitante:** Elisabete Fatima Batista
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #75017";0.0;0.0;;;;;;2026-03-29;233;2026-04-02 09:10:44
+18;[87057] Alcadas de aprovação;;Automação;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Automação
+**👤 Requisitante:** Vanessa Borsarini Bonalume
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #87057";0.0;0.0;;;;;;2026-03-29;234;2026-04-02 09:10:44
+19;KB-235;;[87971] Comissão zerada;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Melina Carretoni
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #87971";0.0;0.0;;;;;;2026-03-29;235;2026-04-02 09:10:44
+20;[90249] Categoria;"Var ; revenda; distribuidor ; e";"commerce ; corporativo - No cadastro do cliente";01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Automação
+**👤 Requisitante:** Vanessa Borsarini Bonalume
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #90249";0.0;0.0;;;;;;2026-03-29;236;2026-04-02 09:10:44
+21;KB-237;;[94354] relatório de comissionamento de agenciados,;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Automação
+**👤 Requisitante:** Vanessa Borsarini Bonalume
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #94354";0.0;0.0;;;;;;2026-03-29;237;2026-04-02 09:10:44
+22;KB-238;;[94751] Criar regra para buscar o perfil do pedido de acordo com o cadastro do cliente;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Natacha Santos
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #94751";0.0;0.0;;;;;;2026-03-29;238;2026-04-02 09:10:44
+23;KB-239;;[94797] Fazer checagem de cota na tela de inserção de produtos;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Natacha Santos
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #94797";0.0;0.0;;;;;;2026-03-29;239;2026-04-02 09:10:44
+24;KB-240;;[94807] Correção ce Bug ao alterar a condição de pagamento;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Natacha Santos
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #94807";0.0;0.0;;;;;;2026-03-29;240;2026-04-02 09:10:44
+25;KB-241;;[94815] Trazer o tipo de frete CIF setado como padrão na criação da oportunidade;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Natacha Santos
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #94815";0.0;0.0;;;;;;2026-03-29;241;2026-04-02 09:10:44
+26;KB-242;;[94816] Possibilitar cadastro na conta de informações de entrega (paletizado, agendado);01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Natacha Santos
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #94816";0.0;0.0;;;;;;2026-03-29;242;2026-04-02 09:10:44
+27;KB-243;;[91023] Abertura dos locais de expedição no pedido;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Programação de Materiais
+**👤 Requisitante:** Julio Francisco da Silva Junior
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #91023";0.0;0.0;;;;;;2026-03-29;243;2026-04-02 09:10:44
+28;KB-244;;[92278] Incluir coluna de tipo de pedido;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Melina Carretoni
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #92278";0.0;0.0;;;;;;2026-03-29;244;2026-04-02 09:10:44
+29;KB-245;;[99614] Criar um visual no painel e alertas com status das contas para representante (cliente 60 dias sem compra);01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Patricia Martins Borges
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #99614";0.0;0.0;;;;;;2026-03-29;245;2026-04-02 09:10:44
+30;KB-246;;[100006] Cadastro de e-mails no depsnet;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Financeiro
+**👤 Requisitante:** Elisabete Fatima Batista
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #100006";0.0;0.0;;;;;;2026-03-29;246;2026-04-02 09:10:44
+31;[88509] Rastreabilidade de NFs Devolução e Garantia;;Lincros;01. Backlog;Aberta;Elder Rodrigues;;;Média;;;"**📝 Observação:** Verificar com o Elder
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Logística
+**👤 Requisitante:** Roberta Bourg do Nascimento
+**🎯 Responsável:** Elder Rodrigues
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #8";0.0;0.0;;;;;;2026-03-29;247;2026-04-02 09:10:44
+32;KB-248;;[93766] Ajuste tela simulação de preços;01. Backlog;Aberta;admin;;;Média;;;"**📝 Observação:** Na fila de atendimento do time SAP
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Refrigeração
+**👤 Requisitante:** Pedro Cappellani
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:**";0.0;0.0;;;;;;2026-03-29;248;2026-04-02 09:10:44
+33;[78463] ZVT2;;recebedor da mercadoria (tratar contas com restrições no SAP ) na remessa;01. Backlog;Aberta;admin;;;Média;;;"**📝 Observação:** Demanda Cross com outras frentes (SAP e Salesforce) - Próxima etapa, estimativa SAP e Salesforce
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Ar & Eletro
+**👤 Requisitante:** Elisangela Santos
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** ";0.0;0.0;;;;;;2026-03-29;249;2026-04-02 09:10:44
+34;KB-250;;[90248] Vizualização no SF por produto e familia;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Automação
+**👤 Requisitante:** Vanessa Borsarini Bonalume
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #90248";0.0;0.0;;;;;;2026-03-29;250;2026-04-02 09:10:44
+35;[94726] Criação Painel Gestão de Atividades;;(Bens de Consumo);01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Diretoria
+**👤 Requisitante:** Marcel Serafim
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #94726";0.0;0.0;;;;;;2026-03-29;251;2026-04-02 09:10:44
+36;KB-252;;[94741] Estruturar Tela de Inclusão de Pedidos;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Natacha Santos
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #94741";0.0;0.0;;;;;;2026-03-29;252;2026-04-02 09:10:44
+37;KB-253;;[80712] Refatoração da Integração SAP x Salesforce (Soap / Rest);01. Backlog;Aberta;Marcio Souza;;;Média;;;"**📝 Observação:** Aguardando aprovação ROI
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** TI
+**👤 Requisitante:** Carlos Almeida
+**🎯 Responsável:** Marcio Souza
+**⚙️ Desenvolvimento:** Valtech/Cross
+
+### 💰 Financeiro & Estimativas
+
+**⏱️ Horas Valtech:** 24h
+**💵 Valor:** R$ 4.800,00
+
+### ✅ Ap";0.0;0.0;;;;;;2026-03-29;253;2026-04-02 09:10:44
+38;[80509] Tabela de preços;;Cãrgas personalizadas;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Automação
+**👤 Requisitante:** Vanessa Borsarini Bonalume
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #80509";0.0;0.0;;;;;;2026-03-29;254;2026-04-02 09:10:44
+39;[78464] Obrigação Fiscal;;Declaração de PIs e Cofins;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Cadastros
+**👤 Requisitante:** Viviane Piva
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #78464";0.0;0.0;;;;;;2026-03-29;255;2026-04-02 09:10:44
+40;KB-256;;[81644] Cadastro de clientes sem CNAE;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Cadastros
+**👤 Requisitante:** Vitoria Faria Carvalho da Costa
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #81644";0.0;0.0;;;;;;2026-03-29;256;2026-04-02 09:10:44
+41;[89251] Integração Sintegra / Suframa x Salesforce;;Inserção Middleware AWS;01. Backlog;Aberta;Marcio Souza;;;Média;;;"**📝 Observação:** Verificar com o Marcio
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** TI
+**👤 Requisitante:** Carlos Almeida
+**🎯 Responsável:** Marcio Souza
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #89251";0.0;0.0;;;;;;2026-03-29;257;2026-04-02 09:10:44
+42;[91944] Integração Simples Nacional / Simei;;Inserção Middleware AWS;01. Backlog;Aberta;Marcio Souza;;;Média;;;"**📝 Observação:** Verificar com o Marcio
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** TI
+**👤 Requisitante:** Carlos Almeida
+**🎯 Responsável:** Marcio Souza
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #91944";0.0;0.0;;;;;;2026-03-29;258;2026-04-02 09:10:44
+43;[91946] Integração receita federal (pessoa fisica);;Inserção Middleware AWS;01. Backlog;Aberta;Marcio Souza;;;Média;;;"**📝 Observação:** Verificar com o Marcio
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** TI
+**👤 Requisitante:** Carlos Almeida
+**🎯 Responsável:** Marcio Souza
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #91946";0.0;0.0;;;;;;2026-03-29;259;2026-04-02 09:10:44
+44;[93471] Criação de Organograma Empresarial;;Todas BU's;01. Backlog;Aberta;Elder Rodrigues;;;Média;;;"**📝 Observação:** Verificar com o Elder
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** TI
+**👤 Requisitante:** Carlos Almeida
+**🎯 Responsável:** Elder Rodrigues
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #93471";0.0;0.0;;;;;;2026-03-29;260;2026-04-02 09:10:44
+45;KB-261;;[94791] Tornar Portal 100% responsivo para mobile;01. Backlog;Aberta;Carlos Almeida;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Natacha Santos
+**🎯 Responsável:** Carlos Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #94791";0.0;0.0;;;;;;2026-03-29;261;2026-04-02 09:10:44
+46;KB-262;;[94794] Função de clonar estar disponível para CNPJ's diferentes da mesma matriz;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Natacha Santos
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #94794";0.0;0.0;;;;;;2026-03-29;262;2026-04-02 09:10:44
+47;KB-263;;[95076] Liberação da funcionalidade de ações em massa;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Comercial
+**👤 Requisitante:** Elbison Souza
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #95076";0.0;0.0;;;;;;2026-03-29;263;2026-04-02 09:10:44
+48;KB-264;;[90743] Visualização de Saldo pendente ou cancelado;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Ar & Eletro
+**👤 Requisitante:** Elisangela Santos
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #90743";0.0;0.0;;;;;;2026-03-29;264;2026-04-02 09:10:44
+49;KB-265;;[92585] Alteração casas decimais.;01. Backlog;Aberta;Felipe Nascimento;;;Média;;;"**📝 Observação:** Aguardando retorno do usuario
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Melina Carretoni
+**🎯 Responsável:** Felipe Nascimento
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:";0.0;0.0;;;;;;2026-03-29;265;2026-04-02 09:10:44
+50;KB-266;;[92707] Aparecer Cota Em Garantia;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Bruna Souza
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #92707";0.0;0.0;;;;;;2026-03-29;266;2026-04-02 09:10:44
+51;KB-267;;[99265] ALTERAR MOTIVOS DENTRO DO SALES FORCE;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Logística
+**👤 Requisitante:** Diogo da Silva Branco
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #99265";0.0;0.0;;;;;;2026-03-29;267;2026-04-02 09:10:44
+52;KB-268;;[99267] DEPOSITO de expedição;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Comercial
+**👤 Requisitante:** Leila Almeida
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #99267";0.0;0.0;;;;;;2026-03-29;268;2026-04-02 09:10:44
+53;KB-269;;[99618] OPORTUNIDADES (CJ INDUSTRIAL E VENDA DE PROJETOS);01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Refrigeração
+**👤 Requisitante:** Luiz Arnaldo Carrasco Lopes
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #99618";0.0;0.0;;;;;;2026-03-29;269;2026-04-02 09:10:44
+54;[100153] Incluir no relatório do comissionado;;Parcela e Data Compensação;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Patricia Martins Borges
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #100153";0.0;0.0;;;;;;2026-03-29;270;2026-04-02 09:10:44
+55;KB-271;;[100205] Criação de uma visão para o treinamentos;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Juan Martins
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #100205";0.0;0.0;;;;;;2026-03-29;271;2026-04-02 09:10:44
+56;KB-272;;[97555] Habilitação de Visualização de Informação do Cadastro Contas;01. Backlog;Aberta;admin;;;Média;;;"**📝 Observação:** Verificar com o Felipe
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Refrigeração
+**👤 Requisitante:** Marcio Fabian
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #97555";0.0;0.0;;;;;;2026-03-29;272;2026-04-02 09:10:44
+57;KB-273;;[97556] Deposito;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Comercial
+**👤 Requisitante:** Leila Almeida
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #97556";0.0;0.0;;;;;;2026-03-29;273;2026-04-02 09:10:44
+58;KB-274;;[97559] Ajuste integração troca de itens;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Ar & Eletro
+**👤 Requisitante:** Elisangela Santos
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #97559";0.0;0.0;;;;;;2026-03-29;274;2026-04-02 09:10:44
+59;KB-275;;[98544] FATURAMENTO / IMPRESSÃO;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Automação
+**👤 Requisitante:** Leila Almeida
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #98544";0.0;0.0;;;;;;2026-03-29;275;2026-04-02 09:10:44
+60;KB-276;;[98608] BLOQUEIO DE CHAVWE DE NOTA FISCAL DUPLICADA DENTRO DO SISTEMA;01. Backlog;Aberta;Elder Rodrigues;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Logística
+**👤 Requisitante:** Diogo da Silva Branco
+**🎯 Responsável:** Elder Rodrigues
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #98608";0.0;0.0;;;;;;2026-03-29;276;2026-04-02 09:10:44
+61;KB-277;;[98879] TROCA DE PRODUTO, PORÉM O VALOR NÃO É ATUALIZADO;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Refrigeração
+**👤 Requisitante:** Andressa Teixeira
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #98879";0.0;0.0;;;;;;2026-03-29;277;2026-04-02 09:10:44
+62;KB-278;;[97553] Informações de pedido na fase de aprovação.;01. Backlog;Aberta;Felipe Nascimento;;;Média;;;"**📝 Observação:** Verificar com o Felipe
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Logística
+**👤 Requisitante:** Diogo da Silva Branco
+**🎯 Responsável:** Felipe Nascimento
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #9755";0.0;0.0;;;;;;2026-03-29;278;2026-04-02 09:10:44
+63;[100978] Adequação no campo CNPJ;;Reforma tributária;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Cadastros
+**👤 Requisitante:** Vitoria Faria Carvalho da Costa
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #100978";0.0;0.0;;;;;;2026-03-29;279;2026-04-02 09:10:44
+64;KB-280;;[100981] Lists View e Aprovações em Massa;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Ar & Eletro
+**👤 Requisitante:** Elisangela Santos
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #100981";0.0;0.0;;;;;;2026-03-29;280;2026-04-02 09:10:44
+65;[100971] Processo de devolução;;Garantia;01. Backlog;Aberta;Elder Rodrigues;;;Média;;;"**📝 Observação:** Verificar com o Elder
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Andressa Marques
+**🎯 Responsável:** Elder Rodrigues
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #100971";0.0;0.0;;;;;;2026-03-29;281;2026-04-02 09:10:44
+66;[100977] Inclusão de campo;;NFD CLIENTE;01. Backlog;Aberta;Elder Rodrigues;;;Média;;;"**📝 Observação:** Verificar com o Elder
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Andressa Marques
+**🎯 Responsável:** Elder Rodrigues
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #100977";0.0;0.0;;;;;;2026-03-29;282;2026-04-02 09:10:44
+67;KB-283;;[101370] Aprovação dos pedidos de garantia lançados manualmente;01. Backlog;Aberta;Elder Rodrigues;;;Média;;;"**📝 Observação:** Verificar com o Elder
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Comercial
+**👤 Requisitante:** Julio Francisco da Silva Junior
+**🎯 Responsável:** Elder Rodrigues
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #101370";0.0;0.0;;;;;;2026-03-29;283;2026-04-02 09:10:44
+68;KB-284;;[101398] PROCESSO DE DEVOLUÇÃO;01. Backlog;Aberta;Felipe Nascimento;;;Média;;;"**📝 Observação:** Verificar com o Felipe
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Automação
+**👤 Requisitante:** Florislene Silva dos Santos
+**🎯 Responsável:** Felipe Nascimento
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #101398";0.0;0.0;;;;;;2026-03-29;284;2026-04-02 09:10:44
+69;KB-285;;[100972] URGENTE: PEDIDO DE PRODUTOS EM GARANTIA;01. Backlog;Aberta;Felipe Nascimento;;;Média;;;"**📝 Observação:** Verificar com o Felipe
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Refrigeração
+**👤 Requisitante:** Harumi Tachikawa
+**🎯 Responsável:** Felipe Nascimento
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #100972";0.0;0.0;;;;;;2026-03-29;285;2026-04-02 09:10:44
+70;KB-286;;[100973] Pedido de devolução (BDV) Duplicado;01. Backlog;Aberta;Felipe Nascimento;;;Média;;;"**📝 Observação:** Verificar com o Felipe
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Andressa Marques
+**🎯 Responsável:** Felipe Nascimento
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #100973";0.0;0.0;;;;;;2026-03-29;286;2026-04-02 09:10:44
+71;KB-287;;[101062] Melhoria para incluir descrição do produto na tela de inserção de produtos na oportunidade;01. Backlog;Aberta;Marcio Souza;;;Média;;;"**📝 Observação:** Verificar com o MArcio
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Bens de consumo
+**👤 Requisitante:** Natacha Santos
+**🎯 Responsável:** Marcio Souza
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #101062";0.0;0.0;;;;;;2026-03-29;287;2026-04-02 09:10:44
+72;KB-288;;[97702] Regras de Atribuição Salesforce | Refrigeração;01. Backlog;Aberta;Marcio Souza;;;Média;;;"**📝 Observação:** Criação de Especificação Funcional previsão de conclusão em 11/08
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Marketing-Refrigeração
+**👤 Requisitante:** Georjes Bruel
+**🎯 Responsável:** Marcio Souza
+
+### 💰 Financeiro & Estimativas
+
+**💵 Valor:** R$ 0,00
+
+### ✅ Aprovação
+";0.0;0.0;;;;;;2026-03-29;288;2026-04-02 09:10:44
+73;[101918] DE X PARA;;POR CLIENTE;01. Backlog;Aberta;Felipe Nascimento;;;Média;;;"**📝 Observação:** Verificar com o Felipe
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Fiscal
+**👤 Requisitante:** Amanda dos Santos Hirota
+**🎯 Responsável:** Felipe Nascimento
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #101918";0.0;0.0;;;;;;2026-03-29;289;2026-04-02 09:10:44
+74;[101921] Arredondamento de valores de NF;;Pedidos de Garantia;01. Backlog;Aberta;Elder Rodrigues;;;Média;;;"**📝 Observação:** Verificar com o Elder
+
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Comercial
+**👤 Requisitante:** Miraneide Soares
+**🎯 Responsável:** Elder Rodrigues
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #101921";0.0;0.0;;;;;;2026-03-29;290;2026-04-02 09:10:44
+75;KB-291;;[101923] BOLETO À VISTA;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Financeiro
+**👤 Requisitante:** Viviane Carlotti Topan
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #101923";0.0;0.0;;;;;;2026-03-29;291;2026-04-02 09:10:44
+76;KB-292;;[101924] PIX QR CODE;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Financeiro
+**👤 Requisitante:** Viviane Carlotti Topan
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #101924";0.0;0.0;;;;;;2026-03-29;292;2026-04-02 09:10:44
+77;KB-293;;[101927] pesquisar por pedido na Aba TAREFAS;01. Backlog;Aberta;Elder Rodrigues;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Logística
+**👤 Requisitante:** Diogo da Silva Branco
+**🎯 Responsável:** Elder Rodrigues
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #101927";0.0;0.0;;;;;;2026-03-29;293;2026-04-02 09:10:44
+78;KB-294;;[102106] Integração de Imagens para Produtos no Salesforce;01. Backlog;Aberta;Elder Rodrigues;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Comercial
+**👤 Requisitante:** Carlos Almeida
+**🎯 Responsável:** Elder Rodrigues
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #102106";0.0;0.0;;;;;;2026-03-29;294;2026-04-02 09:10:44
+79;KB-295;;[102549] SINALIZAÇÃO DE PAGAMENTO COM CARTÃO DE CRÉDITO;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Comercial
+**👤 Requisitante:** Renata Oliveira
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #102549";0.0;0.0;;;;;;2026-03-29;295;2026-04-02 09:10:44
+80;KB-296;;[102121] IPI EM PORCENTAGEM NO ORÇAMENTO;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Automação
+**👤 Requisitante:** Pecas Automacao
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #102121";0.0;0.0;;;;;;2026-03-29;296;2026-04-02 09:10:44
+81;KB-297;;[101499] Erro divisão de remessa pedidos HDB;01. Backlog;Aberta;Felipe Nascimento;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Refrigeração
+**👤 Requisitante:** Pedro Cappellani
+**🎯 Responsável:** Felipe Nascimento
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #101499";0.0;0.0;;;;;;2026-03-29;297;2026-04-02 09:10:44
+82;KB-298;;[102122] Devolução E-commerce _ NFD Teste Elgin NF 140610;01. Backlog;Aberta;Felipe Nascimento;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Ar & Eletro
+**👤 Requisitante:** Yara Silva
+**🎯 Responsável:** Felipe Nascimento
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #102122";0.0;0.0;;;;;;2026-03-29;298;2026-04-02 09:10:44
+83;KB-299;;[103452] Utilização de API para cancelamento de faturamento Telecontrol;01. Backlog;Aberta;Elder Rodrigues;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Comercial
+**👤 Requisitante:** Julio Francisco da Silva Junior
+**🎯 Responsável:** Elder Rodrigues
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #103452";0.0;0.0;;;;;;2026-03-29;299;2026-04-02 09:10:44
+84;KB-300;;[103258] Exportação para Bens de consumo;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Fiscal
+**👤 Requisitante:** Rita de Cassia Pereira Gomes
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #103258";0.0;0.0;;;;;;2026-03-29;300;2026-04-02 09:10:44
+85;[103532] Permitir criação de Parâmetro;;Ger Regional;01. Backlog;Aberta;Felipe Nascimento;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Ar & Eletro
+**👤 Requisitante:** Elisangela Santos
+**🎯 Responsável:** Felipe Nascimento
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #103532";0.0;0.0;;;;;;2026-03-29;301;2026-04-02 09:10:44
+86;[103457] Solicitação Urgente;;Criação de Nova Fila/Território para Atendimento SAC;01. Backlog;Aberta;Elder Rodrigues;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Comercial
+**👤 Requisitante:** Elbison Souza
+**🎯 Responsável:** Elder Rodrigues
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #103457";0.0;0.0;;;;;;2026-03-29;302;2026-04-02 09:10:44
+87;[103876] Criação de Chamada de API;;SAP para Notas de Serviços;01. Backlog;Aberta;Marcio Souza;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** TI
+**👤 Requisitante:** Carlos Almeida
+**🎯 Responsável:** Marcio Souza
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #103876";0.0;0.0;;;;;;2026-03-29;303;2026-04-02 09:10:44
+88;KB-304;;[103907] Campo de Condição de pagamento DDE;01. Backlog;Aberta;admin;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Ar & Eletro
+**👤 Requisitante:** Jessica Ingrid de Assis Rezende
+**🎯 Responsável:** Erick Almeida
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #103907";0.0;0.0;;;;;;2026-03-29;304;2026-04-02 09:10:44
+89;[100380] Bemol;;Processo de alertas de Pedidos Parados;01. Backlog;Aberta;Marcio Souza;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** Corporativo
+**👤 Requisitante:** Raugélio Gutemberg Neves Silva
+**🎯 Responsável:** Marcio Souza
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #100380";0.0;0.0;;;;;;2026-03-29;305;2026-04-02 09:10:44
+90;KB-306;;[103902] Criação de Novos Tipos de Pedidos no Salesforce (UP);01. Backlog;Aberta;Marcio Souza;;;Média;;;"
+---
+### 📋 Detalhes da Demanda
+
+**🏢 Área Solicitante:** TI
+**👤 Requisitante:** Carlos Almeida
+**🎯 Responsável:** Marcio Souza
+
+### 💰 Financeiro & Estimativas
+
+
+### ✅ Aprovação
+
+
+### 🔗 Referências
+
+**ID Cherwell:** #103902";0.0;0.0;;;;;;2026-03-29;306;2026-04-02 09:10:44
+91;[93995] Notificação de Contas paradas há mais de 15 dias;;Gerente;09. Deploy;Aberta;Elder Rodrigues;;;Alta;23/10/2025;;"**📝 Observação:** Aguardando implementação 23/10
+
+---
+### 📋 Detalhes
+
+**🏢 Área:** TI
+**👤 Requisitante:** Carlos Almeida
+**🎯 Responsável:** Elder Rodrigues
+**📌 Tipo:** Produtividade Comercial
+**⏱️ Horas Valtech:** 32h
+**💵 Valor:** R$ 6.400,00
+**✅ Aprovação:** Sim
+**Aprovado por:** Solicitação TI (Ana";0.0;0.0;;;;;;2026-03-29;321;2026-04-02 09:10:44
+92;KB-322;;[95865] agrupamento Raiz CNPJ (incidente);09. Deploy;Aberta;Felipe Nascimento;;;Média;23/10/2025;;"**📝 Observação:** Aguardando implementação 16/10
+
+---
+### 📋 Detalhes
+
+**🏢 Área:** Ar & Eletro
+**👤 Requisitante:** Elisangela Santos
+**🎯 Responsável:** Felipe Nascimento
+**📌 Tipo:** Incidente
+**⏱️ Horas Valtech:** 23.5h
+**💵 Valor:** R$ 4.700,00
+
+**ID Cherwell:** #95865
+**ID Valtech:** CE-20250729339";0.0;0.0;;;;;;2026-03-29;322;2026-04-02 09:10:44
+93;KB-323;;[101061] Criação de Automação da Atualização de Saldo/Cotas Salesforce / SAP;08. Homologação;Aberta;Marcio Souza;;;Alta;13/11/2025;;"**📝 Observação:** Em Homologação previsão de entrega em 13/11 em produção
+
+---
+### 📋 Detalhes
+
+**🏢 Área:** Bens de consumo
+**👤 Requisitante:** Natacha Santos
+**🎯 Responsável:** Marcio Souza
+**📌 Tipo:** Produtividade Comercial
+**⏱️ Horas Valtech:** 100h
+**💵 Valor:** R$ 20.000,00
+**✅ Aprovação:** Sim
+";0.0;0.0;;;;;;2026-03-29;323;2026-04-02 09:10:44
+94;[101038] ZVDS;;VENDA DEMONSTRAÇÃO SIMBOLICA;07. Desenvolvimento;Aberta;admin;;;Média;13/11/2025;;"**📝 Observação:** Priorizada pela Diretoria Automação
+
+---
+### 📋 Detalhes
+
+**🏢 Área:** Automação
+**👤 Requisitante:** Vanessa Borsarini Bonalume
+**🎯 Responsável:** Erick Almeida
+**📌 Tipo:** Parametrização
+**⏱️ Horas Valtech:** 40h
+**💵 Valor:** R$ 8.000,00
+**✅ Aprovação:** Sim
+**Aprovado por:** Aprova";0.0;0.0;;;;;;2026-03-29;324;2026-04-02 09:10:44
+95;KB-325;;[95492] Desenvolvimento Simples Remessa ZVSR no Salesforce;07. Desenvolvimento;Aberta;Marcio Souza;;;Média;11/12/2025;;"**📝 Observação:** Aguardando aprovação Diretoria
+
+---
+### 📋 Detalhes
+
+**🏢 Área:** Fiscal
+**👤 Requisitante:** Carlos Almeida
+**🎯 Responsável:** Marcio Souza
+**📌 Tipo:** Parametrização
+**⏱️ Horas Valtech:** 60h
+**💵 Valor:** R$ 12.000,00
+
+**ID Cherwell:** #95492
+**ID Valtech:** CE-20250930397";0.0;0.0;;;;;;2026-03-29;325;2026-04-02 09:10:44
+96;KB-326;;[92514] Busca pela ordem de compra do cliente;07. Desenvolvimento;Aberta;admin;;;Média;23/10/2025;;"**📝 Observação:** Estimativa
+
+---
+### 📋 Detalhes
+
+**🏢 Área:** Ar & Eletro
+**👤 Requisitante:** Elisangela Santos
+**🎯 Responsável:** Erick Almeida
+**📌 Tipo:** Parametrização
+**⏱️ Horas Elgin:** 20h
+**💵 Valor:** R$ 0,00
+
+**ID Cherwell:** #92514";0.0;0.0;;;;;;2026-03-29;326;2026-04-02 09:10:44
+97;KB-327;;[101150] Limitar a opção de parcelas no Salesforce conforme a BU;07. Desenvolvimento;Aberta;Marcio Souza;;;Média;06/11/2025;;"**📝 Observação:** Marcio Analisar
+
+---
+### 📋 Detalhes
+
+**🏢 Área:** Financeiro
+**👤 Requisitante:** Viviane Carlotti Topan
+**🎯 Responsável:** Marcio Souza
+**📌 Tipo:** Incidente
+**⏱️ Horas Valtech:** 16h
+**💵 Valor:** R$ 3.200,00
+
+**ID Cherwell:** #101150
+**ID Valtech:** CE-20251031075";0.0;0.0;;;;;;2026-03-29;327;2026-04-02 09:10:44

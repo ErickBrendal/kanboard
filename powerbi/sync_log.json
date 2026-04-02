@@ -36,5 +36,29 @@
     "fases_synced": 7,
     "resp_synced": 5,
     "elapsed_seconds": 14.67714
+  },
+  {
+    "timestamp": "2026-04-02T09:06:50.664704",
+    "status": "success",
+    "tasks_synced": 97,
+    "error": null,
+    "data_source": "local_snapshot",
+    "elapsed_seconds": 33.04459
+  },
+  {
+    "timestamp": "2026-04-02T09:09:07.068806",
+    "status": "success",
+    "tasks_synced": 97,
+    "error": null,
+    "data_source": "local_snapshot",
+    "elapsed_seconds": 13.539516
+  },
+  {
+    "timestamp": "2026-04-02T09:10:43.397899",
+    "status": "success",
+    "tasks_synced": 97,
+    "error": null,
+    "data_source": "local_snapshot",
+    "elapsed_seconds": 8.077165
   }
 ]
