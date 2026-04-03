@@ -7,11 +7,11 @@ define('DB_PORT', '5432');
 define('DB_NAME', 'kanboard');
 
 define('APP_NAME', 'EBL Kanboard');
-define('APP_BASE_URL', 'https://kanboard.eblsolucoescorp.tec.br/');
+define('APP_BASE_URL', 'http://kanboard.eblsolucoescorp.tec.br/'); // FIX: temporario ate SSL ser renovado
 define('APP_TIMEZONE', 'America/Sao_Paulo');
 define('APP_LANGUAGE', 'pt_BR');
 
-define('ENABLE_HSTS', true);
+define('ENABLE_HSTS', false); // FIX: desabilitado - reativar apos certificado SSL valido
 define('ENABLE_XFRAME', true);
 define('ENABLE_URL_REWRITE', true);
 define('SESSION_DURATION', 0);
