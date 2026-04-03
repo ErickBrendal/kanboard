@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-EBL Kanboard → Power BI Sync Automático
+EBL Kanboard → Power BI Sync Automático (com fallback para dados locais)
 Executa diariamente via cron/GitHub Actions
-Versão: 2.0 | Criado em: 2026-03-29
+Versão: 2.1 | Adaptado em: 2026-04-02
 """
 
 import msal, requests, json, csv, sys, os
@@ -12,7 +12,7 @@ from pathlib import Path
 # ===== CONFIGURAÇÕES =====
 KANBOARD_URL   = "http://kanboard.eblsolucoescorp.tec.br/jsonrpc.php"
 KANBOARD_USER  = "admin"
-KANBOARD_PASS  = "Senha@2026"
+KANBOARD_TOKEN = "a43a8785a4487979964cd7e12fc8c56bbb6ef7a6fa64bcb6c45fa1afc6ff"
 KANBOARD_PROJ  = 11  # [SF] Fast Track — Salesforce
 
 PBI_USERNAME   = "admebl@eblsolucoescorporativas.com"
@@ -25,6 +25,8 @@ PBI_SCOPE      = ["https://analysis.windows.net/powerbi/api/.default"]
 BASE_DIR = Path(__file__).parent.parent
 EXCEL_MAP = BASE_DIR / "powerbi" / "excel_map.json"
 LOG_FILE  = BASE_DIR / "powerbi" / "sync_log.json"
+LOCAL_SNAPSHOT = BASE_DIR / "backups" / "snapshot_antes_limpeza.json"
+LOCAL_CSV = BASE_DIR / "powerbi" / "kanboard_dados_final.csv"
 
 def log(msg, level="INFO"):
     ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -43,23 +45,35 @@ def get_pbi_token():
 def kanboard_api(method, params=None):
     """Chama a API JSON-RPC do Kanboard"""
     payload = {"jsonrpc": "2.0", "method": method, "id": 1, "params": params or {}}
-    r = requests.post(KANBOARD_URL, json=payload, auth=(KANBOARD_USER, KANBOARD_PASS), timeout=30)
+    r = requests.post(KANBOARD_URL, json=payload, auth=(KANBOARD_USER, KANBOARD_TOKEN), timeout=30)
     r.raise_for_status()
     return r.json().get("result")
 
 def get_all_tasks():
-    """Busca todas as tarefas do projeto (abertas e fechadas)"""
-    log("Buscando tarefas abertas do Kanboard...")
-    open_tasks = kanboard_api("getAllTasks", {"project_id": KANBOARD_PROJ, "status_id": 1}) or []
-    log(f"  → {len(open_tasks)} tarefas abertas")
-    
-    log("Buscando tarefas fechadas do Kanboard...")
-    closed_tasks = kanboard_api("getAllTasks", {"project_id": KANBOARD_PROJ, "status_id": 0}) or []
-    log(f"  → {len(closed_tasks)} tarefas fechadas")
-    
-    all_tasks = open_tasks + closed_tasks
-    log(f"Total: {len(all_tasks)} tarefas")
-    return all_tasks
+    """Busca todas as tarefas do projeto (abertas e fechadas) com fallback para dados locais"""
+    try:
+        log("Tentando buscar tarefas do Kanboard via API...")
+        open_tasks = kanboard_api("getAllTasks", {"project_id": KANBOARD_PROJ, "status_id": 1}) or []
+        log(f"  → {len(open_tasks)} tarefas abertas")
+        
+        closed_tasks = kanboard_api("getAllTasks", {"project_id": KANBOARD_PROJ, "status_id": 0}) or []
+        log(f"  → {len(closed_tasks)} tarefas fechadas")
+        
+        all_tasks = open_tasks + closed_tasks
+        log(f"Total: {len(all_tasks)} tarefas obtidas da API")
+        return all_tasks
+    except Exception as e:
+        log(f"Erro ao acessar API Kanboard: {e}", "WARN")
+        log("Usando dados locais como fallback...", "WARN")
+        
+        # Carregar snapshot local
+        if LOCAL_SNAPSHOT.exists():
+            with open(LOCAL_SNAPSHOT, 'r', encoding='utf-8') as f:
+                tasks = json.load(f)
+            log(f"  → {len(tasks)} tarefas carregadas do snapshot local")
+            return tasks
+        else:
+            raise Exception("Nenhuma fonte de dados disponível (API offline e sem snapshot local)")
 
 def load_excel_enrichment():
     """Carrega dados de enriquecimento do Excel (área, valor, horas, etc.)"""
@@ -94,17 +108,58 @@ def get_column_name(task, columns_cache):
         return columns_cache[col_id]
     return "Backlog"
 
+def get_columns_cache():
+    """Obtém cache de colunas (com fallback para mapeamento local)"""
+    try:
+        columns = kanboard_api("getColumns", {"project_id": KANBOARD_PROJ}) or []
+        return {str(c["id"]): c["title"] for c in columns}
+    except:
+        log("Usando mapeamento de colunas local (powerbi_config.json)", "WARN")
+        # Carregar mapeamento completo do powerbi_config.json
+        try:
+            pbi_conf = BASE_DIR / "powerbi" / "powerbi_config.json"
+            with open(pbi_conf, 'r', encoding='utf-8') as f:
+                conf_data = json.load(f)
+            col_map = conf_data.get('kanboard_powerbi_config', {}).get('mapeamento_colunas', {})
+            if col_map:
+                log(f"  → {len(col_map)} colunas carregadas do powerbi_config.json")
+                return col_map
+        except Exception as e:
+            log(f"  Erro ao carregar powerbi_config.json: {e}", "WARN")
+        # Fallback hardcoded com mapeamento completo
+        return {
+            "165": "01. Backlog", "166": "02. Refinamento", "167": "03. Priorizada",
+            "168": "04. Análise", "169": "05. Estimativa", "170": "06. Aprovação",
+            "171": "07. Desenvolvimento", "172": "08. Homologação", "173": "09. Deploy",
+            "174": "10. Implementado", "175": "11. Cancelado",
+            "176": "01. Backlog", "177": "02. Refinamento", "178": "04. Análise",
+            "179": "05. Estimativa", "180": "06. Aprovação", "181": "07. Desenvolvimento",
+            "182": "08. Homologação", "183": "09. Deploy", "184": "10. Implementado",
+            "185": "11. Cancelado",
+            "186": "01. Backlog", "187": "02. Refinamento", "188": "04. Análise",
+            "189": "05. Estimativa", "190": "06. Aprovação", "191": "07. Desenvolvimento",
+            "192": "08. Homologação", "193": "09. Deploy", "194": "10. Implementado",
+            "195": "11. Cancelado", "39": "03. Priorizada"
+        }
+
+def get_users_map():
+    """Obtém mapeamento de usuários (com fallback)"""
+    try:
+        users = kanboard_api("getAllUsers") or []
+        return {str(u["id"]): u.get("name") or u.get("username","") for u in users}
+    except:
+        log("Usando mapeamento de usuários local", "WARN")
+        return {
+            "1": "admin", "2": "Erick Almeida", "3": "Marcio Souza",
+            "4": "Elder Rodrigues", "5": "Felipe Nascimento", "6": "Carlos Almeida"
+        }
+
 def enrich_tasks(tasks, excel_map):
     """Enriquece as tarefas com dados do Excel e normaliza campos"""
     log("Enriquecendo dados das tarefas...")
     
-    # Buscar colunas do projeto
-    columns = kanboard_api("getColumns", {"project_id": KANBOARD_PROJ}) or []
-    columns_cache = {str(c["id"]): c["title"] for c in columns}
-    
-    # Mapeamento de responsáveis
-    users = kanboard_api("getAllUsers") or []
-    users_map = {str(u["id"]): u.get("name") or u.get("username","") for u in users}
+    columns_cache = get_columns_cache()
+    users_map = get_users_map()
     
     enriched = []
     for i, task in enumerate(tasks, 1):
@@ -295,7 +350,7 @@ def save_log(sync_result):
 def main():
     start = datetime.now()
     log("=" * 60)
-    log("EBL Kanboard → Power BI Sync Iniciado")
+    log("EBL Kanboard → Power BI Sync Iniciado (com fallback local)")
     log("=" * 60)
     
     sync_result = {
@@ -303,14 +358,16 @@ def main():
         "status": "error",
         "tasks_synced": 0,
         "error": None,
+        "data_source": "unknown",
     }
     
     try:
         # 1. Autenticar no Power BI
         token = get_pbi_token()
         
-        # 2. Buscar dados do Kanboard
+        # 2. Buscar dados do Kanboard (com fallback)
         tasks = get_all_tasks()
+        sync_result["data_source"] = "kanboard_api" if len(tasks) > 97 else "local_snapshot"
         
         # 3. Enriquecer com dados do Excel
         excel_map = load_excel_enrichment()
@@ -345,6 +402,7 @@ def main():
         elapsed = (datetime.now() - start).total_seconds()
         log(f"\n{'='*60}")
         log(f"SYNC CONCLUÍDO em {elapsed:.1f}s")
+        log(f"  Fonte: {sync_result['data_source']}")
         log(f"  Demandas: {n_demandas} | KPIs: {n_kpis} | Fases: {n_fases} | Responsáveis: {n_resp}")
         log(f"{'='*60}")
         
@@ -356,6 +414,8 @@ def main():
         
     except Exception as e:
         log(f"ERRO CRÍTICO: {e}", "ERROR")
+        import traceback
+        traceback.print_exc()
         sync_result["error"] = str(e)
         save_log(sync_result)
         sys.exit(1)

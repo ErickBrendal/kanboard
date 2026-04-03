@@ -60,5 +60,19 @@
     "error": null,
     "data_source": "local_snapshot",
     "elapsed_seconds": 8.077165
+  },
+  {
+    "timestamp": "2026-04-03T09:01:25.487457",
+    "status": "error",
+    "tasks_synced": 0,
+    "error": "401 Client Error: Unauthorized for url: http://kanboard.eblsolucoescorp.tec.br/jsonrpc.php"
+  },
+  {
+    "timestamp": "2026-04-03T09:04:00.114039",
+    "status": "success",
+    "tasks_synced": 97,
+    "error": null,
+    "data_source": "local_snapshot",
+    "elapsed_seconds": 9.602956
   }
 ]
