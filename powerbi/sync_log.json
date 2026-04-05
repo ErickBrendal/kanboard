@@ -74,5 +74,26 @@
     "error": null,
     "data_source": "local_snapshot",
     "elapsed_seconds": 9.602956
+  },
+  {
+    "timestamp": "2026-04-05T09:03:55.400639",
+    "status": "error",
+    "tasks_synced": 0,
+    "error": "Falha na autenticação Power BI: AADSTS50076: Due to a configuration change made by your administrator, or because you moved to a new location, you must use multi-factor authentication to access '00000009-0000-0000-c000-000000000000'. Trace ID: cf70b09d-8a7c-4928-8b47-ed85be401700 Correlation ID: 5613e0a7-3247-440d-82a2-8abb5bfd424f Timestamp: 2026-04-05 13:03:58Z",
+    "data_source": "unknown"
+  },
+  {
+    "timestamp": "2026-04-05T09:07:49.325045",
+    "status": "success",
+    "tasks_synced": 105,
+    "kpis_synced": 8,
+    "fases_synced": 7,
+    "resp_synced": 5,
+    "error": null,
+    "data_source": "data_enriquecido",
+    "powerbi_status": "success",
+    "elapsed_seconds": 9.941455,
+    "csv_path": "/home/ubuntu/kanboard/powerbi/kanboard_dados_final.csv",
+    "total_tasks_local": 105
   }
 ]
