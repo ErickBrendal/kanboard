@@ -1,0 +1,81 @@
+{
+  "projeto": "CRM Salesforce",
+  "project_id": 1,
+  "gerado_em": "2026-04-06T20:55:08.162605",
+  "campos": [
+    {
+      "name": "Subcategoria",
+      "field_type": "text",
+      "description": "Subcategoria do projeto (ex: CRM Salesforce, Integração)"
+    },
+    {
+      "name": "Área Negócio",
+      "field_type": "text",
+      "description": "Área de negócio solicitante (ex: eCommerce, Financeiro)"
+    },
+    {
+      "name": "Classificação Risco",
+      "field_type": "list",
+      "description": "Nível de risco: Baixo, Médio, Alto, Crítico",
+      "values": "Baixo,Médio,Alto,Crítico"
+    },
+    {
+      "name": "Data GoLive Estimada",
+      "field_type": "date",
+      "description": "Nova data estimada de Go-Live"
+    },
+    {
+      "name": "Data Início Planejado",
+      "field_type": "date",
+      "description": "Data de início planejada do projeto"
+    },
+    {
+      "name": "Data Fim Planejado",
+      "field_type": "date",
+      "description": "Data de fim planejada do projeto"
+    },
+    {
+      "name": "% Evolução Planejado",
+      "field_type": "integer",
+      "description": "Percentual de evolução planejado (0-100)"
+    },
+    {
+      "name": "% Evolução Realizado",
+      "field_type": "integer",
+      "description": "Percentual de evolução realizado (0-100)"
+    },
+    {
+      "name": "Desvio %",
+      "field_type": "integer",
+      "description": "Desvio entre planejado e realizado (%)"
+    },
+    {
+      "name": "Recurso",
+      "field_type": "list",
+      "description": "Tipo de recurso: Interno, Externo, Misto",
+      "values": "Interno,Externo,Misto"
+    },
+    {
+      "name": "Custo Planejado",
+      "field_type": "integer",
+      "description": "Custo planejado em R$"
+    },
+    {
+      "name": "Custo Realizado",
+      "field_type": "integer",
+      "description": "Custo realizado em R$"
+    },
+    {
+      "name": "ROI Aprovado",
+      "field_type": "list",
+      "description": "ROI aprovado: Sim, Não, Qualitativo",
+      "values": "Sim,Não,Qualitativo,N/A"
+    },
+    {
+      "name": "Valor ROI",
+      "field_type": "integer",
+      "description": "Valor do ROI em R$ (se aplicável)"
+    }
+  ],
+  "instrucoes": "Para ativar campos customizados no Kanboard, instale o plugin 'CustomFields' em Configurações > Plugins"
+}

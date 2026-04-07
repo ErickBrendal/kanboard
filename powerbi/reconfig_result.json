@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-04-06T20:55:00.187210",
+  "status": "success",
+  "etapas": {
+    "reordenacao_colunas": "success",
+    "campos_customizados": "plugin_not_installed",
+    "config_atualizada": "success"
+  },
+  "colunas_mapeadas": 12
+}

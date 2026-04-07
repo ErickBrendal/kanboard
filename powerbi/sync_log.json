@@ -95,5 +95,38 @@
     "elapsed_seconds": 9.941455,
     "csv_path": "/home/ubuntu/kanboard/powerbi/kanboard_dados_final.csv",
     "total_tasks_local": 105
+  },
+  {
+    "timestamp": "2026-04-06T09:04:47.955573",
+    "status": "success",
+    "tasks_synced": 97,
+    "error": null,
+    "data_source": "local_snapshot",
+    "elapsed_seconds": 10.000794
+  },
+  {
+    "timestamp": "2026-04-06T09:06:09.167798",
+    "status": "success",
+    "tasks_synced": 105,
+    "kpis_synced": 8,
+    "fases_synced": 7,
+    "resp_synced": 5,
+    "error": null,
+    "data_source": "data_enriquecido",
+    "powerbi_status": "success",
+    "elapsed_seconds": 7.108524,
+    "csv_path": "/home/ubuntu/kanboard/powerbi/kanboard_dados_final.csv",
+    "total_tasks_local": 105
+  },
+  {
+    "timestamp": "2026-04-06 21:07:45",
+    "versao": "v4",
+    "tarefas": 98,
+    "kpis": 10,
+    "fases": 9,
+    "responsaveis": 5,
+    "powerbi_ok": true,
+    "elapsed_s": 112.0,
+    "status": "success"
   }
 ]
