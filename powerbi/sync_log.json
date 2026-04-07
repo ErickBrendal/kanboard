@@ -128,5 +128,17 @@
     "powerbi_ok": true,
     "elapsed_s": 112.0,
     "status": "success"
+  },
+  {
+    "timestamp": "2026-04-07 09:33:39",
+    "versao": "v2.2",
+    "status": "success",
+    "tasks_synced": 105,
+    "error": null,
+    "data_source": "data_enriquecido",
+    "kpis_synced": 8,
+    "fases_synced": 7,
+    "responsaveis_synced": 5,
+    "elapsed_seconds": 8.1
   }
 ]
