@@ -1,0 +1,151 @@
+TABELA = {
+    '100006': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Financeiro", "[RISCO] Baixo"],  # Cadastro de e-mails no depsnet
+    '100153': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Bens de Consumo", "[RISCO] Baixo"],  # Incluir no relatório do comissionado - Parcela e Data Compen
+    '100205': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Bens de Consumo", "[RISCO] Baixo"],  # Criação de uma visão para o treinamentos
+    '100512': ["[TI] Dados & Digital", "[SUB] Site e Portal", "[NEG] Automação", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Implementar um sistema de registro de garantia de produtos d
+    '100971': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Bens de Consumo", "[RISCO] Baixo", "[REC] Interno"],  # Inclusão de visão de Valor de Venda - Garantia/Devolução
+    '100978': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Cadastros", "[RISCO] Baixo"],  # Adequação no campo CNPJ - Reforma tributária
+    '100981': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Ar & Eletro", "[RISCO] Baixo"],  # Lists View e Aprovações em Massa
+    '101061': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Bens de Consumo", "[RISCO] Baixo", "[REC] Ambos", "[ROI] Qualitativo"],  # Criação de Automação da Atualização de Saldo/Cotas Salesforc
+    '101104': ["[TI] Dados & Digital", "[SUB] Dados e BI", "[NEG] Logística", "[RISCO] Médio", "[REC] Interno", "[ROI] N/A", "[EVO] 51–75%"],  # Desenvolvimento DashBoard ENTREGAS (API Lincros)
+    '101307': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Automação", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Cadastrar preço por escritório de vendas (Automação) - (RDM 
+    '101370': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Comercial", "[RISCO] Baixo", "[REC] Interno", "[EVO] 1–25%"],  # Retornar para Aprovação Manual pedidos de Garantia - Ar&elet
+    '101398': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Automação", "[RISCO] Baixo"],  # PROCESSO DE DEVOLUÇÃO
+    '101551': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Ar & Eletro", "[RISCO] Baixo", "[REC] Interno", "[ROI] Qualitativo", "[EVO] 1–25%"],  # Saldo de Estoque por Linha de Produto
+    '101562': ["[TI] Dados & Digital", "[SUB] Dados e BI", "[NEG] Automação", "[RISCO] Baixo"],  # Correção Centro de Lucro - BI Comercial (Débito Técnico UP)
+    '101921': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Comercial", "[RISCO] Baixo"],  # Arredondamento de valores de NF - Pedidos de Garantia
+    '101923': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Financeiro", "[RISCO] Baixo"],  # BOLETO À VISTA
+    '101924': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Financeiro", "[RISCO] Baixo"],  # PIX QR CODE
+    '101927': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Logística", "[RISCO] Baixo"],  # pesquisar por pedido na Aba TAREFAS
+    '102059': ["[TI] Dados & Digital", "[SUB] Digital", "[NEG] Refrigeração", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Melhorias do Sistema Portal de Garantia
+    '102106': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Comercial", "[RISCO] Baixo"],  # Integração de Imagens para Produtos no Salesforce
+    '102121': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Automação", "[RISCO] Baixo"],  # IPI EM PORCENTAGEM NO ORÇAMENTO
+    '102549': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Comercial", "[RISCO] Baixo"],  # SINALIZAÇÃO DE PAGAMENTO COM CARTÃO DE CRÉDITO
+    '102600': ["[TI] Dados & Digital", "[SUB] Dados e BI", "[NEG] Engenharia", "[RISCO] Baixo"],  # Automatizar a inserção dos dados na tabela de metas do Runte
+    '103876': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] TI", "[RISCO] Baixo", "[REC] Interno", "[ROI] Qualitativo"],  # Criação de Chamada de API - SAP para Notas de Serviços (XML/
+    '103907': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Ar & Eletro", "[RISCO] Baixo"],  # Campo de Condição de pagamento DDE
+    '104073': ["[TI] Dados & Digital", "[SUB] Dados e BI", "[NEG] Logística", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A", "[EVO] 76–99%"],  # Disponibilizar as informações de Frete Vendas
+    '104926': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Logística", "[RISCO] Baixo", "[REC] Interno"],  # Inclusão de nova opção logistica  - Pedidos Devolução
+    '105332': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Ar & Eletro", "[RISCO] Baixo", "[REC] Ambos"],  # Notificações Chatter Por e-mail (devoluções)
+    '105334': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Refrigeração", "[RISCO] Baixo", "[REC] Ambos"],  # Preço por margem e tela de simulação de preços
+    '105644': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Fiscal", "[RISCO] Baixo"],  # ZVT2: INCLUSÃO DO CAMPO - ANEXAR NOTA FISCAL
+    '105645': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Ar & Eletro", "[RISCO] Baixo"],  # Informação território inativo
+    '105678': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Automação", "[EVO] 0%"],  # [MELHORIA] - Lógica de Exceção para Aprovação Automática: Fi
+    '106077': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Fiscal", "[RISCO] Baixo"],  # Cenário - Venda Leasing de Conjunto Industrial
+    '106095': ["[TI] Dados & Digital", "[SUB] E-Commerce", "[NEG] Ar & Eletro", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A", "[EVO] 51–75%"],  # Criação do eCommerce AR & ELETRO (Peças)
+    '106096': ["[TI] Dados & Digital", "[SUB] Site e Portal", "[NEG] Automação", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Gestão da Base de Conhecimento para IA em Automação - Portal
+    '106593': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] TI", "[RISCO] Baixo"],  # Salesforce Refrigeração | Regras de distribuição de leads
+    '106779': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Ar & Eletro", "[RISCO] Baixo", "[REC] Interno", "[EVO] 0%"],  # Habilitar marcar fase cancelado - BDVS
+    '106947': ["[TI] Dados & Digital", "[SUB] Dados e BI", "[NEG] Logística", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A", "[EVO] 76–99%"],  # Sistema complementar de informações para o Dash de Entregas
+    '107150': ["[TI] Dados & Digital", "[SUB] Dados e BI", "[NEG] Automação", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Melhoria no Datamart de Automação Comercial
+    '107528': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Fiscal", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # ELNE: BLOQUEIO POR ESTADO
+    '107630': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Bens de Consumo", "[RISCO] Baixo", "[REC] Ambos", "[ROI] N/A"],  # Melhorar carga de produtos em massa na criação da oportunida
+    '108051': ["[TI] Dados & Digital", "[SUB] E-Commerce", "[NEG] Refrigeração", "[RISCO] Baixo"],  # Criação do eCommerce Refrigeração (Peças)
+    '108162': ["[TI] Dados & Digital", "[SUB] Integração", "[NEG] eCommerce", "[RISCO] Baixo"],  # Integração Refrio>Loja de Funcionário
+    '108863': ["[TI] Dados & Digital", "[SUB] Integração", "[NEG] TI", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Portal Corporativo- Solicitação de Demonstrativo de Pagament
+    '109227': ["[TI] Dados & Digital", "[SUB] Dados e BI", "[NEG] TI", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A", "[EVO] 1–25%"],  # KPIs Diretoria
+    '109390': ["[TI] Dados & Digital", "[SUB] Integração", "[NEG] Controladoria", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A", "[EVO] 26–50%"],  # [Zeev] Processo de Inventário
+    '109753': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Comercial", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Regra de Depósito  - Devolução Nordeste
+    '109867': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Fiscal", "[RISCO] Baixo", "[ROI] Legal / Mandatório", "[EVO] 51–75%"],  # Fluxo de consignação (Inclusão do processo de retorno simbol
+    '110023': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Automação", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Reanalisar estrutura de integrações por fila - Serviços TEF
+    '110066': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Refrigeração", "[RISCO] Baixo", "[EVO] 1–25%"],  # Metas dos vendedores ( gerentes e vendedores não enxergam ne
+    '110462': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Refrigeração", "[RISCO] Baixo", "[REC] Interno", "[EVO] 1–25%"],  # Possibilidade de trocar a conta do cliente em uma Oportunida
+    '111013': ["[TI] Dados & Digital", "[SUB] Site e Portal", "[NEG] SAC", "[RISCO] Baixo", "[REC] Interno", "[EVO] 51–75%"],  # [SAC] Formulário de atendimento
+    '111021': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] TI", "[RISCO] Baixo", "[EVO] 0%"],  # Novo Calculo de Margem
+    '111228': ["[TI] Dados & Digital", "[SUB] Digital", "[NEG] TI", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Refatoramento do código VBScript e HTML da assinatura de E-m
+    '111266': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Ar & Eletro", "[RISCO] Baixo", "[REC] Interno"],  # Incluir nivel de aprovação diretoria solicitação de Troca de
+    '111386': ["[TI] Dados & Digital", "[SUB] Digital", "[NEG] Marketing", "[RISCO] Baixo", "[ROI] N/A"],  # Criação de Variáveis no Data Layer para Eventos de Carrinho 
+    '111593': ["[TI] Dados & Digital", "[SUB] Dados e BI", "[NEG] TI", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Adequação para inclusão automática do ano nos Dashboards cor
+    '111750': ["[TI] Dados & Digital", "[SUB] Integração", "[NEG] eCommerce", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Unificação de Relatório Diretoria - Selia e Bemol
+    '111757': ["[TI] Dados & Digital", "[SUB] Integração", "[NEG] eCommerce", "[RISCO] Baixo"],  # Monitoramento de Movimentações de Estoque
+    '111759': ["[TI] Dados & Digital", "[SUB] Integração", "[NEG] eCommerce", "[RISCO] Baixo"],  # Precificação — Relatório Automatizado com IA
+    '112368': ["[TI] Dados & Digital", "[SUB] E-Commerce", "[NEG] Automação", "[RISCO] Baixo"],  # Criação do E-Commerce Automação (Peças)
+    '112457': ["[TI] Dados & Digital", "[SUB] Site e Portal", "[NEG] Marketing", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A", "[EVO] 76–99%"],  # Implementação de tecnologia para tradução automática de PDPs
+    '112833': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Automação", "[RISCO] Baixo"],  # Formulário Quero Comprar Adição da BU de Automação SF
+    '112848': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Comercial", "[RISCO] Baixo", "[EVO] 76–99%"],  # Bloquear edição de preços na inserção de produtos no pedido
+    '112850': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Comercial", "[RISCO] Baixo", "[REC] Interno"],  # Impedir que o mesmo sku seja inserido mais de uma vez no mes
+    '113057': ["[TI] Dados & Digital", "[SUB] Digital", "[NEG] TI", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Aplicar processo de doublecheck para meios de pagamento
+    '113240': ["[TI] Dados & Digital", "[SUB] Digital", "[NEG] TI", "[RISCO] Baixo", "[REC] Interno"],  # Adequação Adobe Commerce – Fim do Suporte 2.4.4)
+    '113321': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Automação", "[RISCO] Baixo", "[REC] Interno"],  # Preencher campo de Responsável da Venda em Pedidos Automação
+    '113709': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Refrigeração", "[RISCO] Baixo", "[REC] Interno"],  # Reativação do processo de Troca de Produto.
+    '114424': ["[TI] Dados & Digital", "[SUB] Dados e BI", "[NEG] Comercial", "[RISCO] Baixo", "[REC] Interno", "[EVO] 0%"],  # Aprimoramento do BI Comercial – Indicadores de Performance d
+    '114622': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Bens de Consumo"],  # Complemento de Melhorias - Saldo e Estoque
+    '114688': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] TI", "[EVO] 76–99%"],  # Consultar o último preço praticado na inserção / edição de n
+    '114701': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Refrigeração", "[EVO] 1–25%"],  # Leads Magento para o Salesforce - Linha Gellata
+    '114914': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Logística"],  # Logistica Reversa - Manaus/Mogi
+    '114921': ["[TI] Dados & Digital", "[SUB] E-Commerce", "[NEG] Marketing", "[RISCO] Baixo", "[REC] Interno", "[EVO] 0%"],  # Reformulação do Menu Gelatta
+    '114922': ["[TI] Dados & Digital", "[SUB] E-Commerce", "[NEG] Marketing", "[RISCO] Baixo", "[REC] Interno", "[EVO] 0%"],  # Habilitar Botão para Produtos acima de 10.000,00 - Formulári
+    '114964': ["[TI] Dados & Digital", "[SUB] Site e Portal", "[NEG] Marketing", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Envio de e-mail comunicando novas atualizações no portal
+    '114965': ["[TI] Dados & Digital", "[SUB] Site e Portal", "[NEG] Marketing", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Randomização de URL - Código randômico
+    '115045': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Bens de Consumo", "[EVO] 0%"],  # Preço por nível de Cliente
+    '115266': ["[TI] Dados & Digital", "[SUB] Site e Portal", "[NEG] Logística", "[RISCO] Baixo", "[REC] Interno", "[EVO] 0%"],  # Página Logística Rastreio de Mercadoria
+    '115306': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] TI"],  # Objeto Conta - Limpeza de Campos E-mail
+    '115482': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] TI"],  # Objeto Conta - Limpeza de Campos E-mail com Merge de dados
+    '115485': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] TI"],  # Integração de atualizações de Conta - SalesforceXSAP
+    '115610': ["[TI] Dados & Digital", "[SUB] Dados e BI", "[NEG] Comercial", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Incluir informações de Remessa no dash Comercial Bens de con
+    '115666': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] TI"],  # Revisão e Bloqueio de Permissões Administrativas - Comercial
+    '13398': ["[TI] Dados & Digital", "[SUB] Dados e BI", "[NEG] Marketing", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Dashboard de Leads de Marketing (Salesforce)
+    '63681': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] TI", "[RISCO] Baixo"],  # Melhoria Marketplace
+    '69222': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Marketing", "[RISCO] Baixo", "[ROI] Qualitativo"],  # Integração via API do Salesforce e RD Station / Web to Lead
+    '75017': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Financeiro", "[RISCO] Baixo", "[REC] Interno"],  # Automatizar o fluxo de Pedidos de Financiamento =  Código E9
+    '78463': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Ar & Eletro", "[RISCO] Baixo", "[REC] Interno"],  # ZVT2 - recebedor da mercadoria (tratar contas com restrições
+    '78464': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Cadastros", "[RISCO] Baixo"],  # Obrigação Fiscal - Declaração de PIs e Cofins
+    '78680': ["[TI] Dados & Digital", "[SUB] E-Commerce", "[NEG] Diretoria", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Melhoria nos tempos de Cadastro PJ
+    '79383': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Automação", "[RISCO] Baixo"],  # Criação de Novo Tipo de Oportunidade
+    '80509': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Automação", "[RISCO] Baixo"],  # Tabela de preços
+    '80599': ["[TI] Dados & Digital", "[SUB] Digital", "[NEG] Refrigeração", "[RISCO] Baixo"],  # Liberação de uso pela web (computador) para o carga térmica
+    '80712': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] TI", "[RISCO] Baixo"],  # Refatoração da Integração SAP x Salesforce (Soap / Rest)
+    '812819': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Refrigeração", "[RISCO] Baixo", "[ROI] N/A"],  # Limitar uso do Catálogo de preços por tipo de pedido -   (
+    '81643': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] eCommerce", "[RISCO] Baixo", "[ROI] Qualitativo"],  # Melhoria no fluxo de cancelamentos - Bemol e todos os pedido
+    '81644': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Cadastros", "[RISCO] Baixo"],  # Cadastro de clientes sem CNAE
+    '83499': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] TI", "[RISCO] Baixo", "[REC] Ambos", "[ROI] N/A"],  # Local de Expedição no Salesforce - alterar local de expediçã
+    '85132': ["[TI] Dados & Digital", "[SUB] Integração", "[NEG] Marketing", "[RISCO] Baixo"],  # Criar Integração SAP, Novo Portal de Apoio e planilha MKT pa
+    '86847': ["[TI] Dados & Digital", "[SUB] Integração", "[NEG] eCommerce", "[RISCO] Baixo", "[EVO] 0%"],  # [Bemol] Cancelamento de pedidos
+    '87057': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Automação", "[RISCO] Baixo"],  # Alcadas de aprovação - Automação
+    '87076': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Bens de Consumo", "[RISCO] Baixo"],  # Inclusão ZMDK para e-commerce
+    '87262': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Financeiro", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Melhoria : aprovação crédito pedido consignado -  (RDM 1953)
+    '87971': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Bens de Consumo", "[RISCO] Baixo"],  # Comissão zerada
+    '88509': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Logística", "[RISCO] Baixo"],  # Rastreabilidade de NFs Devolução e Garantia - Lincros
+    '89129': ["[TI] Dados & Digital", "[SUB] Integração", "[NEG] Bens de Consumo", "[RISCO] Baixo"],  # [Bemol] Saldo x Estoque - Salesforce x SAP
+    '89251': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] TI", "[RISCO] Baixo"],  # Integração Sintegra / Suframa x  Salesforce - Inserção Middl
+    '90248': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Automação", "[RISCO] Baixo"],  # Vizualização no SF por produto e familia
+    '90249': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Automação", "[RISCO] Baixo"],  # Categoria - Var ; revenda; distribuidor ; e - commerce ; cor
+    '90743': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Ar & Eletro", "[RISCO] Baixo"],  # Visualização de Saldo pendente ou cancelado
+    '90788': ["[TI] Dados & Digital", "[SUB] Site e Portal", "[NEG] Marketing", "[RISCO] Baixo"],  # Internalizar Formulário das Caravanas
+    '90790': ["[TI] Dados & Digital", "[SUB] Site e Portal", "[NEG] Marketing", "[RISCO] Baixo"],  # Unificação Backoffice Refrigeração e Climatização com o Novo
+    '90879': ["[TI] Dados & Digital", "[SUB] Dados e BI", "[NEG] DHO", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Criar Dash Board para o novo Processo de Vagas de DHO
+    '90914': ["[TI] Dados & Digital", "[SUB] Digital", "[NEG] Engenharia", "[RISCO] Baixo", "[REC] Interno"],  # Nova Funcionalidade Condensador Remoto Elgin (Seletor de Pro
+    '91023': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Prog. Materiais", "[RISCO] Baixo"],  # Abertura dos locais de expedição no pedido
+    '91555': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Logística", "[RISCO] Baixo", "[ROI] N/A"],  # Envio de notificações aos clientes (Emissão, Previsão e conf
+    '91944': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] TI", "[RISCO] Baixo"],  # Integração  Simples Nacional / Simei - Inserção Middleware A
+    '91946': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] TI", "[RISCO] Baixo"],  # Integração  receita federal (pessoa fisica) - Inserção Middl
+    '92278': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Bens de Consumo", "[RISCO] Baixo"],  # Incluir coluna de tipo de pedido
+    '92707': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Bens de Consumo", "[RISCO] Baixo"],  # Aparecer Cota Em Garantia
+    '93471': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] TI", "[RISCO] Baixo"],  # Criação de Organograma Empresarial - Todas BUs
+    '93878': ["[TI] Dados & Digital", "[SUB] Site e Portal", "[NEG] Marketing", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A", "[EVO] 76–99%"],  # Gestão PEE no Novo Portal de Apoio
+    '94354': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Automação", "[RISCO] Baixo"],  # relatório de comissionamento de agenciados,
+    '94726': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Diretoria", "[RISCO] Baixo"],  # Criação Painel Gestão de Atividades - (Bens de Consumo)
+    '94791': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Bens de Consumo", "[RISCO] Baixo"],  # Tornar Portal 100% responsivo para mobile
+    '94929': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Bens de Consumo", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # EDI para integração de pedidos - Cliente Leroy
+    '95076': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Comercial", "[RISCO] Baixo"],  # Liberação da funcionalidade de ações em massa
+    '95734': ["[TI] Dados & Digital", "[SUB] Integração", "[NEG] Bens de Consumo", "[RISCO] Baixo", "[ROI] N/A"],  # Desenvolvimento - EDI para integração de pedidos (Leroy Merl
+    '96988': ["[TI] Dados & Digital", "[SUB] Integração", "[NEG] Bens de Consumo", "[RISCO] Baixo"],  # Criar IA SAC Bens de Consumo
+    '97553': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Logística", "[RISCO] Baixo"],  # Informações de pedido na fase de aprovação.
+    '97555': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Refrigeração", "[RISCO] Baixo"],  # Habilitação de Visualização de Informação do Cadastro Contas
+    '97556': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Comercial", "[RISCO] Baixo"],  # Deposito
+    '97559': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Ar & Eletro", "[RISCO] Baixo"],  # Ajuste integração troca de itens
+    '97702': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Marketing", "[RISCO] Baixo", "[ROI] Qualitativo"],  # Regras de Atribuição de leads Salesforce | Refrigeração
+    '97970': ["[TI] Dados & Digital", "[SUB] Dados e BI", "[NEG] Comercial", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Desenvolver tela com a evolução de custos dos materiais no D
+    '98307': ["[TI] Dados & Digital", "[SUB] E-Commerce", "[NEG] Marketing", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Rebranding do Gelatta igual ao Selia/Loja Elgin
+    '98544': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Automação", "[RISCO] Baixo"],  # FATURAMENTO / IMPRESSÃO
+    '98879': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Refrigeração", "[RISCO] Baixo"],  # TROCA DE PRODUTO, PORÉM O VALOR NÃO É ATUALIZADO
+    '98913': ["[TI] Dados & Digital", "[SUB] Integração", "[NEG] Financeiro", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Atualização Saldo Depsnet
+    '98965': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Ar & Eletro", "[RISCO] Baixo", "[REC] Ambos"],  # Refatorar Integração Telecontrol X Salesforce com Middleware
+    '99265': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Logística", "[RISCO] Baixo"],  # ALTERAR MOTIVOS DENTRO DO SALES FORCE
+    '99267': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Comercial", "[RISCO] Baixo"],  # DEPOSITO
+    '99614': ["[TI] CRM Salesforce", "[SUB] Suporte Salesforce", "[NEG] Bens de Consumo", "[RISCO] Baixo"],  # Criar um visual no painel  e alertas com status das contas p
+    '99616': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Refrigeração", "[RISCO] Baixo", "[REC] Interno"],  # Criar relatórios de faturamento no Salesforce - (Demanda par
+    '99618': ["[TI] CRM Salesforce", "[SUB] CRM Salesforce", "[NEG] Refrigeração", "[RISCO] Baixo"],  # OPORTUNIDADES (CJ INDUSTRIAL E VENDA DE PROJETOS)
+    '99849': ["[TI] Dados & Digital", "[SUB] Dados e BI", "[NEG] TI", "[RISCO] Baixo"],  # Migrar os RPA´s do ambiente antigo da Deal para o novo ambie
+    '99962': ["[TI] Dados & Digital", "[SUB] Digital", "[NEG] Engenharia", "[RISCO] Baixo", "[REC] Interno", "[ROI] N/A"],  # Novo Sistema de Cálculo de Compressores Elgin
+}

@@ -1,0 +1,1763 @@
+{
+  "63681": {
+    "projeto": "Melhoria Marketplace",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] TI",
+      "[RISCO] Baixo"
+    ]
+  },
+  "75017": {
+    "projeto": "Automatizar o fluxo de Pedidos de Financiamento =  Código E989",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Financeiro",
+      "[RISCO] Baixo",
+      "[REC] Interno"
+    ]
+  },
+  "81643": {
+    "projeto": "Melhoria no fluxo de cancelamentos - Bemol e todos os pedidos",
+    "responsavel": "Felipe Nascimento",
+    "fase": "Pendente-Elaboração de Proposta",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] eCommerce",
+      "[RISCO] Baixo",
+      "[ROI] Qualitativo"
+    ]
+  },
+  "78464": {
+    "projeto": "Obrigação Fiscal - Declaração de PIs e Cofins",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Cadastros",
+      "[RISCO] Baixo"
+    ]
+  },
+  "79383": {
+    "projeto": "Criação de Novo Tipo de Oportunidade",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Automação",
+      "[RISCO] Baixo"
+    ]
+  },
+  "80509": {
+    "projeto": "Tabela de preços",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Automação",
+      "[RISCO] Baixo"
+    ]
+  },
+  "80712": {
+    "projeto": "Refatoração da Integração SAP x Salesforce (Soap / Rest)",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] TI",
+      "[RISCO] Baixo"
+    ]
+  },
+  "81644": {
+    "projeto": "Cadastro de clientes sem CNAE",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Cadastros",
+      "[RISCO] Baixo"
+    ]
+  },
+  "87057": {
+    "projeto": "Alcadas de aprovação - Automação",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Automação",
+      "[RISCO] Baixo"
+    ]
+  },
+  "87076": {
+    "projeto": "Inclusão ZMDK para e-commerce",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Bens de Consumo",
+      "[RISCO] Baixo"
+    ]
+  },
+  "87971": {
+    "projeto": "Comissão zerada",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Bens de Consumo",
+      "[RISCO] Baixo"
+    ]
+  },
+  "89251": {
+    "projeto": "Integração Sintegra / Suframa x  Salesforce - Inserção Middleware AWS",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] TI",
+      "[RISCO] Baixo"
+    ]
+  },
+  "90248": {
+    "projeto": "Vizualização no SF por produto e familia",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Automação",
+      "[RISCO] Baixo"
+    ]
+  },
+  "90249": {
+    "projeto": "Categoria - Var ; revenda; distribuidor ; e - commerce ; corporativo - No cadast",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Automação",
+      "[RISCO] Baixo"
+    ]
+  },
+  "90743": {
+    "projeto": "Visualização de Saldo pendente ou cancelado",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Ar & Eletro",
+      "[RISCO] Baixo"
+    ]
+  },
+  "91023": {
+    "projeto": "Abertura dos locais de expedição no pedido",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Prog. Materiais",
+      "[RISCO] Baixo"
+    ]
+  },
+  "91944": {
+    "projeto": "Integração  Simples Nacional / Simei - Inserção Middleware AWS",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] TI",
+      "[RISCO] Baixo"
+    ]
+  },
+  "91946": {
+    "projeto": "Integração  receita federal (pessoa fisica) - Inserção Middleware AWS",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] TI",
+      "[RISCO] Baixo"
+    ]
+  },
+  "92278": {
+    "projeto": "Incluir coluna de tipo de pedido",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Bens de Consumo",
+      "[RISCO] Baixo"
+    ]
+  },
+  "92707": {
+    "projeto": "Aparecer Cota Em Garantia",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Bens de Consumo",
+      "[RISCO] Baixo"
+    ]
+  },
+  "93471": {
+    "projeto": "Criação de Organograma Empresarial - Todas BU's",
+    "responsavel": "Elder Guerra",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] TI",
+      "[RISCO] Baixo"
+    ]
+  },
+  "94354": {
+    "projeto": "relatório de comissionamento de agenciados,",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Automação",
+      "[RISCO] Baixo"
+    ]
+  },
+  "94726": {
+    "projeto": "Criação Painel Gestão de Atividades - (Bens de Consumo)",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Diretoria",
+      "[RISCO] Baixo"
+    ]
+  },
+  "94791": {
+    "projeto": "Tornar Portal 100% responsivo para mobile",
+    "responsavel": "Carlos Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Bens de Consumo",
+      "[RISCO] Baixo"
+    ]
+  },
+  "95076": {
+    "projeto": "Liberação da funcionalidade de ações em massa",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Comercial",
+      "[RISCO] Baixo"
+    ]
+  },
+  "97553": {
+    "projeto": "Informações de pedido na fase de aprovação.",
+    "responsavel": "Elder Guerra",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Logística",
+      "[RISCO] Baixo"
+    ]
+  },
+  "97555": {
+    "projeto": "Habilitação de Visualização de Informação do Cadastro Contas",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Refrigeração",
+      "[RISCO] Baixo"
+    ]
+  },
+  "97556": {
+    "projeto": "Deposito",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Comercial",
+      "[RISCO] Baixo"
+    ]
+  },
+  "97559": {
+    "projeto": "Ajuste integração troca de itens",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Ar & Eletro",
+      "[RISCO] Baixo"
+    ]
+  },
+  "98544": {
+    "projeto": "FATURAMENTO / IMPRESSÃO",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Automação",
+      "[RISCO] Baixo"
+    ]
+  },
+  "98879": {
+    "projeto": "TROCA DE PRODUTO, PORÉM O VALOR NÃO É ATUALIZADO",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Refrigeração",
+      "[RISCO] Baixo"
+    ]
+  },
+  "99265": {
+    "projeto": "ALTERAR MOTIVOS DENTRO DO SALES FORCE",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Logística",
+      "[RISCO] Baixo"
+    ]
+  },
+  "99267": {
+    "projeto": "DEPOSITO",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Comercial",
+      "[RISCO] Baixo"
+    ]
+  },
+  "99614": {
+    "projeto": "Criar um visual no painel  e alertas com status das contas para representante (c",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Bens de Consumo",
+      "[RISCO] Baixo"
+    ]
+  },
+  "99618": {
+    "projeto": "OPORTUNIDADES (CJ INDUSTRIAL E VENDA DE PROJETOS)",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Refrigeração",
+      "[RISCO] Baixo"
+    ]
+  },
+  "100006": {
+    "projeto": "Cadastro de e-mails no depsnet",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Financeiro",
+      "[RISCO] Baixo"
+    ]
+  },
+  "100153": {
+    "projeto": "Incluir no relatório do comissionado - Parcela e Data Compensação",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Bens de Consumo",
+      "[RISCO] Baixo"
+    ]
+  },
+  "100205": {
+    "projeto": "Criação de uma visão para o treinamentos",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Bens de Consumo",
+      "[RISCO] Baixo"
+    ]
+  },
+  "100978": {
+    "projeto": "Adequação no campo CNPJ - Reforma tributária",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Cadastros",
+      "[RISCO] Baixo"
+    ]
+  },
+  "100981": {
+    "projeto": "Lists View e Aprovações em Massa",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Ar & Eletro",
+      "[RISCO] Baixo"
+    ]
+  },
+  "101398": {
+    "projeto": "PROCESSO DE DEVOLUÇÃO",
+    "responsavel": "Elder Guerra",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Automação",
+      "[RISCO] Baixo"
+    ]
+  },
+  "101921": {
+    "projeto": "Arredondamento de valores de NF - Pedidos de Garantia",
+    "responsavel": "Elder Guerra",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Comercial",
+      "[RISCO] Baixo"
+    ]
+  },
+  "101923": {
+    "projeto": "BOLETO À VISTA",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Financeiro",
+      "[RISCO] Baixo"
+    ]
+  },
+  "101924": {
+    "projeto": "PIX QR CODE",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Financeiro",
+      "[RISCO] Baixo"
+    ]
+  },
+  "101927": {
+    "projeto": "pesquisar por pedido na Aba TAREFAS",
+    "responsavel": "Elder Guerra",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Logística",
+      "[RISCO] Baixo"
+    ]
+  },
+  "102106": {
+    "projeto": "Integração de Imagens para Produtos no Salesforce",
+    "responsavel": "Erick Almeida",
+    "fase": "Cancelado",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Comercial",
+      "[RISCO] Baixo"
+    ]
+  },
+  "102121": {
+    "projeto": "IPI EM PORCENTAGEM NO ORÇAMENTO",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Automação",
+      "[RISCO] Baixo"
+    ]
+  },
+  "102549": {
+    "projeto": "SINALIZAÇÃO DE PAGAMENTO COM CARTÃO DE CRÉDITO",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Comercial",
+      "[RISCO] Baixo"
+    ]
+  },
+  "103907": {
+    "projeto": "Campo de Condição de pagamento DDE",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Ar & Eletro",
+      "[RISCO] Baixo"
+    ]
+  },
+  "105332": {
+    "projeto": "Notificações Chatter Por e-mail (devoluções)",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Ar & Eletro",
+      "[RISCO] Baixo",
+      "[REC] Ambos"
+    ]
+  },
+  "91555": {
+    "projeto": "Envio de notificações aos clientes (Emissão, Previsão e confirmação de Entrega)",
+    "responsavel": "Erick Almeida",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Logística",
+      "[RISCO] Baixo",
+      "[ROI] N/A"
+    ]
+  },
+  "105644": {
+    "projeto": "ZVT2: INCLUSÃO DO CAMPO - \"ANEXAR NOTA FISCAL\"",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Fiscal",
+      "[RISCO] Baixo"
+    ]
+  },
+  "105645": {
+    "projeto": "Informação território inativo",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Ar & Eletro",
+      "[RISCO] Baixo"
+    ]
+  },
+  "106077": {
+    "projeto": "Cenário - Venda Leasing de Conjunto Industrial",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Fiscal",
+      "[RISCO] Baixo"
+    ]
+  },
+  "106593": {
+    "projeto": "Salesforce Refrigeração | Regras de distribuição de leads",
+    "responsavel": "Erick Almeida",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] TI",
+      "[RISCO] Baixo"
+    ]
+  },
+  "88509": {
+    "projeto": "Rastreabilidade de NFs Devolução e Garantia - Lincros",
+    "responsavel": "Elder Guerra",
+    "fase": "Cancelado",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Logística",
+      "[RISCO] Baixo"
+    ]
+  },
+  "98965": {
+    "projeto": "Refatorar Integração Telecontrol X Salesforce com Middleware",
+    "responsavel": "Erick Almeida",
+    "fase": "Cancelado",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Ar & Eletro",
+      "[RISCO] Baixo",
+      "[REC] Ambos"
+    ]
+  },
+  "99616": {
+    "projeto": "Criar relatórios de faturamento no Salesforce - (Demanda para subir valor na NF ",
+    "responsavel": "Erick Almeida",
+    "fase": "Teste Unitários",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Refrigeração",
+      "[RISCO] Baixo",
+      "[REC] Interno"
+    ]
+  },
+  "107528": {
+    "projeto": "ELNE: BLOQUEIO POR ESTADO",
+    "responsavel": "Felipe Nascimento",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Fiscal",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "101551": {
+    "projeto": "Saldo de Estoque por Linha de Produto",
+    "responsavel": "Elder Guerra",
+    "fase": "Em atendimento-Estudo de viabilidade",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Ar & Eletro",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] Qualitativo",
+      "[EVO] 1–25%"
+    ]
+  },
+  "97702": {
+    "projeto": "Regras de Atribuição de leads Salesforce | Refrigeração",
+    "responsavel": "Erick Almeida",
+    "fase": "Teste Unitários",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Marketing",
+      "[RISCO] Baixo",
+      "[ROI] Qualitativo"
+    ]
+  },
+  "111021": {
+    "projeto": "Novo Calculo de Margem",
+    "responsavel": "Elder Guerra",
+    "fase": "Em atendimento-Em desenvolvimento",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] TI",
+      "[RISCO] Baixo",
+      "[EVO] 0%"
+    ]
+  },
+  "110066": {
+    "projeto": "Metas dos vendedores ( gerentes e vendedores não enxergam nem conseguem acessar ",
+    "responsavel": "Erick Almeida",
+    "fase": "Em atendimento-Estudo de viabilidade",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Refrigeração",
+      "[RISCO] Baixo",
+      "[EVO] 1–25%"
+    ]
+  },
+  "110462": {
+    "projeto": "Possibilidade de trocar a conta do cliente em uma Oportunidade sem ter proposta/",
+    "responsavel": "Erick Almeida",
+    "fase": "Em atendimento-Estudo de viabilidade",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Refrigeração",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[EVO] 1–25%"
+    ]
+  },
+  "109867": {
+    "projeto": "Fluxo de consignação (Inclusão do processo de retorno simbolico)",
+    "responsavel": "Elder Guerra",
+    "fase": "Homologação-Testes integrados",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Fiscal",
+      "[RISCO] Baixo",
+      "[ROI] Legal / Mandatório",
+      "[EVO] 51–75%"
+    ]
+  },
+  "78463": {
+    "projeto": "ZVT2 - recebedor da mercadoria (tratar contas com restrições no SAP ) na remessa",
+    "responsavel": "Erick Almeida",
+    "fase": "Pendente - Aguardando Aprovação DIRETORIA",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Ar & Eletro",
+      "[RISCO] Baixo",
+      "[REC] Interno"
+    ]
+  },
+  "106779": {
+    "projeto": "Habilitar marcar fase cancelado - BDVS",
+    "responsavel": "Elder Guerra",
+    "fase": "Pendente-Aguardando Publicação",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Ar & Eletro",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[EVO] 0%"
+    ]
+  },
+  "104926": {
+    "projeto": "Inclusão de nova opção logistica  - Pedidos Devolução",
+    "responsavel": "Elder Guerra",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Logística",
+      "[RISCO] Baixo",
+      "[REC] Interno"
+    ]
+  },
+  "100971": {
+    "projeto": "Inclusão de visão de Valor de Venda - Garantia/Devolução",
+    "responsavel": "Elder Guerra",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Bens de Consumo",
+      "[RISCO] Baixo",
+      "[REC] Interno"
+    ]
+  },
+  "101370": {
+    "projeto": "Retornar para Aprovação Manual pedidos de Garantia - Ar&eletro Telecontrol",
+    "responsavel": "Erick Almeida",
+    "fase": "Em atendimento-Planejamento",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Comercial",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[EVO] 1–25%"
+    ]
+  },
+  "101307": {
+    "projeto": "Cadastrar preço por escritório de vendas (Automação) - (RDM 1950)",
+    "responsavel": "Erick Almeida",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Automação",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "103876": {
+    "projeto": "Criação de Chamada de API - SAP para Notas de Serviços (XML/PDF)",
+    "responsavel": "Elder Guerra",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] TI",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] Qualitativo"
+    ]
+  },
+  "109753": {
+    "projeto": "Regra de Depósito  - Devolução Nordeste",
+    "responsavel": "Elder Guerra",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Comercial",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "110023": {
+    "projeto": "Reanalisar estrutura de integrações por fila - Serviços TEF",
+    "responsavel": "Elder Guerra",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Automação",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "69222": {
+    "projeto": "Integração via API do Salesforce e RD Station / Web to Lead",
+    "responsavel": "Erick Almeida",
+    "fase": "On Hold",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Marketing",
+      "[RISCO] Baixo",
+      "[ROI] Qualitativo"
+    ]
+  },
+  "105334": {
+    "projeto": "Preço por margem e tela de simulação de preços",
+    "responsavel": "Erick Almeida",
+    "fase": "On Hold",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Refrigeração",
+      "[RISCO] Baixo",
+      "[REC] Ambos"
+    ]
+  },
+  "83499": {
+    "projeto": "Local de Expedição no Salesforce - alterar local de expedição para garantia",
+    "responsavel": "Erick Almeida",
+    "fase": "Pendente - Aguardando Aprovação DIRETORIA",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] TI",
+      "[RISCO] Baixo",
+      "[REC] Ambos",
+      "[ROI] N/A"
+    ]
+  },
+  "94929": {
+    "projeto": "EDI para integração de pedidos - Cliente Leroy",
+    "responsavel": "Erick Almeida",
+    "fase": "Pendente - Aguardando Aprovação DIRETORIA",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Bens de Consumo",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "101061": {
+    "projeto": "Criação de Automação da Atualização de Saldo/Cotas Salesforce / SAP",
+    "responsavel": "Elder Guerra",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Bens de Consumo",
+      "[RISCO] Baixo",
+      "[REC] Ambos",
+      "[ROI] Qualitativo"
+    ]
+  },
+  "107630": {
+    "projeto": "Melhorar carga de produtos em massa na criação da oportunidade - (RDM 1952)",
+    "responsavel": "Erick Almeida",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] Suporte Salesforce",
+      "[NEG] Bens de Consumo",
+      "[RISCO] Baixo",
+      "[REC] Ambos",
+      "[ROI] N/A"
+    ]
+  },
+  "87262": {
+    "projeto": "Melhoria : aprovação crédito pedido consignado -  (RDM 1953)",
+    "responsavel": "Erick Almeida",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Financeiro",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "812819": {
+    "projeto": "Limitar uso do Catálogo de preços por \"tipo de pedido\" -   (RDM 1954)",
+    "responsavel": "Erick Almeida",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Refrigeração",
+      "[RISCO] Baixo",
+      "[ROI] N/A"
+    ]
+  },
+  "112833": {
+    "projeto": "Formulário Quero Comprar Adição da BU de Automação SF",
+    "responsavel": "Erick Almeida",
+    "fase": "Teste Unitários",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Automação",
+      "[RISCO] Baixo"
+    ]
+  },
+  "112848": {
+    "projeto": "Bloquear edição de preços na inserção de produtos no pedido",
+    "responsavel": "Erick Almeida",
+    "fase": "Em atendimento-Planejamento",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Comercial",
+      "[RISCO] Baixo",
+      "[EVO] 76–99%"
+    ]
+  },
+  "112850": {
+    "projeto": "Impedir que o mesmo sku seja inserido mais de uma vez no mesmo pedido",
+    "responsavel": "Erick Almeida",
+    "fase": "On Hold",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Comercial",
+      "[RISCO] Baixo",
+      "[REC] Interno"
+    ]
+  },
+  "113321": {
+    "projeto": "Preencher campo de Responsável da Venda em Pedidos Automação TEF",
+    "responsavel": "Elder Guerra",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Automação",
+      "[RISCO] Baixo",
+      "[REC] Interno"
+    ]
+  },
+  "111266": {
+    "projeto": "Incluir nivel de aprovação diretoria solicitação de Troca de produtos de pedido.",
+    "responsavel": "Felipe Nascimento",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Ar & Eletro",
+      "[RISCO] Baixo",
+      "[REC] Interno"
+    ]
+  },
+  "113709": {
+    "projeto": "Reativação do processo de Troca de Produto.",
+    "responsavel": "Elder Guerra",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Refrigeração",
+      "[RISCO] Baixo",
+      "[REC] Interno"
+    ]
+  },
+  "114622": {
+    "projeto": "Complemento de Melhorias - Saldo e Estoque",
+    "responsavel": "Elder Guerra",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Bens de Consumo"
+    ]
+  },
+  "114688": {
+    "projeto": "Consultar o último preço praticado na inserção / edição de novos produtos na opo",
+    "responsavel": "Erick Almeida",
+    "fase": "Pendente-Aguardando Publicação",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] TI",
+      "[EVO] 76–99%"
+    ]
+  },
+  "114701": {
+    "projeto": "Leads Magento para o Salesforce - Linha Gellata",
+    "responsavel": "Erick Almeida",
+    "fase": "Em atendimento-Planejamento",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Refrigeração",
+      "[EVO] 1–25%"
+    ]
+  },
+  "114914": {
+    "projeto": "Logistica Reversa - Manaus/Mogi",
+    "responsavel": "Elder Guerra",
+    "fase": "Em atendimento-Estudo de viabilidade",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Logística"
+    ]
+  },
+  "115045": {
+    "projeto": "Preço por nível de Cliente",
+    "responsavel": "Elder Guerra",
+    "fase": "Pendente-Aguardando Publicação",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Bens de Consumo",
+      "[EVO] 0%"
+    ]
+  },
+  "115306": {
+    "projeto": "Objeto Conta - Limpeza de Campos E-mail",
+    "responsavel": "Elder Guerra",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] TI"
+    ]
+  },
+  "105678": {
+    "projeto": "[MELHORIA] - Lógica de Exceção para Aprovação Automática: Filtro por Escritório ",
+    "responsavel": "Elder Guerra",
+    "fase": "Pendente-Aguardando Publicação",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] Automação",
+      "[EVO] 0%"
+    ]
+  },
+  "115482": {
+    "projeto": "Objeto Conta - Limpeza de Campos \"E-mail\" com Merge de dados",
+    "responsavel": "Elder Guerra",
+    "fase": "Em atendimento-Estudo de viabilidade",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] TI"
+    ]
+  },
+  "115485": {
+    "projeto": "Integração de atualizações de Conta - SalesforceXSAP",
+    "responsavel": "Elder Guerra",
+    "fase": "Em atendimento-Estudo de viabilidade",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] TI"
+    ]
+  },
+  "115666": {
+    "projeto": "Revisão e Bloqueio de Permissões Administrativas - Comercial",
+    "responsavel": "Elder Guerra",
+    "fase": "Em atendimento-Estudo de viabilidade",
+    "tags": [
+      "[TI] CRM Salesforce",
+      "[SUB] CRM Salesforce",
+      "[NEG] TI"
+    ]
+  },
+  "78680": {
+    "projeto": "Melhoria nos tempos de Cadastro PJ",
+    "responsavel": "Luis Toledo",
+    "fase": "On Hold",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] E-Commerce",
+      "[NEG] Diretoria",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "80599": {
+    "projeto": "Liberação de uso pela web (computador) para o carga térmica",
+    "responsavel": "Luis Toledo",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Digital",
+      "[NEG] Refrigeração",
+      "[RISCO] Baixo"
+    ]
+  },
+  "85132": {
+    "projeto": "Criar Integração SAP, Novo Portal de Apoio e planilha MKT para o Selia",
+    "responsavel": "Luis Toledo",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Integração",
+      "[NEG] Marketing",
+      "[RISCO] Baixo"
+    ]
+  },
+  "86847": {
+    "projeto": "[Bemol] Cancelamento de pedidos",
+    "responsavel": "Luis Toledo",
+    "fase": "Em atendimento-Analise TI",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Integração",
+      "[NEG] eCommerce",
+      "[RISCO] Baixo",
+      "[EVO] 0%"
+    ]
+  },
+  "89129": {
+    "projeto": "[Bemol] Saldo x Estoque - Salesforce x SAP",
+    "responsavel": "Luis Toledo",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Integração",
+      "[NEG] Bens de Consumo",
+      "[RISCO] Baixo"
+    ]
+  },
+  "90788": {
+    "projeto": "Internalizar Formulário das Caravanas",
+    "responsavel": "Luis Toledo",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Site e Portal",
+      "[NEG] Marketing",
+      "[RISCO] Baixo"
+    ]
+  },
+  "90790": {
+    "projeto": "Unificação Backoffice Refrigeração e Climatização com o Novo Portal de Apoio",
+    "responsavel": "Luis Toledo",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Site e Portal",
+      "[NEG] Marketing",
+      "[RISCO] Baixo"
+    ]
+  },
+  "90914": {
+    "projeto": "Nova Funcionalidade Condensador Remoto Elgin (Seletor de Produtos)",
+    "responsavel": "Luis Toledo",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Digital",
+      "[NEG] Engenharia",
+      "[RISCO] Baixo",
+      "[REC] Interno"
+    ]
+  },
+  "93878": {
+    "projeto": "Gestão PEE no Novo Portal de Apoio",
+    "responsavel": "Luis Toledo",
+    "fase": "Pendente-Aguardando Publicação",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Site e Portal",
+      "[NEG] Marketing",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A",
+      "[EVO] 76–99%"
+    ]
+  },
+  "95734": {
+    "projeto": "Desenvolvimento - EDI para integração de pedidos (Leroy Merlin)",
+    "responsavel": "Luis Toledo",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Integração",
+      "[NEG] Bens de Consumo",
+      "[RISCO] Baixo",
+      "[ROI] N/A"
+    ]
+  },
+  "96988": {
+    "projeto": "Criar IA SAC Bens de Consumo",
+    "responsavel": "Luis Toledo",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Integração",
+      "[NEG] Bens de Consumo",
+      "[RISCO] Baixo"
+    ]
+  },
+  "97970": {
+    "projeto": "Desenvolver tela com a evolução de custos dos materiais no Dash Comercial - Refr",
+    "responsavel": "Luis Toledo",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Dados e BI",
+      "[NEG] Comercial",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "98307": {
+    "projeto": "Rebranding do Gelatta igual ao Selia/Loja Elgin",
+    "responsavel": "Luis Toledo",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] E-Commerce",
+      "[NEG] Marketing",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "98913": {
+    "projeto": "Atualização Saldo Depsnet",
+    "responsavel": "Luis Toledo",
+    "fase": "On Hold",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Integração",
+      "[NEG] Financeiro",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "99849": {
+    "projeto": "Migrar os RPA´s do ambiente antigo da Deal para o novo ambiente",
+    "responsavel": "Luis Toledo",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Dados e BI",
+      "[NEG] TI",
+      "[RISCO] Baixo"
+    ]
+  },
+  "99962": {
+    "projeto": "Novo Sistema de Cálculo de Compressores Elgin",
+    "responsavel": "Luis Toledo",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Digital",
+      "[NEG] Engenharia",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "100512": {
+    "projeto": "Implementar um sistema de registro de garantia de produtos de automação",
+    "responsavel": "Luis Toledo",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Site e Portal",
+      "[NEG] Automação",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "101104": {
+    "projeto": "Desenvolvimento DashBoard ENTREGAS (API Lincros)",
+    "responsavel": "Luis Toledo",
+    "fase": "Homologação-Testes integrados",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Dados e BI",
+      "[NEG] Logística",
+      "[RISCO] Médio",
+      "[REC] Interno",
+      "[ROI] N/A",
+      "[EVO] 51–75%"
+    ]
+  },
+  "101562": {
+    "projeto": "Correção Centro de Lucro - BI Comercial (Débito Técnico UP)",
+    "responsavel": "Luis Toledo",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Dados e BI",
+      "[NEG] Automação",
+      "[RISCO] Baixo"
+    ]
+  },
+  "102059": {
+    "projeto": "Melhorias do Sistema Portal de Garantia",
+    "responsavel": "Luis Toledo",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Digital",
+      "[NEG] Refrigeração",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "102600": {
+    "projeto": "Automatizar a inserção dos dados na tabela de metas do Runtest",
+    "responsavel": "Luis Toledo",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Dados e BI",
+      "[NEG] Engenharia",
+      "[RISCO] Baixo"
+    ]
+  },
+  "104073": {
+    "projeto": "Disponibilizar as informações de Frete Vendas",
+    "responsavel": "Luis Toledo",
+    "fase": "Homologação-Testes integrados",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Dados e BI",
+      "[NEG] Logística",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A",
+      "[EVO] 76–99%"
+    ]
+  },
+  "106095": {
+    "projeto": "Criação do eCommerce AR & ELETRO (Peças)",
+    "responsavel": "Luis Toledo",
+    "fase": "Homologação-Testes integrados",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] E-Commerce",
+      "[NEG] Ar & Eletro",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A",
+      "[EVO] 51–75%"
+    ]
+  },
+  "106096": {
+    "projeto": "Gestão da Base de Conhecimento para IA em Automação - Portal de Apoio",
+    "responsavel": "Luis Toledo",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Site e Portal",
+      "[NEG] Automação",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "106947": {
+    "projeto": "Sistema complementar de informações para o Dash de Entregas",
+    "responsavel": "Luis Toledo",
+    "fase": "Em atendimento-Analise TI",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Dados e BI",
+      "[NEG] Logística",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A",
+      "[EVO] 76–99%"
+    ]
+  },
+  "107150": {
+    "projeto": "Melhoria no Datamart de Automação Comercial",
+    "responsavel": "Luis Toledo",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Dados e BI",
+      "[NEG] Automação",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "108051": {
+    "projeto": "Criação do eCommerce Refrigeração (Peças)",
+    "responsavel": "Luis Toledo",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] E-Commerce",
+      "[NEG] Refrigeração",
+      "[RISCO] Baixo"
+    ]
+  },
+  "108162": {
+    "projeto": "Integração Refrio>Loja de Funcionário",
+    "responsavel": "Luis Toledo",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Integração",
+      "[NEG] eCommerce",
+      "[RISCO] Baixo"
+    ]
+  },
+  "108863": {
+    "projeto": "Portal Corporativo- Solicitação de Demonstrativo de Pagamento via Portal",
+    "responsavel": "Luis Toledo",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Integração",
+      "[NEG] TI",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "109227": {
+    "projeto": "KPIs Diretoria",
+    "responsavel": "Luis Toledo",
+    "fase": "Em atendimento-Analise TI",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Dados e BI",
+      "[NEG] TI",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A",
+      "[EVO] 1–25%"
+    ]
+  },
+  "90879": {
+    "projeto": "Criar Dash Board para o novo Processo de Vagas de DHO",
+    "responsavel": "Luis Toledo",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Dados e BI",
+      "[NEG] DHO",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "111013": {
+    "projeto": "[SAC] Formulário de atendimento",
+    "responsavel": "Luis Toledo",
+    "fase": "Em atendimento-Analise TI",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Site e Portal",
+      "[NEG] SAC",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[EVO] 51–75%"
+    ]
+  },
+  "111228": {
+    "projeto": "Refatoramento do código VBScript e HTML da assinatura de E-mails Elgin.",
+    "responsavel": "Luis Toledo",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Digital",
+      "[NEG] TI",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "111386": {
+    "projeto": "Criação de Variáveis no Data Layer para Eventos de Carrinho e Compra",
+    "responsavel": "Luis Toledo",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Digital",
+      "[NEG] Marketing",
+      "[RISCO] Baixo",
+      "[ROI] N/A"
+    ]
+  },
+  "111593": {
+    "projeto": "Adequação para inclusão automática do ano nos Dashboards corporativos",
+    "responsavel": "Luis Toledo",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Dados e BI",
+      "[NEG] TI",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "111750": {
+    "projeto": "Unificação de Relatório Diretoria - Selia e Bemol",
+    "responsavel": "Luis Toledo",
+    "fase": "Pendente - Aguardando Aprovação DIRETORIA",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Integração",
+      "[NEG] eCommerce",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "111757": {
+    "projeto": "Monitoramento de Movimentações de Estoque",
+    "responsavel": "Luis Toledo",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Integração",
+      "[NEG] eCommerce",
+      "[RISCO] Baixo"
+    ]
+  },
+  "111759": {
+    "projeto": "Precificação — Relatório Automatizado com IA",
+    "responsavel": "Luis Toledo",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Integração",
+      "[NEG] eCommerce",
+      "[RISCO] Baixo"
+    ]
+  },
+  "112368": {
+    "projeto": "Criação do E-Commerce Automação (Peças)",
+    "responsavel": "Luis Toledo",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] E-Commerce",
+      "[NEG] Automação",
+      "[RISCO] Baixo"
+    ]
+  },
+  "112457": {
+    "projeto": "Implementação de tecnologia para tradução automática de PDPs para Inglês e Espan",
+    "responsavel": "Luis Toledo",
+    "fase": "Homologação-Testes integrados",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Site e Portal",
+      "[NEG] Marketing",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A",
+      "[EVO] 76–99%"
+    ]
+  },
+  "113057": {
+    "projeto": "Aplicar processo de doublecheck para meios de pagamento",
+    "responsavel": "Luis Toledo",
+    "fase": "Fechado",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Digital",
+      "[NEG] TI",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "113240": {
+    "projeto": "Adequação Adobe Commerce – Fim do Suporte 2.4.4)",
+    "responsavel": "Luis Toledo",
+    "fase": "Backlog",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Digital",
+      "[NEG] TI",
+      "[RISCO] Baixo",
+      "[REC] Interno"
+    ]
+  },
+  "109390": {
+    "projeto": "[Zeev] Processo de Inventário",
+    "responsavel": "Luis Toledo",
+    "fase": "Em atendimento-Em desenvolvimento",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Integração",
+      "[NEG] Controladoria",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A",
+      "[EVO] 26–50%"
+    ]
+  },
+  "13398": {
+    "projeto": "Dashboard de Leads de Marketing (Salesforce)",
+    "responsavel": "Luis Toledo",
+    "fase": "Pendente - Aguardando Aprovação DIRETORIA",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Dados e BI",
+      "[NEG] Marketing",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "114424": {
+    "projeto": "Aprimoramento do BI Comercial – Indicadores de Performance de Vendedores",
+    "responsavel": "Luis Toledo",
+    "fase": "Em atendimento-Analise TI",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Dados e BI",
+      "[NEG] Comercial",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[EVO] 0%"
+    ]
+  },
+  "114921": {
+    "projeto": "Reformulação do Menu Gelatta",
+    "responsavel": "Luis Toledo",
+    "fase": "Em atendimento-Analise TI",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] E-Commerce",
+      "[NEG] Marketing",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[EVO] 0%"
+    ]
+  },
+  "114922": {
+    "projeto": "Habilitar Botão para Produtos acima de 10.000,00 - Formulário Externo",
+    "responsavel": "Luis Toledo",
+    "fase": "Em atendimento-Analise TI",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] E-Commerce",
+      "[NEG] Marketing",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[EVO] 0%"
+    ]
+  },
+  "114964": {
+    "projeto": "Envio de e-mail comunicando novas atualizações no portal",
+    "responsavel": "Luis Toledo",
+    "fase": "Pendente - Aguardando Aprovação DIRETORIA",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Site e Portal",
+      "[NEG] Marketing",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "114965": {
+    "projeto": "Randomização de URL - Código randômico",
+    "responsavel": "Luis Toledo",
+    "fase": "Pendente - Aguardando Aprovação DIRETORIA",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Site e Portal",
+      "[NEG] Marketing",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  },
+  "115266": {
+    "projeto": "Página Logística Rastreio de Mercadoria",
+    "responsavel": "Luis Toledo",
+    "fase": "Em atendimento-Analise TI",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Site e Portal",
+      "[NEG] Logística",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[EVO] 0%"
+    ]
+  },
+  "115610": {
+    "projeto": "Incluir informações de Remessa no dash Comercial Bens de consumo",
+    "responsavel": "Luis Toledo",
+    "fase": "Pendente - Aguardando Aprovação DIRETORIA",
+    "tags": [
+      "[TI] Dados & Digital",
+      "[SUB] Dados e BI",
+      "[NEG] Comercial",
+      "[RISCO] Baixo",
+      "[REC] Interno",
+      "[ROI] N/A"
+    ]
+  }
+}
