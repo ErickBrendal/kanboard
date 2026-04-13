@@ -165,5 +165,26 @@
     "pbi_kpis": 0,
     "pbi_fases": 0,
     "pbi_responsaveis": 0
+  },
+  {
+    "timestamp": "2026-04-13 09:12:07",
+    "versao": "sync_powerbi_v2.2",
+    "status": "partial_success",
+    "tasks_synced": 105,
+    "error": null,
+    "data_source": "data_enriquecido",
+    "pbi_sync": false,
+    "kpis_count": 8,
+    "fases_count": 7,
+    "responsaveis_count": 5,
+    "elapsed_seconds": 3.1,
+    "pbi_demandas": 0,
+    "pbi_kpis": 0,
+    "pbi_fases": 0,
+    "pbi_responsaveis": 0,
+    "observacao": "Push Power BI bloqueado por MFA (AADSTS50076). Pipeline local executado com sucesso. CSV e dados calculados. Para habilitar push automatico: desabilitar MFA para conta de servico ou usar Service Principal com client_secret.",
+    "csv_path": "/home/ubuntu/kanboard/powerbi/kanboard_dados_final.csv",
+    "csv_linhas": 105,
+    "github_commit": "830315d"
   }
 ]
