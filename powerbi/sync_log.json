@@ -140,5 +140,30 @@
     "fases_synced": 7,
     "responsaveis_synced": 5,
     "elapsed_seconds": 8.1
+  },
+  {
+    "timestamp": "2026-04-13 09:03:51",
+    "versao": "v2.2",
+    "status": "error",
+    "tasks_synced": 0,
+    "error": "Falha na autenticação Power BI com todos os client IDs",
+    "data_source": "unknown"
+  },
+  {
+    "timestamp": "2026-04-13 09:09:39",
+    "versao": "pipeline_local_v1.0",
+    "status": "success",
+    "tasks_synced": 105,
+    "error": null,
+    "data_source": "data_enriquecido",
+    "pbi_sync": false,
+    "kpis_count": 8,
+    "fases_count": 7,
+    "responsaveis_count": 5,
+    "elapsed_seconds": 3.1,
+    "pbi_demandas": 0,
+    "pbi_kpis": 0,
+    "pbi_fases": 0,
+    "pbi_responsaveis": 0
   }
 ]
