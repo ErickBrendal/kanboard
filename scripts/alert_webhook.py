@@ -169,6 +169,20 @@ def send_alert_email(subject: str, details: dict, is_recovery: bool = False):
     icon = "✅" if is_recovery else "🚨"
     status_label = "RECUPERADO" if is_recovery else "INATIVO"
 
+    if is_recovery:
+        recovery_block = ""
+    else:
+        recovery_block = (
+            '<div style="background:#fff3cd; border-left:4px solid #f0ad4e; padding:14px 18px;'
+            ' margin-top:20px; border-radius:4px;">'
+            '<strong>A&ccedil;&atilde;o Recomendada:</strong><br>'
+            'O servi&ccedil;o tentar&aacute; se recuperar automaticamente (systemd Restart=always).<br>'
+            'Se o problema persistir, conecte-se &agrave; VM e execute:<br>'
+            '<code style="background:#f8f8f8; padding:2px 6px; border-radius:3px;">'
+            'sudo systemctl restart kanboard-webhook'
+            '</code></div>'
+        )
+
     html_body = f"""
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -216,17 +230,7 @@ def send_alert_email(subject: str, details: dict, is_recovery: bool = False):
       <pre style="background:#1e1e1e; color:#d4d4d4; padding:16px; border-radius:6px;
                   font-size:12px; overflow-x:auto; white-space:pre-wrap;">{details['ultimas_linhas_log']}</pre>
 
-      {"" if is_recovery else """
-      <div style="background:#fff3cd; border-left:4px solid #f0ad4e; padding:14px 18px;
-                  margin-top:20px; border-radius:4px;">
-        <strong>Ação Recomendada:</strong><br>
-        O serviço tentará se recuperar automaticamente (systemd Restart=always).<br>
-        Se o problema persistir, conecte-se à VM e execute:<br>
-        <code style="background:#f8f8f8; padding:2px 6px; border-radius:3px;">
-          sudo systemctl restart kanboard-webhook
-        </code>
-      </div>
-      """}
+      {recovery_block}
     </div>
 
     <!-- Rodapé -->
