@@ -3,7 +3,7 @@
 EBL Kanboard Webhook — Monitor e Alerta de Falha
 =================================================
 Verifica se o serviço kanboard-webhook está ativo e envia
-alerta por e-mail via SMTP do Microsoft 365 quando inativo.
+alerta por e-mail via Microsoft Graph API quando inativo.
 
 Modos de uso:
   python3 alert_webhook.py                  # watchdog: verifica e alerta se inativo
@@ -14,13 +14,13 @@ Modos de uso:
 import os
 import sys
 import subprocess
-import smtplib
 import socket
 import json
 import argparse
+import urllib.request
+import urllib.parse
+import urllib.error
 from datetime import datetime, timezone
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
 from pathlib import Path
 
 # ── Configuração ──────────────────────────────────────────────────────────────
@@ -35,9 +35,9 @@ HEALTH_URL   = "http://localhost:5500/health"
 # Destinatários do alerta (separados por vírgula no .env ou lista padrão)
 DEFAULT_RECIPIENTS = ["admebl@eblsolucoescorporativas.com"]
 
-# SMTP Microsoft 365
-SMTP_HOST = "smtp.office365.com"
-SMTP_PORT = 587
+# Microsoft Graph API
+GRAPH_TOKEN_URL = "https://login.microsoftonline.com/{tenant_id}/oauth2/v2.0/token"
+GRAPH_SEND_MAIL = "https://graph.microsoft.com/v1.0/users/{sender}/sendMail"
 
 
 # ── Utilitários ───────────────────────────────────────────────────────────────
@@ -51,7 +51,6 @@ def load_env():
             if line and not line.startswith("#") and "=" in line:
                 key, _, val = line.partition("=")
                 env[key.strip()] = val.strip()
-    # Mescla com os já definidos no ambiente do processo
     for k, v in env.items():
         os.environ.setdefault(k, v)
     return env
@@ -86,7 +85,7 @@ def save_state(state: dict):
 
 # ── Verificação do serviço ────────────────────────────────────────────────────
 
-def check_service_systemd() -> tuple[bool, str]:
+def check_service_systemd() -> tuple:
     """Retorna (ativo, mensagem)."""
     try:
         result = subprocess.run(
@@ -99,10 +98,9 @@ def check_service_systemd() -> tuple[bool, str]:
         return False, f"Erro ao verificar systemd: {e}"
 
 
-def check_service_http() -> tuple[bool, str]:
+def check_service_http() -> tuple:
     """Verifica o health endpoint HTTP."""
     try:
-        import urllib.request
         with urllib.request.urlopen(HEALTH_URL, timeout=5) as resp:
             data = json.loads(resp.read())
             return data.get("status") == "ok", json.dumps(data)
@@ -121,7 +119,6 @@ def get_service_details() -> dict:
         "uptime_vm": "",
     }
 
-    # Status detalhado do systemd
     try:
         r = subprocess.run(
             ["systemctl", "status", SERVICE_NAME, "--no-pager", "-l"],
@@ -131,7 +128,6 @@ def get_service_details() -> dict:
     except Exception:
         pass
 
-    # Últimas linhas do log do serviço
     try:
         r = subprocess.run(
             ["journalctl", "-u", SERVICE_NAME, "-n", "20", "--no-pager"],
@@ -141,7 +137,6 @@ def get_service_details() -> dict:
     except Exception:
         pass
 
-    # Uptime da VM
     try:
         r = subprocess.run(["uptime", "-p"], capture_output=True, text=True, timeout=5)
         details["uptime_vm"] = r.stdout.strip()
@@ -151,22 +146,43 @@ def get_service_details() -> dict:
     return details
 
 
-# ── Envio de e-mail ───────────────────────────────────────────────────────────
+# ── Envio de e-mail via Microsoft Graph API ───────────────────────────────────
 
-def send_alert_email(subject: str, details: dict, is_recovery: bool = False):
-    """Envia e-mail de alerta ou recuperação via SMTP Microsoft 365."""
-    smtp_user = os.environ.get("PBI_USERNAME", "admebl@eblsolucoescorporativas.com")
-    smtp_pass = os.environ.get("AZURE_CLIENT_SECRET", "")
+def get_graph_token() -> str:
+    """Obtém token de acesso ao Microsoft Graph via client_credentials."""
+    tenant_id   = os.environ.get("AZURE_TENANT_ID", "")
+    client_id   = os.environ.get("AZURE_CLIENT_ID", "")
+    client_secret = os.environ.get("AZURE_CLIENT_SECRET", "")
 
-    # Tentar obter senha de e-mail dedicada, se configurada
-    smtp_pass = os.environ.get("SMTP_PASSWORD", smtp_pass)
+    if not all([tenant_id, client_id, client_secret]):
+        raise ValueError("AZURE_TENANT_ID, AZURE_CLIENT_ID e AZURE_CLIENT_SECRET são obrigatórios")
+
+    token_url = GRAPH_TOKEN_URL.format(tenant_id=tenant_id)
+    data = urllib.parse.urlencode({
+        "grant_type":    "client_credentials",
+        "client_id":     client_id,
+        "client_secret": client_secret,
+        "scope":         "https://graph.microsoft.com/.default",
+    }).encode()
+
+    req = urllib.request.Request(token_url, data=data, method="POST")
+    req.add_header("Content-Type", "application/x-www-form-urlencoded")
+
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        result = json.loads(resp.read())
+        return result["access_token"]
+
+
+def send_alert_email(subject: str, details: dict, is_recovery: bool = False) -> bool:
+    """Envia e-mail de alerta ou recuperação via Microsoft Graph API."""
+    sender_user = os.environ.get("PBI_USERNAME", "admebl@eblsolucoescorporativas.com")
 
     recipients_raw = os.environ.get("ALERT_RECIPIENTS", "")
     recipients = [r.strip() for r in recipients_raw.split(",") if r.strip()] \
                  if recipients_raw else DEFAULT_RECIPIENTS
 
     color_header = "#27ae60" if is_recovery else "#c0392b"
-    icon = "✅" if is_recovery else "🚨"
+    icon = "OK" if is_recovery else "ALERTA"
     status_label = "RECUPERADO" if is_recovery else "INATIVO"
 
     if is_recovery:
@@ -175,99 +191,110 @@ def send_alert_email(subject: str, details: dict, is_recovery: bool = False):
         recovery_block = (
             '<div style="background:#fff3cd; border-left:4px solid #f0ad4e; padding:14px 18px;'
             ' margin-top:20px; border-radius:4px;">'
-            '<strong>A&ccedil;&atilde;o Recomendada:</strong><br>'
-            'O servi&ccedil;o tentar&aacute; se recuperar automaticamente (systemd Restart=always).<br>'
-            'Se o problema persistir, conecte-se &agrave; VM e execute:<br>'
+            '<strong>Acao Recomendada:</strong><br>'
+            'O servico tentara se recuperar automaticamente (systemd Restart=always).<br>'
+            'Se o problema persistir, conecte-se a VM e execute:<br>'
             '<code style="background:#f8f8f8; padding:2px 6px; border-radius:3px;">'
             'sudo systemctl restart kanboard-webhook'
             '</code></div>'
         )
 
-    html_body = f"""
-<!DOCTYPE html>
+    html_body = """<!DOCTYPE html>
 <html lang="pt-BR">
 <head><meta charset="UTF-8"></head>
 <body style="font-family: Arial, sans-serif; background:#f4f4f4; padding:20px;">
   <div style="max-width:640px; margin:auto; background:#fff; border-radius:8px;
               box-shadow:0 2px 8px rgba(0,0,0,.1); overflow:hidden;">
-
-    <!-- Cabeçalho -->
-    <div style="background:{color_header}; padding:24px 32px;">
+    <div style="background:{color}; padding:24px 32px;">
       <h1 style="margin:0; color:#fff; font-size:22px;">
-        {icon} Serviço {status_label}: <code>kanboard-webhook</code>
+        [{icon}] Servico {status}: kanboard-webhook
       </h1>
       <p style="margin:6px 0 0; color:rgba(255,255,255,.85); font-size:14px;">
-        EBL Soluções Corporativas — Monitoramento Automático
+        EBL Solucoes Corporativas - Monitoramento Automatico
       </p>
     </div>
-
-    <!-- Corpo -->
     <div style="padding:28px 32px;">
       <table style="width:100%; border-collapse:collapse; font-size:14px;">
         <tr>
           <td style="padding:8px 0; color:#666; width:160px;"><strong>Servidor</strong></td>
-          <td style="padding:8px 0;">{details['hostname']} ({details['ip_publico']})</td>
+          <td style="padding:8px 0;">{hostname} ({ip})</td>
         </tr>
         <tr style="background:#f9f9f9;">
           <td style="padding:8px 0; color:#666;"><strong>Data/Hora</strong></td>
-          <td style="padding:8px 0;">{details['timestamp']}</td>
+          <td style="padding:8px 0;">{timestamp}</td>
         </tr>
         <tr>
           <td style="padding:8px 0; color:#666;"><strong>Uptime VM</strong></td>
-          <td style="padding:8px 0;">{details.get('uptime_vm', 'N/A')}</td>
+          <td style="padding:8px 0;">{uptime}</td>
         </tr>
       </table>
-
-      <h3 style="margin:24px 0 8px; font-size:15px; color:#333;">
-        Status do Serviço (systemd)
-      </h3>
+      <h3 style="margin:24px 0 8px; font-size:15px; color:#333;">Status do Servico (systemd)</h3>
       <pre style="background:#1e1e1e; color:#d4d4d4; padding:16px; border-radius:6px;
-                  font-size:12px; overflow-x:auto; white-space:pre-wrap;">{details['systemd_status']}</pre>
-
-      <h3 style="margin:24px 0 8px; font-size:15px; color:#333;">
-        Últimas Linhas do Log
-      </h3>
+                  font-size:12px; overflow-x:auto; white-space:pre-wrap;">{systemd}</pre>
+      <h3 style="margin:24px 0 8px; font-size:15px; color:#333;">Ultimas Linhas do Log</h3>
       <pre style="background:#1e1e1e; color:#d4d4d4; padding:16px; border-radius:6px;
-                  font-size:12px; overflow-x:auto; white-space:pre-wrap;">{details['ultimas_linhas_log']}</pre>
-
-      {recovery_block}
+                  font-size:12px; overflow-x:auto; white-space:pre-wrap;">{log_lines}</pre>
+      {recovery}
     </div>
-
-    <!-- Rodapé -->
     <div style="background:#f0f0f0; padding:14px 32px; font-size:12px; color:#888;">
       Alerta gerado automaticamente pelo watchdog EBL Kanboard Monitor.<br>
-      VM Oracle Cloud — {details['ip_publico']} — Região sa-saopaulo-1
+      VM Oracle Cloud - {ip} - Regiao sa-saopaulo-1
     </div>
   </div>
 </body>
-</html>
-"""
+</html>""".format(
+        color=color_header,
+        icon=icon,
+        status=status_label,
+        hostname=details.get("hostname", ""),
+        ip=details.get("ip_publico", ""),
+        timestamp=details.get("timestamp", ""),
+        uptime=details.get("uptime_vm", "N/A"),
+        systemd=details.get("systemd_status", ""),
+        log_lines=details.get("ultimas_linhas_log", ""),
+        recovery=recovery_block,
+    )
 
-    msg = MIMEMultipart("alternative")
-    msg["Subject"] = subject
-    msg["From"]    = smtp_user
-    msg["To"]      = ", ".join(recipients)
-    msg.attach(MIMEText(html_body, "html", "utf-8"))
+    # Montar payload do Graph API
+    to_recipients = [{"emailAddress": {"address": r}} for r in recipients]
+    mail_payload = {
+        "message": {
+            "subject": subject,
+            "body": {"contentType": "HTML", "content": html_body},
+            "toRecipients": to_recipients,
+        },
+        "saveToSentItems": "false",
+    }
 
     try:
-        with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=30) as server:
-            server.ehlo()
-            server.starttls()
-            server.login(smtp_user, smtp_pass)
-            server.sendmail(smtp_user, recipients, msg.as_bytes())
-        log("INFO", f"E-mail de alerta enviado para: {', '.join(recipients)}")
+        token = get_graph_token()
+        send_url = GRAPH_SEND_MAIL.format(sender=urllib.parse.quote(sender_user))
+        body_bytes = json.dumps(mail_payload).encode("utf-8")
+        req = urllib.request.Request(send_url, data=body_bytes, method="POST")
+        req.add_header("Authorization", f"Bearer {token}")
+        req.add_header("Content-Type", "application/json")
+
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            status_code = resp.getcode()
+
+        log("INFO", f"E-mail enviado via Graph API (HTTP {status_code}) para: {', '.join(recipients)}")
         return True
+
+    except urllib.error.HTTPError as e:
+        error_body = e.read().decode("utf-8", errors="replace")[:400]
+        log("ERROR", f"Graph API HTTP {e.code}: {error_body}")
     except Exception as e:
-        log("ERROR", f"Falha ao enviar e-mail via SMTP: {e}")
-        # Fallback: registrar no log do webhook para visibilidade
-        try:
-            fallback_log = BASE_DIR / "powerbi" / "webhook.log"
-            with fallback_log.open("a") as f:
-                f.write(f"[{datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')}]"
-                        f" [ALERT] {subject}\n")
-        except Exception:
-            pass
-        return False
+        log("ERROR", f"Falha ao enviar e-mail via Graph API: {e}")
+
+    # Fallback: registrar no log do webhook
+    try:
+        fallback_log = BASE_DIR / "powerbi" / "webhook.log"
+        with fallback_log.open("a") as f:
+            ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+            f.write(f"[{ts}] [ALERT] {subject}\n")
+    except Exception:
+        pass
+    return False
 
 
 # ── Lógica principal ──────────────────────────────────────────────────────────
@@ -281,21 +308,19 @@ def run_watchdog(trigger: str = "cron"):
     http_ok, http_msg       = check_service_http()
 
     service_ok = systemd_ok and http_ok
-
     now_iso = datetime.now(timezone.utc).isoformat()
 
     if service_ok:
         if state.get("consecutive_failures", 0) > 0:
-            # Serviço se recuperou — enviar e-mail de recuperação
-            log("INFO", "Serviço recuperado. Enviando notificação de recuperação.")
+            log("INFO", "Servico recuperado. Enviando notificacao de recuperacao.")
             details = get_service_details()
             send_alert_email(
-                subject=f"✅ [EBL] Serviço kanboard-webhook RECUPERADO — {details['hostname']}",
+                subject=f"[OK] [EBL] Servico kanboard-webhook RECUPERADO — {details['hostname']}",
                 details=details,
                 is_recovery=True
             )
         else:
-            log("INFO", f"Serviço OK (systemd: {systemd_msg}, http: {http_ok})")
+            log("INFO", f"Servico OK (systemd: {systemd_msg}, http: {http_ok})")
 
         state["consecutive_failures"] = 0
         state["last_ok"] = now_iso
@@ -304,14 +329,12 @@ def run_watchdog(trigger: str = "cron"):
 
     # Serviço inativo
     state["consecutive_failures"] = state.get("consecutive_failures", 0) + 1
-    log("WARN", f"Serviço INATIVO! Falha #{state['consecutive_failures']} "
+    log("WARN", f"Servico INATIVO! Falha #{state['consecutive_failures']} "
                 f"(systemd: {systemd_msg}, http: {http_ok}, trigger: {trigger})")
 
-    # Evitar spam: aguardar pelo menos 2 falhas consecutivas antes de alertar
-    # (exceto quando chamado pelo systemd OnFailure, que alerta imediatamente)
     min_failures = 1 if trigger == "systemd-failure" else 2
     last_alert   = state.get("last_alert_sent")
-    cooldown_min = 30  # minutos entre alertas repetidos
+    cooldown_min = 30
 
     should_alert = (
         state["consecutive_failures"] >= min_failures
@@ -326,7 +349,7 @@ def run_watchdog(trigger: str = "cron"):
         details = get_service_details()
         hostname = details["hostname"]
         subject = (
-            f"🚨 [EBL] Serviço kanboard-webhook INATIVO — {hostname} "
+            f"[ALERTA] [EBL] Servico kanboard-webhook INATIVO — {hostname} "
             f"(falha #{state['consecutive_failures']})"
         )
         sent = send_alert_email(subject=subject, details=details, is_recovery=False)
@@ -341,14 +364,14 @@ def run_watchdog(trigger: str = "cron"):
 
 
 def run_test():
-    """Envia um e-mail de teste para validar a configuração SMTP."""
+    """Envia um e-mail de teste para validar a configuracao Graph API."""
     load_env()
-    log("INFO", "Enviando e-mail de TESTE...")
+    log("INFO", "Enviando e-mail de TESTE via Microsoft Graph API...")
     details = get_service_details()
-    details["systemd_status"] = "** ESTE É UM E-MAIL DE TESTE **\nNenhuma falha real ocorreu."
-    details["ultimas_linhas_log"] = "Teste de conectividade SMTP — EBL Kanboard Monitor"
+    details["systemd_status"] = "** ESTE E UM E-MAIL DE TESTE **\nNenhuma falha real ocorreu."
+    details["ultimas_linhas_log"] = "Teste de conectividade Graph API — EBL Kanboard Monitor"
     sent = send_alert_email(
-        subject=f"🔔 [EBL] Teste de alerta kanboard-webhook — {details['hostname']}",
+        subject=f"[TESTE] [EBL] Alerta kanboard-webhook — {details['hostname']}",
         details=details,
         is_recovery=False
     )
