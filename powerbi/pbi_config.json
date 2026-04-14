@@ -1,11 +1,17 @@
 {
-  "dataset_id": "f6927277-d99a-4bfc-89f3-7f2eef301609",
-  "dataset_name": "EBL Fast Track Salesforce",
+  "dataset_id": "39d50fe5-cde9-4244-b5e5-422a73e8e142",
+  "dataset_name": "EBL Kanboard Fast Track",
   "tenant_id": "208364c6-eee7-4324-ac4a-d45fe452a1bd",
-  "client_id": "04b07795-8ddb-461a-bbee-02f9e1bf7b46",
+  "client_id": "876e9f44-d589-49ed-b4b1-239bbd2430a0",
+  "client_secret_id": "376233d3-4228-43bc-858e-04d9cbb1b70c",
+  "client_secret_description": "EBL-Kanboard-PowerBI-Sync",
+  "client_secret_expires": "2026-10-11",
+  "onedrive_drive_id": "b!TeCN2j3hUkupwWkAv2s3ZlKFLPuBa5JIhxAalUAo4vbRFZw4oU4KTbOkvAxXF_h6",
+  "onedrive_drive_type": "business",
+  "onedrive_drive_name": "Documentos",
   "username": "admebl@eblsolucoescorporativas.com",
-  "total_rows": 0,
-  "last_update": "2026-03-29T17:12:10.958836",
+  "total_rows": 105,
+  "last_update": "2026-04-13T20:53:00.000000",
   "kanboard_api": "http://kanboard.eblsolucoescorp.tec.br/jsonrpc.php",
-  "powerbi_url": "https://app.powerbi.com/groups/me/datasets/f6927277-d99a-4bfc-89f3-7f2eef301609/details"
+  "powerbi_url": "https://app.powerbi.com/groups/me/datasets/39d50fe5-cde9-4244-b5e5-422a73e8e142/details"
 }

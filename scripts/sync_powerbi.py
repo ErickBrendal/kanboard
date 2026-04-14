@@ -27,10 +27,12 @@ KANBOARD_PROJ  = 11  # [SF] Fast Track — Salesforce
 PBI_USERNAME   = "admebl@eblsolucoescorporativas.com"
 PBI_PASSWORD   = "Senha@2026"
 PBI_TENANT_ID  = "208364c6-eee7-4324-ac4a-d45fe452a1bd"
-PBI_CLIENT_ID  = "1950a258-227b-4e31-a9cf-717495945fc2"
+PBI_CLIENT_ID  = "876e9f44-d589-49ed-b4b1-239bbd2430a0"  # App: EBL Kanboard Sync
+PBI_CLIENT_SECRET = os.environ.get("PBI_CLIENT_SECRET", "")  # Definir via variável de ambiente ou GitHub Secrets
 PBI_CLIENT_ID2 = "04b07795-8ddb-461a-bbee-02f9e1bf7b46"
 PBI_DATASET_ID = "39d50fe5-cde9-4244-b5e5-422a73e8e142"
 PBI_SCOPE      = ["https://analysis.windows.net/powerbi/api/.default"]
+ONEDRIVE_DRIVE_ID = "b!TeCN2j3hUkupwWkAv2s3ZlKFLPuBa5JIhxAalUAo4vbRFZw4oU4KTbOkvAxXF_h6"  # OneDrive Business: Documentos
 
 BASE_DIR       = Path(__file__).parent.parent
 EXCEL_MAP      = BASE_DIR / "powerbi" / "excel_map.json"
@@ -63,8 +65,25 @@ def log(msg, level="INFO"):
 # AUTENTICAÇÃO POWER BI
 # =====================================================================
 def get_pbi_token():
-    """Obtém token de acesso ao Power BI via MSAL com múltiplos client IDs"""
+    """Obtém token de acesso ao Power BI via MSAL.
+    Tenta primeiro client_credentials (Service Principal) e depois username/password."""
     log("Autenticando no Power BI Service...")
+    # Tentativa 1: client_credentials (Service Principal — sem MFA)
+    try:
+        app = msal.ConfidentialClientApplication(
+            PBI_CLIENT_ID,
+            authority=f"https://login.microsoftonline.com/{PBI_TENANT_ID}",
+            client_credential=PBI_CLIENT_SECRET
+        )
+        result = app.acquire_token_for_client(scopes=["https://analysis.windows.net/powerbi/api/.default"])
+        if "access_token" in result:
+            log(f"  Token Power BI obtido via client_credentials (Service Principal)!")
+            return result["access_token"]
+        err = result.get("error_description", result.get("error", ""))
+        log(f"  client_credentials falhou: {str(err)[:100]}", "WARN")
+    except Exception as e:
+        log(f"  Erro no client_credentials: {e}", "WARN")
+    # Tentativa 2: username/password (fallback — requer MFA desabilitado)
     for cid in [PBI_CLIENT_ID, PBI_CLIENT_ID2]:
         try:
             app = msal.PublicClientApplication(
@@ -74,13 +93,13 @@ def get_pbi_token():
                 PBI_USERNAME, PBI_PASSWORD, scopes=PBI_SCOPE
             )
             if "access_token" in result:
-                log(f"  Token Power BI obtido com sucesso! (client_id={cid[:8]}...)")
+                log(f"  Token Power BI obtido via username/password (client_id={cid[:8]}...)")
                 return result["access_token"]
             err = result.get("error_description", result.get("error", ""))
             log(f"  Falhou com client_id={cid[:8]}...: {str(err)[:100]}", "WARN")
         except Exception as e:
             log(f"  Erro com client_id={cid[:8]}...: {e}", "WARN")
-    raise Exception("Falha na autenticação Power BI com todos os client IDs")
+    raise Exception("Falha na autenticação Power BI com todos os métodos")
 
 # =====================================================================
 # KANBOARD API (com X-API-Auth header personalizado)
