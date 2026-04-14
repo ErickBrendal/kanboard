@@ -1,0 +1,25 @@
+[Unit]
+Description=EBL Kanboard Webhook Server
+Documentation=https://github.com/ErickBrendal/kanboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/kanboard
+EnvironmentFile=/home/ubuntu/kanboard/.env
+ExecStart=/usr/bin/python3 /home/ubuntu/kanboard/scripts/webhook_server.py
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=kanboard-webhook
+
+# Segurança
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
