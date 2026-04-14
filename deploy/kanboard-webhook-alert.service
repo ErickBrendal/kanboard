@@ -1,0 +1,14 @@
+[Unit]
+Description=EBL Kanboard Webhook — Alerta de Falha
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/kanboard
+EnvironmentFile=/home/ubuntu/kanboard/.env
+ExecStart=/usr/bin/python3 /home/ubuntu/kanboard/scripts/alert_webhook.py --trigger systemd-failure
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=kanboard-webhook-alert

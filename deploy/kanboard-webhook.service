@@ -3,6 +3,8 @@ Description=EBL Kanboard Webhook Server
 Documentation=https://github.com/ErickBrendal/kanboard
 After=network-online.target
 Wants=network-online.target
+# Dispara o serviço de alerta quando esta unidade falhar
+OnFailure=kanboard-webhook-alert.service
 
 [Service]
 Type=simple
@@ -11,8 +13,14 @@ Group=ubuntu
 WorkingDirectory=/home/ubuntu/kanboard
 EnvironmentFile=/home/ubuntu/kanboard/.env
 ExecStart=/usr/bin/python3 /home/ubuntu/kanboard/scripts/webhook_server.py
-Restart=on-failure
-RestartSec=10
+
+# Reinicialização automática: sempre que o processo terminar inesperadamente
+Restart=always
+RestartSec=15
+# Limitar reinicializações: máximo 5 tentativas em 5 minutos
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
 StandardOutput=journal
 StandardError=journal
 SyslogIdentifier=kanboard-webhook
