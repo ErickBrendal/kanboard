@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
 """
-EBL Kanboard → Power BI Sync Automático (com fallback para dados locais)
+EBL Kanboard → Power BI Sync Automático (Playbook v2.3)
 Executa diariamente via cron/GitHub Actions
-Versão: 2.2 | Atualizado em: 2026-04-07
-Melhorias v2.2:
-  - Usa data_enriquecido.json como fonte principal (105 tarefas)
-  - Tenta API Kanboard com X-API-Auth header (config.php personalizado)
-  - Fallback robusto: data_enriquecido.json → snapshot_antes_limpeza.json
-  - Autenticação Power BI com múltiplos client_ids
-  - KPIs, Fases e Responsáveis calculados e enviados ao Power BI
+Versão: 2.3 | Atualizado em: 2026-04-16
+
+Playbook:
+  1. Autenticar no Power BI via MSAL com username/password flow
+     Tenant: 208364c6-eee7-4324-ac4a-d45fe452a1bd
+     Client: 1950a258-227b-4e31-a9cf-717495945fc2
+  2. Buscar tarefas abertas (status_id=1) e fechadas (status_id=0) do projeto 11
+  3. Enriquecer com dados do excel_map.json (área, valor, horas, tipo)
+  4. Calcular KPIs, distribuição por fase e métricas por responsável
+  5. Limpar tabelas Demandas/KPIs/Fases/Responsaveis do dataset
+  6. Inserir dados atualizados em lotes de 500
+  7. Salvar CSV e log
 """
 
 import msal, requests, json, csv, sys, os
@@ -16,30 +21,32 @@ from datetime import datetime, timezone
 from pathlib import Path
 from collections import Counter, defaultdict
 
-# ===== CONFIGURAÇÕES =====
+# ===== CONFIGURAÇÕES (Playbook) =====
 KANBOARD_URL   = "http://kanboard.eblsolucoescorp.tec.br/jsonrpc.php"
 KANBOARD_USER  = "admin"
 KANBOARD_PASS  = "Senha@2026"
-# Token API atual (obtido via /user/1/api no Kanboard)
 KANBOARD_TOKEN = "65251ba731c6900a80a8a733ced2aae364cb28172e16df1785b22444124e387f"
 KANBOARD_PROJ  = 11  # [SF] Fast Track — Salesforce
 
 PBI_USERNAME   = "admebl@eblsolucoescorporativas.com"
 PBI_PASSWORD   = "Senha@2026"
 PBI_TENANT_ID  = "208364c6-eee7-4324-ac4a-d45fe452a1bd"
-PBI_CLIENT_ID  = "876e9f44-d589-49ed-b4b1-239bbd2430a0"  # App: EBL Kanboard Sync
-PBI_CLIENT_SECRET = os.environ.get("PBI_CLIENT_SECRET", "")  # Definir via variável de ambiente ou GitHub Secrets
-PBI_CLIENT_ID2 = "04b07795-8ddb-461a-bbee-02f9e1bf7b46"
+# Client IDs a tentar (playbook especifica 1950a258-227b-4e31-a9cf-717495945fc2)
+PBI_CLIENT_IDS = [
+    "1950a258-227b-4e31-a9cf-717495945fc2",  # Playbook (Microsoft Azure PowerShell)
+    "04b07795-8ddb-461a-bbee-02f9e1bf7b46",  # Azure CLI
+    "876e9f44-d589-49ed-b4b1-239bbd2430a0",  # EBL Kanboard Sync App
+]
+PBI_CLIENT_SECRET = os.environ.get("PBI_CLIENT_SECRET", "")
 PBI_DATASET_ID = "39d50fe5-cde9-4244-b5e5-422a73e8e142"
 PBI_SCOPE      = ["https://analysis.windows.net/powerbi/api/.default"]
-ONEDRIVE_DRIVE_ID = "b!TeCN2j3hUkupwWkAv2s3ZlKFLPuBa5JIhxAalUAo4vbRFZw4oU4KTbOkvAxXF_h6"  # OneDrive Business: Documentos
 
-BASE_DIR       = Path(__file__).parent.parent
-EXCEL_MAP      = BASE_DIR / "powerbi" / "excel_map.json"
-LOG_FILE       = BASE_DIR / "powerbi" / "sync_log.json"
-LOCAL_SNAPSHOT = BASE_DIR / "backups" / "snapshot_antes_limpeza.json"
+BASE_DIR         = Path(__file__).parent.parent
+EXCEL_MAP        = BASE_DIR / "powerbi" / "excel_map.json"
+LOG_FILE         = BASE_DIR / "powerbi" / "sync_log.json"
+LOCAL_SNAPSHOT   = BASE_DIR / "backups" / "snapshot_antes_limpeza.json"
 DATA_ENRIQUECIDO = BASE_DIR / "powerbi" / "data_enriquecido.json"
-LOCAL_CSV      = BASE_DIR / "powerbi" / "kanboard_dados_final.csv"
+LOCAL_CSV        = BASE_DIR / "powerbi" / "kanboard_dados_final.csv"
 
 # Mapeamento de colunas (IDs → Fases) para projeto 11
 COLUMN_MAP = {
@@ -62,32 +69,22 @@ def log(msg, level="INFO"):
     print(f"[{ts}] [{level}] {msg}")
 
 # =====================================================================
-# AUTENTICAÇÃO POWER BI
+# AUTENTICAÇÃO POWER BI (MSAL username/password — Playbook Step 1)
 # =====================================================================
 def get_pbi_token():
     """Obtém token de acesso ao Power BI via MSAL.
-    Tenta primeiro client_credentials (Service Principal) e depois username/password."""
-    log("Autenticando no Power BI Service...")
-    # Tentativa 1: client_credentials (Service Principal — sem MFA)
-    try:
-        app = msal.ConfidentialClientApplication(
-            PBI_CLIENT_ID,
-            authority=f"https://login.microsoftonline.com/{PBI_TENANT_ID}",
-            client_credential=PBI_CLIENT_SECRET
-        )
-        result = app.acquire_token_for_client(scopes=["https://analysis.windows.net/powerbi/api/.default"])
-        if "access_token" in result:
-            log(f"  Token Power BI obtido via client_credentials (Service Principal)!")
-            return result["access_token"]
-        err = result.get("error_description", result.get("error", ""))
-        log(f"  client_credentials falhou: {str(err)[:100]}", "WARN")
-    except Exception as e:
-        log(f"  Erro no client_credentials: {e}", "WARN")
-    # Tentativa 2: username/password (fallback — requer MFA desabilitado)
-    for cid in [PBI_CLIENT_ID, PBI_CLIENT_ID2]:
+    Tenta username/password (ROPC) com múltiplos client_ids conforme playbook."""
+    log("Autenticando no Power BI Service (MSAL username/password)...")
+    log(f"  Tenant: {PBI_TENANT_ID}")
+    log(f"  Usuário: {PBI_USERNAME}")
+
+    # Tentativa 1: username/password com cada client_id
+    for cid in PBI_CLIENT_IDS:
         try:
+            log(f"  Tentando client_id={cid[:8]}... (ROPC flow)")
             app = msal.PublicClientApplication(
-                cid, authority=f"https://login.microsoftonline.com/{PBI_TENANT_ID}"
+                cid,
+                authority=f"https://login.microsoftonline.com/{PBI_TENANT_ID}"
             )
             result = app.acquire_token_by_username_password(
                 PBI_USERNAME, PBI_PASSWORD, scopes=PBI_SCOPE
@@ -96,13 +93,35 @@ def get_pbi_token():
                 log(f"  Token Power BI obtido via username/password (client_id={cid[:8]}...)")
                 return result["access_token"]
             err = result.get("error_description", result.get("error", ""))
-            log(f"  Falhou com client_id={cid[:8]}...: {str(err)[:100]}", "WARN")
+            log(f"  Falhou com client_id={cid[:8]}...: {str(err)[:150]}", "WARN")
         except Exception as e:
             log(f"  Erro com client_id={cid[:8]}...: {e}", "WARN")
-    raise Exception("Falha na autenticação Power BI com todos os métodos")
+
+    # Tentativa 2: client_credentials (Service Principal) se secret disponível
+    if PBI_CLIENT_SECRET:
+        try:
+            log("  Tentando client_credentials (Service Principal)...")
+            app = msal.ConfidentialClientApplication(
+                PBI_CLIENT_IDS[0],
+                authority=f"https://login.microsoftonline.com/{PBI_TENANT_ID}",
+                client_credential=PBI_CLIENT_SECRET
+            )
+            result = app.acquire_token_for_client(
+                scopes=["https://analysis.windows.net/powerbi/api/.default"]
+            )
+            if "access_token" in result:
+                log("  Token Power BI obtido via client_credentials!")
+                return result["access_token"]
+            err = result.get("error_description", result.get("error", ""))
+            log(f"  client_credentials falhou: {str(err)[:150]}", "WARN")
+        except Exception as e:
+            log(f"  Erro no client_credentials: {e}", "WARN")
+
+    log("  AVISO: Power BI inacessível (MFA ativo no tenant). Continuando com CSV local.", "WARN")
+    return None
 
 # =====================================================================
-# KANBOARD API (com X-API-Auth header personalizado)
+# KANBOARD API (Playbook Step 2)
 # =====================================================================
 _req_id = 0
 
@@ -111,6 +130,7 @@ def kanboard_api(method, params=None):
     global _req_id
     _req_id += 1
     payload = {"jsonrpc": "2.0", "method": method, "id": _req_id, "params": params or {}}
+    # Tentar com X-API-Auth header (token)
     headers = {
         "Content-Type": "application/json",
         "X-API-Auth": KANBOARD_TOKEN,
@@ -122,14 +142,42 @@ def kanboard_api(method, params=None):
         raise Exception(f"Kanboard API error: {resp['error']}")
     return resp.get("result")
 
+def kanboard_api_basic(method, params=None):
+    """Chama a API JSON-RPC do Kanboard via HTTP Basic Auth"""
+    global _req_id
+    _req_id += 1
+    payload = {"jsonrpc": "2.0", "method": method, "id": _req_id, "params": params or {}}
+    r = requests.post(
+        KANBOARD_URL, json=payload,
+        auth=("jsonrpc", KANBOARD_TOKEN),
+        timeout=20
+    )
+    r.raise_for_status()
+    resp = r.json()
+    if "error" in resp:
+        raise Exception(f"Kanboard API error: {resp['error']}")
+    return resp.get("result")
+
 def get_all_tasks_from_api():
-    """Busca todas as tarefas do projeto (abertas e fechadas) via API"""
-    log("Tentando buscar tarefas do Kanboard via API...")
-    open_tasks = kanboard_api("getAllTasks", {"project_id": KANBOARD_PROJ, "status_id": 1}) or []
-    log(f"  → {len(open_tasks)} tarefas abertas")
-    closed_tasks = kanboard_api("getAllTasks", {"project_id": KANBOARD_PROJ, "status_id": 0}) or []
-    log(f"  → {len(closed_tasks)} tarefas fechadas")
-    return open_tasks + closed_tasks
+    """Busca tarefas abertas (status_id=1) e fechadas (status_id=0) — Playbook Step 2"""
+    log(f"Buscando tarefas do projeto {KANBOARD_PROJ} via API Kanboard...")
+
+    # Tentar com X-API-Auth header
+    for api_func, method_name in [(kanboard_api, "X-API-Auth"), (kanboard_api_basic, "Basic Auth")]:
+        try:
+            log(f"  Método: {method_name}")
+            open_tasks = api_func("getAllTasks", {"project_id": KANBOARD_PROJ, "status_id": 1}) or []
+            log(f"  → {len(open_tasks)} tarefas abertas (status_id=1)")
+            closed_tasks = api_func("getAllTasks", {"project_id": KANBOARD_PROJ, "status_id": 0}) or []
+            log(f"  → {len(closed_tasks)} tarefas fechadas (status_id=0)")
+            all_tasks = open_tasks + closed_tasks
+            if all_tasks:
+                log(f"  Total: {len(all_tasks)} tarefas obtidas via {method_name}")
+                return all_tasks
+        except Exception as e:
+            log(f"  {method_name} falhou: {e}", "WARN")
+
+    return []
 
 # =====================================================================
 # FONTES DE DADOS (com fallback em cascata)
@@ -137,7 +185,7 @@ def get_all_tasks_from_api():
 def get_all_tasks():
     """
     Obtém tarefas com fallback em cascata:
-    1. API Kanboard (ao vivo)
+    1. API Kanboard ao vivo (playbook)
     2. data_enriquecido.json (105 tarefas já enriquecidas)
     3. snapshot_antes_limpeza.json (97 tarefas brutas)
     """
@@ -169,13 +217,16 @@ def get_all_tasks():
     raise Exception("Nenhuma fonte de dados disponível")
 
 # =====================================================================
-# ENRIQUECIMENTO DE DADOS
+# ENRIQUECIMENTO DE DADOS (Playbook Step 3)
 # =====================================================================
 def load_excel_enrichment():
-    """Carrega dados de enriquecimento do Excel (área, valor, horas, etc.)"""
+    """Carrega dados de enriquecimento do Excel (área, valor, horas, tipo) — Playbook Step 3"""
     if EXCEL_MAP.exists():
         with open(EXCEL_MAP, 'r', encoding='utf-8') as f:
-            return json.load(f)
+            data = json.load(f)
+        log(f"  excel_map.json carregado: {len(data)} entradas")
+        return data
+    log("  excel_map.json não encontrado", "WARN")
     return {}
 
 def map_phase(column_name):
@@ -202,16 +253,18 @@ def get_users_map():
     """Obtém mapeamento de usuários (com fallback)"""
     try:
         users = kanboard_api("getAllUsers") or []
-        return {str(u["id"]): u.get("name") or u.get("username", "") for u in users}
+        if users:
+            return {str(u["id"]): u.get("name") or u.get("username", "") for u in users}
     except:
-        return {
-            "1": "admin", "2": "Erick Almeida", "3": "Marcio Souza",
-            "4": "Elder Rodrigues", "5": "Felipe Nascimento", "6": "Carlos Almeida"
-        }
+        pass
+    return {
+        "1": "admin", "2": "Erick Almeida", "3": "Marcio Souza",
+        "4": "Elder Rodrigues", "5": "Felipe Nascimento", "6": "Carlos Almeida"
+    }
 
 def enrich_from_api_tasks(tasks, excel_map):
     """Enriquece tarefas brutas da API com dados do Excel e normaliza campos"""
-    log("Enriquecendo dados das tarefas (fonte: API)...")
+    log("Enriquecendo dados das tarefas com excel_map.json (área, valor, horas, tipo)...")
     users_map = get_users_map()
     enriched = []
     for i, task in enumerate(tasks, 1):
@@ -294,7 +347,6 @@ def normalize_enriquecido(data):
     sync_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     normalized = []
     for i, d in enumerate(data, 1):
-        # Garantir que todos os campos necessários existam
         record = {
             "seq": d.get("seq", i),
             "cherwell": d.get("cherwell", ""),
@@ -325,10 +377,10 @@ def normalize_enriquecido(data):
     return normalized
 
 # =====================================================================
-# KPIs E MÉTRICAS
+# KPIs E MÉTRICAS (Playbook Step 4)
 # =====================================================================
 def compute_kpis(tasks):
-    """Calcula KPIs executivos"""
+    """Calcula KPIs executivos — Playbook Step 4"""
     total = len(tasks)
     impl = sum(1 for t in tasks if t.get("status") == "Implementado")
     alta = sum(1 for t in tasks if t.get("pri") == "Alta")
@@ -398,22 +450,24 @@ def compute_responsaveis(tasks):
     return result
 
 # =====================================================================
-# POWER BI — PUSH
+# POWER BI — PUSH (Playbook Steps 5 e 6)
 # =====================================================================
 def pbi_headers(token):
     return {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
 
 def clear_pbi_table(token, table_name):
-    """Limpa uma tabela do dataset Power BI"""
+    """Limpa uma tabela do dataset Power BI — Playbook Step 5"""
     url = f"https://api.powerbi.com/v1.0/myorg/datasets/{PBI_DATASET_ID}/tables/{table_name}/rows"
     r = requests.delete(url, headers=pbi_headers(token), timeout=30)
     if r.status_code in [200, 204]:
         log(f"  Tabela '{table_name}' limpa com sucesso")
+        return True
     else:
         log(f"  Aviso ao limpar '{table_name}': {r.status_code} - {r.text[:100]}", "WARN")
+        return False
 
 def push_rows(token, table_name, rows, batch_size=500):
-    """Insere linhas em uma tabela do dataset Power BI em lotes"""
+    """Insere linhas em uma tabela do dataset Power BI em lotes de 500 — Playbook Step 6"""
     url = f"https://api.powerbi.com/v1.0/myorg/datasets/{PBI_DATASET_ID}/tables/{table_name}/rows"
     total = len(rows)
     inserted = 0
@@ -429,10 +483,10 @@ def push_rows(token, table_name, rows, batch_size=500):
     return inserted
 
 # =====================================================================
-# LOG
+# LOG (Playbook Step 7)
 # =====================================================================
 def save_log(sync_result):
-    """Salva log de sincronização"""
+    """Salva log de sincronização em sync_log.json"""
     logs = []
     if LOG_FILE.exists():
         with open(LOG_FILE, 'r', encoding='utf-8') as f:
@@ -444,6 +498,7 @@ def save_log(sync_result):
     logs = logs[-30:]  # Manter últimas 30 execuções
     with open(LOG_FILE, 'w', encoding='utf-8') as f:
         json.dump(logs, f, ensure_ascii=False, indent=2)
+    log(f"Log salvo: {LOG_FILE}")
 
 # =====================================================================
 # MAIN
@@ -451,28 +506,32 @@ def save_log(sync_result):
 def main():
     start = datetime.now()
     log("=" * 60)
-    log("EBL Kanboard → Power BI Sync v2.2 (com fallback robusto)")
+    log("EBL Kanboard → Power BI Sync v2.3 (Playbook)")
     log("=" * 60)
+    log(f"Dataset ID: {PBI_DATASET_ID}")
+    log(f"Projeto Kanboard: {KANBOARD_PROJ}")
 
     sync_result = {
         "timestamp": start.strftime("%Y-%m-%d %H:%M:%S"),
-        "versao": "v2.2",
+        "versao": "v2.3",
         "status": "error",
         "tasks_synced": 0,
+        "powerbi_status": "not_attempted",
         "error": None,
         "data_source": "unknown",
     }
 
     try:
-        # 1. Autenticar no Power BI
+        # ── Step 1: Autenticar no Power BI ──────────────────────────
         token = get_pbi_token()
+        sync_result["powerbi_status"] = "authenticated" if token else "mfa_blocked"
 
-        # 2. Buscar dados do Kanboard (com fallback em cascata)
+        # ── Step 2: Buscar dados do Kanboard (com fallback) ──────────
         raw_tasks, data_source = get_all_tasks()
         sync_result["data_source"] = data_source
-        log(f"Fonte de dados: {data_source} ({len(raw_tasks)} registros)")
+        log(f"\nFonte de dados: {data_source} ({len(raw_tasks)} registros)")
 
-        # 3. Enriquecer / normalizar dados
+        # ── Step 3: Enriquecer / normalizar dados ────────────────────
         if data_source == "kanboard_api":
             excel_map = load_excel_enrichment()
             enriched = enrich_from_api_tasks(raw_tasks, excel_map)
@@ -485,7 +544,7 @@ def main():
 
         log(f"Total de demandas processadas: {len(enriched)}")
 
-        # 4. Calcular métricas
+        # ── Step 4: Calcular KPIs, Fases e Responsáveis ─────────────
         kpis = compute_kpis(enriched)
         fases = compute_fases(enriched)
         responsaveis = compute_responsaveis(enriched)
@@ -494,20 +553,30 @@ def main():
         for k in kpis:
             log(f"  {k['kpi']}: {k['valor']} {k['unidade']}")
 
-        # 5. Limpar tabelas existentes no Power BI
-        log("\nLimpando tabelas do Power BI...")
-        for table in ["Demandas", "KPIs", "Fases", "Responsaveis"]:
-            clear_pbi_table(token, table)
+        log("\nDistribuição por fase:")
+        for f in fases:
+            log(f"  {f['fase']}: {f['quantidade']} ({f['percentual']}%)")
 
-        # 6. Inserir dados atualizados em lotes de 500
-        log("\nInserindo dados atualizados no Power BI...")
-        n_demandas = push_rows(token, "Demandas", enriched)
-        n_kpis = push_rows(token, "KPIs", kpis)
-        n_fases = push_rows(token, "Fases", fases)
-        n_resp = push_rows(token, "Responsaveis", responsaveis)
+        # ── Steps 5 e 6: Power BI push (se autenticado) ──────────────
+        n_demandas = n_kpis = n_fases = n_resp = 0
+        if token:
+            log("\n── Limpando tabelas do Power BI (Step 5) ──")
+            for table in ["Demandas", "KPIs", "Fases", "Responsaveis"]:
+                clear_pbi_table(token, table)
 
-        # 7. Salvar CSV atualizado
+            log("\n── Inserindo dados atualizados em lotes de 500 (Step 6) ──")
+            n_demandas = push_rows(token, "Demandas", enriched)
+            n_kpis     = push_rows(token, "KPIs", kpis)
+            n_fases    = push_rows(token, "Fases", fases)
+            n_resp     = push_rows(token, "Responsaveis", responsaveis)
+            sync_result["powerbi_status"] = "synced"
+        else:
+            log("\n── Power BI inacessível (MFA bloqueado). Dados salvos apenas localmente. ──", "WARN")
+            sync_result["powerbi_status"] = "mfa_blocked_local_only"
+
+        # ── Step 7: Salvar CSV e log ──────────────────────────────────
         csv_path = LOCAL_CSV
+        csv_path.parent.mkdir(parents=True, exist_ok=True)
         with open(csv_path, 'w', newline='', encoding='utf-8-sig') as f:
             if enriched:
                 writer = csv.DictWriter(f, fieldnames=enriched[0].keys(), delimiter=';')
@@ -519,16 +588,23 @@ def main():
         log(f"\n{'=' * 60}")
         log(f"SYNC CONCLUÍDO em {elapsed:.1f}s")
         log(f"  Fonte: {data_source}")
-        log(f"  Demandas: {n_demandas} | KPIs: {n_kpis} | Fases: {n_fases} | Responsáveis: {n_resp}")
+        log(f"  Demandas: {len(enriched)} processadas | Power BI: {sync_result['powerbi_status']}")
+        if token:
+            log(f"  PBI inseridos → Demandas: {n_demandas} | KPIs: {n_kpis} | Fases: {n_fases} | Responsáveis: {n_resp}")
         log(f"{'=' * 60}")
 
         sync_result.update({
             "status": "success",
+            "tasks_processed": len(enriched),
             "tasks_synced": n_demandas,
             "kpis_synced": n_kpis,
             "fases_synced": n_fases,
             "responsaveis_synced": n_resp,
+            "kpis_calculados": kpis,
+            "fases_calculadas": fases,
+            "responsaveis_calculados": responsaveis,
             "elapsed_seconds": round(elapsed, 1),
+            "csv_path": str(csv_path),
         })
 
     except Exception as e:

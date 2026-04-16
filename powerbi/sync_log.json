@@ -249,5 +249,175 @@
     "onedrive_url": "https://eblsolucoescorporativas0-my.sharepoint.com/personal/admebl_eblsolucoescorporativas_com/_layouts/15/Doc.aspx?sourcedoc=%7BAE9FC2EB-2F61-4579-8294-1498E4AA6BA4%7D&file=kanboard_dados.csv&action=default&mobileredirect=true",
     "error": "",
     "duration_seconds": 16.81
+  },
+  {
+    "timestamp": "2026-04-16 09:06:12",
+    "versao": "v2.2",
+    "status": "error",
+    "tasks_synced": 0,
+    "error": "Falha na autenticação Power BI com todos os métodos",
+    "data_source": "unknown"
+  },
+  {
+    "timestamp": "2026-04-16 09:08:51",
+    "versao": "v2.3",
+    "status": "success",
+    "tasks_synced": 0,
+    "powerbi_status": "mfa_blocked_local_only",
+    "error": null,
+    "data_source": "data_enriquecido",
+    "tasks_processed": 105,
+    "kpis_synced": 0,
+    "fases_synced": 0,
+    "responsaveis_synced": 0,
+    "kpis_calculados": [
+      {
+        "kpi": "Total de Demandas",
+        "valor": 105,
+        "unidade": "demandas",
+        "descricao": "Base Fast Track Salesforce"
+      },
+      {
+        "kpi": "Implementadas",
+        "valor": 7,
+        "unidade": "demandas",
+        "descricao": "6.7% de conclusão"
+      },
+      {
+        "kpi": "Em Andamento",
+        "valor": 19,
+        "unidade": "demandas",
+        "descricao": "Refin + Aprov + Dev + Deploy"
+      },
+      {
+        "kpi": "Alta Prioridade",
+        "valor": 14,
+        "unidade": "demandas",
+        "descricao": "Atenção imediata"
+      },
+      {
+        "kpi": "No Backlog",
+        "valor": 78,
+        "unidade": "demandas",
+        "descricao": "74% aguardando"
+      },
+      {
+        "kpi": "Valor Total",
+        "valor": 135900.0,
+        "unidade": "R$",
+        "descricao": "R$ 135,900"
+      },
+      {
+        "kpi": "Horas Estimadas",
+        "valor": 679.5,
+        "unidade": "horas",
+        "descricao": "Valtech"
+      },
+      {
+        "kpi": "Taxa de Conclusão",
+        "valor": 6.7,
+        "unidade": "%",
+        "descricao": "7 de 105 implementadas"
+      }
+    ],
+    "fases_calculadas": [
+      {
+        "fase": "01. Backlog",
+        "quantidade": 78,
+        "percentual": 74.3
+      },
+      {
+        "fase": "02. Refinamento",
+        "quantidade": 5,
+        "percentual": 4.8
+      },
+      {
+        "fase": "06. Aprovação",
+        "quantidade": 7,
+        "percentual": 6.7
+      },
+      {
+        "fase": "07. Desenvolvimento",
+        "quantidade": 5,
+        "percentual": 4.8
+      },
+      {
+        "fase": "09. Deploy",
+        "quantidade": 2,
+        "percentual": 1.9
+      },
+      {
+        "fase": "10. Implementado",
+        "quantidade": 7,
+        "percentual": 6.7
+      },
+      {
+        "fase": "Homogação",
+        "quantidade": 1,
+        "percentual": 1.0
+      }
+    ],
+    "responsaveis_calculados": [
+      {
+        "responsavel": "Erick Almeida",
+        "total": 60,
+        "implementadas": 2,
+        "alta_prioridade": 13,
+        "valor_total": 46400.0,
+        "horas_total": 232.0,
+        "taxa_conclusao": 3.3
+      },
+      {
+        "responsavel": "Marcio Souza",
+        "total": 19,
+        "implementadas": 4,
+        "alta_prioridade": 0,
+        "valor_total": 74400.0,
+        "horas_total": 372.0,
+        "taxa_conclusao": 21.1
+      },
+      {
+        "responsavel": "Elder Rodrigues",
+        "total": 15,
+        "implementadas": 1,
+        "alta_prioridade": 0,
+        "valor_total": 10400.0,
+        "horas_total": 52.0,
+        "taxa_conclusao": 6.7
+      },
+      {
+        "responsavel": "Felipe Nascimento",
+        "total": 10,
+        "implementadas": 0,
+        "alta_prioridade": 1,
+        "valor_total": 4700.0,
+        "horas_total": 23.5,
+        "taxa_conclusao": 0.0
+      },
+      {
+        "responsavel": "Carlos Almeida",
+        "total": 1,
+        "implementadas": 0,
+        "alta_prioridade": 0,
+        "valor_total": 0.0,
+        "horas_total": 0.0,
+        "taxa_conclusao": 0.0
+      }
+    ],
+    "elapsed_seconds": 12.1,
+    "csv_path": "/home/ubuntu/kanboard/powerbi/kanboard_dados_final.csv"
+  },
+  {
+    "timestamp": "2026-04-16 09:11:26",
+    "versao": "v2.3-push",
+    "status": "success",
+    "powerbi_status": "synced",
+    "tasks_synced": 105,
+    "kpis_synced": 8,
+    "fases_synced": 7,
+    "responsaveis_synced": 5,
+    "elapsed_seconds": 19.7,
+    "data_source": "kanboard_dados_final.csv",
+    "error": null
   }
 ]
